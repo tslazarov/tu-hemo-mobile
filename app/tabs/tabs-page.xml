@@ -1,0 +1,62 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page"
+  xmlns:search="tabs/search"
+  xmlns:request="tabs/request"
+  xmlns:medcenters="tabs/medcenters"
+  xmlns:stats="tabs/stats"
+  xmlns:settings="tabs/settings">
+    <Page.actionBar>
+        <ActionBar class="action-bar">
+          <Label text="{{ title }}" class="action-bar-title" />
+        </ActionBar>
+    </Page.actionBar>
+
+    <!--
+    The TabView component provides a simple way to navigate between different views by
+    tapping on some of the tabs or by swiping between the views.
+    Learn more about the TabView component in this documentation article:
+    http://docs.nativescript.org/cookbook/ui/tab-view
+    -->
+    <TabView selectedIndexChanged="onSelectedIndexChanged">
+      <TabView.items>
+        <!--
+        To add a new TabView item, simply add a new <TabViewItem> component to the <TabView.items> collection.
+        Assign the <TabViewItem> component a "title" that will be displayed as the text of the tab item button.
+        -->
+        <TabViewItem title="Search" iconSource="res://tabIcons/home">
+          <TabViewItem.view>
+            <!--
+            You can declare the layout and components of each view inside the <TabViewItem.view> directly.
+            In this case the view contents and back end logic are separated in custom components.
+            You can find these components in their respective folders /home, /browse etc.
+            -->
+            <search:search-fragment/>
+          </TabViewItem.view>
+        </TabViewItem>
+
+        <TabViewItem title="Request" iconSource="res://tabIcons/browse">
+          <TabViewItem.view>
+             <request:request-fragment/>
+          </TabViewItem.view>
+        </TabViewItem>
+
+      <TabViewItem title="Medical" iconSource="res://tabIcons/search">
+          <TabViewItem.view>
+             <medcenters:medcenters-fragment/>
+          </TabViewItem.view>
+        </TabViewItem>
+
+        <TabViewItem title="Stats" iconSource="res://tabIcons/search">
+          <TabViewItem.view>
+              <stats:stats-fragment/>
+          </TabViewItem.view>
+        </TabViewItem>
+
+
+        <TabViewItem title="Settings" iconSource="res://tabIcons/search">
+            <TabViewItem.view>
+              <settings:settings-fragment/>
+            </TabViewItem.view>
+        </TabViewItem>
+      </TabView.items>
+    </TabView> 
+</Page>
