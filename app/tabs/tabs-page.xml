@@ -4,12 +4,6 @@
   xmlns:medcenters="tabs/medcenters"
   xmlns:stats="tabs/stats"
   xmlns:settings="tabs/settings">
-    <Page.actionBar>
-        <ActionBar class="action-bar">
-          <Label text="{{ title }}" class="action-bar-title" />
-        </ActionBar>
-    </Page.actionBar>
-
     <!--
     The TabView component provides a simple way to navigate between different views by
     tapping on some of the tabs or by swiping between the views.

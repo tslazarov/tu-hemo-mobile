@@ -1,20 +1,22 @@
 import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-modules/ui/tab-view";
 import { NavigatedData, Page } from "ui/page";
-
+import { Frame, topmost } from "tns-core-modules/ui/frame";
 import { TabsViewModel } from "./tabs-view-model";
+import { SecureStorage } from "nativescript-secure-storage";
 
-/* ***********************************************************
-* Use the "onNavigatingTo" handler to initialize data for the whole tab
-* navigation layout as a whole.
-*************************************************************/
+const secureStorage = new SecureStorage();
+
 export function onNavigatingTo(args: NavigatedData) {
-    /* ***********************************************************
-    * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
-    * Skipping the re-initialization on back navigation means the user will see the
-    * page in the same data state that he left it in before navigating.
-    *************************************************************/
-    if (args.isBackNavigation) {
-        return;
+
+    if(!secureStorage.getSync({key: "access_token" })) {
+        let topmostFrame: Frame = topmost(); 
+
+        let navigationEntry = {
+            moduleName: "login/login-page",
+            clearHistory: true
+        };
+
+        topmostFrame.navigate(navigationEntry);
     }
 
     const page = <Page>args.object;
