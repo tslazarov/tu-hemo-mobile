@@ -7,7 +7,8 @@ import * as app from "application";
 import "./bundle-config";
 
 // app.start({ moduleName: "login/login-page" });
-app.start({ moduleName: "tabs/tabs-page" });
+// app.start({ moduleName: "tabs/tabs-page" });
+app.start({ moduleName: "home/home-page" });
 
 /*
 Do not place any code after the application has been started as it will not

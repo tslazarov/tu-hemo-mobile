@@ -1,0 +1,22 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" navigatingTo="onNavigatingTo" class="page"
+  xmlns:map="search/search-map-tab"
+  xmlns:list="search/search-list-tab" >
+
+    <TabView selectedIndexChanged="onSelectedIndexChanged">
+      <TabView.items>
+
+        <TabViewItem title="Map" iconSource="res://tabIcons/home">
+          <TabViewItem.view>
+            <map:search-map-fragment/>
+          </TabViewItem.view>
+        </TabViewItem>
+
+        <TabViewItem title="List" iconSource="res://tabIcons/browse">
+          <TabViewItem.view>
+             <list:search-list-fragment/>
+          </TabViewItem.view>
+        </TabViewItem>
+
+      </TabView.items>
+    </TabView> 
+</Page>

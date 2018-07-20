@@ -1,6 +1,6 @@
 import { Observable } from "data/observable";
 
-export class MedCentersViewModel extends Observable {
+export class SearchListViewModel extends Observable {
     constructor() {
         super();
     }

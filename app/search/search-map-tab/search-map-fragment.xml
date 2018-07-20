@@ -4,5 +4,5 @@ Feel free to customize layouts and components to change how the tab view looks.
 -->
 <GridLayout class="page-content" loaded="onLoaded">
     <Label class="page-icon fa" text="&#xf002;"></Label>
-    <Label class="page-placeholder" text="<!-- SEARCH -->"></Label>
+    <Label class="page-placeholder" text="<!-- SEARCH MAP -->"></Label>
 </GridLayout>
