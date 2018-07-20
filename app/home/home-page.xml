@@ -1,7 +1,10 @@
-<Page navigatingTo="onNavigatingTo" class="page" 
+<Page navigatingTo="onNavigatingTo"
+    loaded="pageLoaded" 
+    actionBarHidden="true"
+    class="page" 
     xmlns="http://schemas.nativescript.org/tns.xsd"
-    xmlns:bottomNav="nativescript-bottom-navigation" 
-    loaded="pageLoaded">
+    xmlns:bottomNav="nativescript-bottom-navigation"  >
+    
     <GridLayout columns="*"
                 rows="*, auto">
             <Frame row="0" id="contentFrame" defaultPage="search/search-page">

@@ -1,22 +1,59 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" navigatingTo="onNavigatingTo" class="page"
+<Page navigatingTo="onNavigatingTo" 
+  loaded="pageLoaded" 
+  class="page"
+  xmlns="http://schemas.nativescript.org/tns.xsd"
   xmlns:map="search/search-map-tab"
-  xmlns:list="search/search-list-tab" >
+  xmlns:list="search/search-list-tab" 
+  xmlns:nsDrawer="nativescript-ui-sidedrawer"
+  xmlns:au="nativescript-ui-autocomplete" >
+    <ActionBar class="action-bar">
+      <NavigationButton visibility="collapsed"></NavigationButton>
+      <GridLayout columns="auto,*,auto" height="100%" width="100%">
+        <Label col="0" text="&#xf0c9;" class="fa" tap="onOpenDrawerTap"></Label>
+        <Label col="1" text="Search" class="action-bar-title" tap="onOpenDrawerTap"></Label>
+      </GridLayout>
+    </ActionBar>
+    <nsDrawer:RadSideDrawer id="sideDrawer" drawerLocation="top" xmlns:nsDrawer="nativescript-ui-sidedrawer" loaded="onLoaded">
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
 
-    <TabView selectedIndexChanged="onSelectedIndexChanged">
-      <TabView.items>
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <GridLayout rows="auto" class="sidedrawer sidedrawer-left">
+                <StackLayout class="sidedrawer-header">
+                  <au:RadAutoCompleteTextView id="autocomplete" textChanged="onTextChanged" items="{{ dataItems }}" suggestMode="Suggest" displayMode="Plain">
+                      <au:RadAutoCompleteTextView.suggestionView>
+                          <au:SuggestionView suggestionViewHeight="300">
+                              <au:SuggestionView.suggestionItemTemplate>
+                                  <StackLayout orientation="vertical" padding="10">
+                                      <Label text="{{ text }}"></Label>
+                                  </StackLayout>
+                              </au:SuggestionView.suggestionItemTemplate>
+                          </au:SuggestionView>
+                      </au:RadAutoCompleteTextView.suggestionView>
+                  </au:RadAutoCompleteTextView>
+                </StackLayout>
+            </GridLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
 
-        <TabViewItem title="Map" iconSource="res://tabIcons/home">
-          <TabViewItem.view>
-            <map:search-map-fragment/>
-          </TabViewItem.view>
-        </TabViewItem>
+        <nsDrawer:RadSideDrawer.mainContent>
+            <TabView row="1" selectedIndexChanged="onSelectedIndexChanged">
+              <TabView.items>
 
-        <TabViewItem title="List" iconSource="res://tabIcons/browse">
-          <TabViewItem.view>
-             <list:search-list-fragment/>
-          </TabViewItem.view>
-        </TabViewItem>
+                <TabViewItem title="Map" iconSource="res://tabIcons/home">
+                  <TabViewItem.view>
+                    <map:search-map-fragment/>
+                  </TabViewItem.view>
+                </TabViewItem>
 
-      </TabView.items>
-    </TabView> 
+                <TabViewItem title="List" iconSource="res://tabIcons/browse">
+                  <TabViewItem.view>
+                    <list:search-list-fragment/>
+                  </TabViewItem.view>
+                </TabViewItem>
+
+              </TabView.items>
+            </TabView>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer> 
 </Page>

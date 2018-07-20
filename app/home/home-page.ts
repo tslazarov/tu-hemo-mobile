@@ -11,7 +11,7 @@ export function onNavigatingTo(args: EventData) {
 }
 
 export function pageLoaded(args: EventData) {
-    let page = <Page>args.object;
+  let page = <Page>args.object;
 }
    
 export function bottomNavigationLoaded(args) {
@@ -24,11 +24,19 @@ export function tabSelected(args: OnTabSelectedEventData) {
   let navigationEntry: any;
   let frame = getFrameById("contentFrame");
   
+  if(args.newIndex > args.oldIndex){
+    frame.transition = { name:  "slideLeft" };
+  }
+  else{
+    frame.transition = { name:  "slideRight" };
+  }
+
   switch(args.newIndex) {
     case 0: {
+
       navigationEntry = {
         moduleName: "search/search-page",
-        clearHistory: true
+        clearHistory: true,
       };
       break;
     }
