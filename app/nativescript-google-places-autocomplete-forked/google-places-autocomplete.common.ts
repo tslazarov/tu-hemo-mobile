@@ -4,7 +4,7 @@ import * as app from 'tns-core-modules/application';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
 import * as http from 'tns-core-modules/http';
 
-export class Common extends Observable {
+export class GooglePlacesAutocomplete extends Observable {
   private apikey: string;
   constructor(key: string) {
     super();
