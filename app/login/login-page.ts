@@ -39,7 +39,7 @@ export function onSignInButtonTap(args: EventData): void {
                         let topmostFrame: Frame = topmost(); 
 
                         let navigationEntry = {
-                            moduleName: "tabs/tabs-page",
+                            moduleName: "home/home-page",
                             clearHistory: true
                         };
         

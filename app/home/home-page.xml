@@ -15,6 +15,7 @@
             <bottomNav:BottomNavigationTab title="First" icon="ic_home"></bottomNav:BottomNavigationTab>
             <bottomNav:BottomNavigationTab title="Second" icon="ic_view_list"></bottomNav:BottomNavigationTab>
             <bottomNav:BottomNavigationTab title="Third" icon="ic_menu"></bottomNav:BottomNavigationTab>
+            <bottomNav:BottomNavigationTab title="Fourth" icon="ic_menu"></bottomNav:BottomNavigationTab>
         </bottomNav:BottomNavigation>
     </GridLayout>
 </Page>

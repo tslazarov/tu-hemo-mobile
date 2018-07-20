@@ -1,0 +1,9 @@
+<Page navigatingTo="onNavigatingTo" 
+    actionBarHidden="true" 
+    loaded="pageLoaded"
+    class="page" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+    <StackLayout>
+    <Label text="Logo" />
+    </StackLayout>
+</Page>
