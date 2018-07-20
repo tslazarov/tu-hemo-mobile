@@ -4,17 +4,16 @@ import { ObservableProperty } from "./observable-property-decorator";
 export class LoginViewModel extends Observable {
     @ObservableProperty() email: string;
     @ObservableProperty() password: string;
-
-    constructor() {
+    selectedLanguage: number;    
+    languages: string[] = ["English", "Български"];
+    constructor(language:string) {
         super();
-    }
 
-    signIn(): void {
-        const email = this.email;
-        const password = this.password;
-
-        /* ***********************************************************
-        * Call your custom sign in logic using the email and password data.
-        *************************************************************/
+        if(language && language == "bg") {
+            this.selectedLanguage = 1;
+        } 
+        else {
+            this.selectedLanguage = 0;
+        }
     }
 }

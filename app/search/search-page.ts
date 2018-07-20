@@ -7,8 +7,6 @@ import { SearchViewModel } from "./search-view-model";
 
 import { ThirdPartyCredentials } from "../constants/third-party-credentials"
 
-let googlePlacesAutocomplete = new GooglePlacesAutocomplete(ThirdPartyCredentials.PlacesAPIKey);
-
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     page.bindingContext = new SearchViewModel(args);

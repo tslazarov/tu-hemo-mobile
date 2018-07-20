@@ -6,22 +6,29 @@ import { Frame, topmost } from "tns-core-modules/ui/frame";
 import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
+import { ListPicker } from "ui/list-picker";
+import { Observable } from "data/observable";
 
 const httpModule = require("http");
 const secureStorage = new SecureStorage();
 
 export function onNavigatingTo(args: NavigatedData) {    
     const page = <Page>args.object;
-    page.bindingContext = new LoginViewModel();
+    page.bindingContext = new LoginViewModel(secureStorage.getSync({key: "language" }));
+}
+
+export function onPageLoaded(args: EventData) {
+    const page = <Page>args.object;
+    page.bindingContext = new LoginViewModel(secureStorage.getSync({key: "language" }));
 }
 
 export function onSignInButtonTap(args: EventData): void {
     const button = <Button>args.object;
-    const bindingContext = <LoginViewModel>button.bindingContext;
+    const viewModel = <LoginViewModel>button.bindingContext;
 
     let url = `${APIConstants.Domain}/${APIConstants.AuthorizeEndpoint}`;
     let contentType = 'application/x-www-form-urlencoded';
-    let content = `grant_type=password&username=${bindingContext.email}&password=${bindingContext.password}`;
+    let content = `grant_type=password&username=${viewModel.email}&password=${viewModel.password}`;
 
     HttpClient.postRequest(url, content, null, contentType)
         .then((response) => {
@@ -51,4 +58,13 @@ export function onSignInButtonTap(args: EventData): void {
         }, (reject) => {
             //TODO: handle request failure
         });
+}
+
+export function onListPickerLoaded(args): void {
+    const listPicker = args.object;
+    listPicker.on("selectedIndexChange", (lpargs) => {
+        let languages = ["en", "bg"];
+        const listPicker = lpargs.object;
+        secureStorage.set({ key: "language", value: languages[listPicker.selectedIndex] });
+    });
 }
