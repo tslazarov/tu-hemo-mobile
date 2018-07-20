@@ -21,7 +21,7 @@
         <nsDrawer:RadSideDrawer.drawerContent>
             <GridLayout rows="auto" class="sidedrawer sidedrawer-left">
                 <StackLayout class="sidedrawer-header">
-                  <au:RadAutoCompleteTextView id="autocomplete" textChanged="onTextChanged" items="{{ dataItems }}" suggestMode="Suggest" displayMode="Plain">
+                  <au:RadAutoCompleteTextView hint="Search" id="autocomplete" items="{{ dataItems }}" suggestMode="Suggest" displayMode="Plain">
                       <au:RadAutoCompleteTextView.suggestionView>
                           <au:SuggestionView suggestionViewHeight="300">
                               <au:SuggestionView.suggestionItemTemplate>

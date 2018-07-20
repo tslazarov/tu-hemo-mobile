@@ -10,7 +10,8 @@
     }
   },
   "scripts": {
-    "lint": "tslint \"app/**/*.ts\""
+    "lint": "tslint \"app/**/*.ts\"",
+    "ginstall": "npm install && cd app/nativescript-google-places-autocomplete-forked && npm install && cd ../../"
   },
   "dependencies": {
     "android": "0.0.8",

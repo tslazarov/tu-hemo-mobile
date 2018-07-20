@@ -2,14 +2,14 @@ import { EventData } from "data/observable";
 import { Page } from "ui/page";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { topmost  } from "tns-core-modules/ui/frame";
-
+// import { GooglePlacesAutocomplete } from "../nativescript-google-places-autocomplete-forked"
 
 import { SearchViewModel } from "./search-view-model";
-import { AutoCompleteEventData } from "nativescript-ui-autocomplete";
+import { AutoCompleteEventData, RadAutoCompleteTextView } from "nativescript-ui-autocomplete";
 
-/* ***********************************************************
-* Use the "onNavigatingTo" handler to initialize the page binding context.
-*************************************************************/
+import { ThirdPartyCredentials } from "../constants/third-party-credentials"
+
+// let googlePlacesAutocomplete = new GooglePlacesAutocomplete(ThirdPartyCredentials.PlacesAPIKey);
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
@@ -29,8 +29,4 @@ export function onOpenDrawerTap() {
 export function onCloseDrawerTap() {
     let sideDrawer: RadSideDrawer = <RadSideDrawer>(topmost().getViewById("sideDrawer"));
     sideDrawer.closeDrawer();
-}
-
-export function onTextChanged(args: AutoCompleteEventData) {
-    console.log(args.text);
 }

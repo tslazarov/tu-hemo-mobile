@@ -12,3 +12,4 @@ node_modules/
 platforms/
 tmp/
 typings/
+app/constants/third-party-credentials.ts
