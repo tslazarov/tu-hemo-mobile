@@ -7,9 +7,7 @@ import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
 import { ListPicker } from "ui/list-picker";
-import { Observable } from "data/observable";
 
-const httpModule = require("http");
 const secureStorage = new SecureStorage();
 
 export function onNavigatingTo(args: NavigatedData) {    
@@ -62,9 +60,19 @@ export function onSignInButtonTap(args: EventData): void {
 
 export function onListPickerLoaded(args): void {
     const listPicker = args.object;
+    const viewModel = listPicker.page.getViewById("LoginPanel");
+
     listPicker.on("selectedIndexChange", (lpargs) => {
         let languages = ["en", "bg"];
         const listPicker = lpargs.object;
         secureStorage.set({ key: "language", value: languages[listPicker.selectedIndex] });
+
+        // hacky way to rebind labels - not optimal but necessary due to issue with binding context
+        let navigationEntry = {
+            moduleName: "login/login-page",
+            clearHistory: true
+        };
+
+        topmost().navigate(navigationEntry);
     });
 }
