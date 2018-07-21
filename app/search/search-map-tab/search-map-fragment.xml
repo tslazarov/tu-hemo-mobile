@@ -2,7 +2,13 @@
 This is the component view that represents the 'Search' tab.
 Feel free to customize layouts and components to change how the tab view looks.
 -->
-<GridLayout class="page-content" loaded="onLoaded">
-    <Label class="page-icon fa" text="&#xf002;"></Label>
-    <Label class="page-placeholder" text="<!-- SEARCH MAP -->"></Label>
+<GridLayout class="page-content" loaded="onLoaded" xmlns:map="nativescript-mapbox">
+      <map:MapboxView
+          accessToken="{{ accessToken }}"
+          mapStyle="streets"
+          latitude="52.3702160"
+          longitude="4.8951680"
+          zoomLevel="7"
+          showUserLocation="true">
+      </map:MapboxView>
 </GridLayout>
