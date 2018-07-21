@@ -7,7 +7,6 @@
   xmlns:nsDrawer="nativescript-ui-sidedrawer"
   xmlns:au="nativescript-ui-autocomplete" >
     <ActionBar class="action-bar">
-      <NavigationButton visibility="collapsed"></NavigationButton>
       <GridLayout columns="auto,*,auto" height="100%" width="100%">
         <Label col="0" text="&#xf0c9;" class="fa" tap="onOpenDrawerTap"></Label>
         <Label col="1" text="Search" class="action-bar-title" tap="onOpenDrawerTap"></Label>

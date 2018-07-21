@@ -12,6 +12,7 @@ const secureStorage = new SecureStorage();
 
 export function onNavigatingTo(args: NavigatedData) {    
     const page = <Page>args.object;
+    page.addCssFile("login-page.css");
     page.bindingContext = new LoginViewModel(secureStorage.getSync({key: "language" }));
 }
 
