@@ -11,6 +11,9 @@ let googlePlacesAutocomplete = new GooglePlacesAutocomplete(ThirdPartyCredential
 export class SearchViewModel extends Observable {
     private autocomplete;
     public items = [];
+    visibility1: boolean;
+    visibility2: boolean;
+    selectedBarIndex: number;
 
     constructor(args) {
         super();

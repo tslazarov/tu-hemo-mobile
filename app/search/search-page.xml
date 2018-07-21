@@ -1,11 +1,10 @@
 <Page navigatingTo="onNavigatingTo" 
   loaded="pageLoaded" 
   class="page"
-  xmlns="http://schemas.nativescript.org/tns.xsd"
-  xmlns:map="search/search-map-tab"
-  xmlns:list="search/search-list-tab" 
+  xmlns="http://schemas.nativescript.org/tns.xsd" 
   xmlns:nsDrawer="nativescript-ui-sidedrawer"
-  xmlns:au="nativescript-ui-autocomplete" >
+  xmlns:au="nativescript-ui-autocomplete" 
+  xmlns:map="nativescript-mapbox">
     <ActionBar class="action-bar">
       <GridLayout columns="auto,*,auto" height="100%" width="100%">
         <Label col="0" text="&#xf0c9;" class="fa" tap="onOpenDrawerTap"></Label>
@@ -36,23 +35,27 @@
         </nsDrawer:RadSideDrawer.drawerContent>
 
         <nsDrawer:RadSideDrawer.mainContent>
-            <TabView row="1" selectedIndexChanged="onSelectedIndexChanged">
-              <TabView.items>
-
-                <TabViewItem title="Map" iconSource="res://tabIcons/home">
-                  <TabViewItem.view>
-                    <map:search-map-fragment/>
-                  </TabViewItem.view>
-                </TabViewItem>
-
-                <TabViewItem title="List" iconSource="res://tabIcons/browse">
-                  <TabViewItem.view>
-                    <list:search-list-fragment/>
-                  </TabViewItem.view>
-                </TabViewItem>
-
-              </TabView.items>
-            </TabView>
+        <GridLayout rows="auto,*">
+            <SegmentedBar row="0" loaded="onSbLoaded" class="m-5" selectedIndex="{{ selectedBarIndex }}">
+                <SegmentedBar.items>
+                    <SegmentedBarItem title="Item 1" />
+                    <SegmentedBarItem title="Item 2" />
+                </SegmentedBar.items>
+            </SegmentedBar>            
+                <GridLayout row="1" rows="*" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}" backgroundColor="white">
+                    <map:MapboxView
+                        accessToken="pk.eyJ1IjoidGxhemFyb3YiLCJhIjoiY2pqdm9sc3pjMHVrdTNycnI1ZXJkNzZkMSJ9.vET6BrN5mb3mfq9wvlRlYA"
+                        mapStyle="streets"
+                        latitude="52.3702160"
+                        longitude="4.8951680"
+                        zoomLevel="7"
+                        showUserLocation="true">
+                    </map:MapboxView>                
+                </GridLayout>
+                <GridLayout row="1" rows="*" visibility="{{ visibility2 ? 'visible' : 'collapsed' }}" backgroundColor="green">
+                    <Label text="Index 2" class="m-15 h3 p-5 text-center" color="white"/>
+                </GridLayout>
+        </GridLayout>            
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer> 
 </Page>
