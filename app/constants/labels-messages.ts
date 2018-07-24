@@ -17,6 +17,19 @@ export class LabelsAndMessages {
     };
 
     static readonly messages = {
-
+        "login-page": {
+            "invalidEmailOrPassword": {
+                "en": "Incorrect email address or password",
+                "bg": "Невалиден имейл адрес или парола"
+            },
+            "emptyEmail": {
+                "en": "Please enter email address",
+                "bg": "Моля въведете имейл адрес"
+            },
+            "emptyPassword": {
+                "en": "Please enter password",
+                "bg": "Моля въведете парола"
+            }
+        }
     }
 }

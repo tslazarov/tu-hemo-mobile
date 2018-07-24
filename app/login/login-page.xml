@@ -9,7 +9,7 @@
         </StackLayout>
         <StackLayout orientation="vertical" verticalAlignment="center" row="1" class="p-t-15" id="LoginPanel" backgroundColor="yellow">
             <Image src="https://play.nativescript.org/dist/assets/img/NativeScript_logo.png" width="150" class="m-b-30"></Image>
-            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" backgroundColor="green" hint="{{ emailHint }}" keyboardType="email" autocorrect="false" autocapitalization="none"
+            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ emailHint }}" keyboardType="email" autocorrect="false" autocapitalization="none"
                 text="{{ email }}"></TextField>
             <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ passwordHint }}" secure="true" autocorrect="false" autocapitalization="none"
                 text="{{ password }}"></TextField>

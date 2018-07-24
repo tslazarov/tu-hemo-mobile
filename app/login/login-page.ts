@@ -25,6 +25,10 @@ export function onSignInButtonTap(args: EventData): void {
     const button = <Button>args.object;
     const viewModel = <LoginViewModel>button.bindingContext;
 
+    if(!viewModel.validateEmptyEmailOrPassword(viewModel.email, viewModel.password)) {
+        return;
+    }
+
     let url = `${APIConstants.Domain}/${APIConstants.AuthorizeEndpoint}`;
     let contentType = 'application/x-www-form-urlencoded';
     let content = `grant_type=password&username=${viewModel.email}&password=${viewModel.password}`;
@@ -34,7 +38,8 @@ export function onSignInButtonTap(args: EventData): void {
             const result = response.content.toJSON();
 
             if (response.statusCode == 400) {
-                //TODO: show error in UI
+                console.log("Invalid");
+                viewModel.showInvalidEmailOrPasswordAndMessage();
             }
 
             if (response.statusCode == 200 && result.hasOwnProperty("access_token")) {
