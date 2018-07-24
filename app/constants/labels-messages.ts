@@ -12,6 +12,10 @@ export class LabelsAndMessages {
             "signIn": {
                 "en": "SIGN IN",
                 "bg": "ВЛЕЗ"
+            },
+            "signInFacebook": {
+                "en": "SIGN IN WITH FACEBOOK",
+                "bg": "ВЛЕЗ С FACEBOOK"
             }
         }
     };

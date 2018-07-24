@@ -7,6 +7,7 @@ import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
 import { ListPicker } from "ui/list-picker";
+import { login as fbLogin } from "nativescript-facebook";
 
 const secureStorage = new SecureStorage();
 
@@ -19,6 +20,16 @@ export function onNavigatingTo(args: NavigatedData) {
 export function onPageLoaded(args: EventData) {
     const page = <Page>args.object;
     page.bindingContext = new LoginViewModel(secureStorage.getSync({key: "language" }));
+}
+
+export function onSignInWithFacebookButtonTap(args: EventData): void {
+        fbLogin((err, fbData) => {
+          if (err) {
+            alert("Error during login: " + err.message);
+          } else {
+            console.log(fbData.token);
+          }
+        });
 }
 
 export function onSignInButtonTap(args: EventData): void {
