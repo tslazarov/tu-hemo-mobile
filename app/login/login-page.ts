@@ -4,10 +4,12 @@ import { NavigatedData, Page } from "ui/page";
 import { LoginViewModel } from "./login-view-model";
 import { Frame, topmost } from "tns-core-modules/ui/frame";
 import { APIConstants } from "../constants/api-endpoints";
+import { GraphAPIConstants } from "../constants/graph-api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
 import { ListPicker } from "ui/list-picker";
 import { login as fbLogin } from "nativescript-facebook";
+import { TNSFancyAlert, TNSFancyAlertButton } from 'nativescript-fancyalert';
 
 const secureStorage = new SecureStorage();
 
@@ -23,11 +25,38 @@ export function onPageLoaded(args: EventData) {
 }
 
 export function onSignInWithFacebookButtonTap(args: EventData): void {
+    const button = <Button>args.object;
+    const viewModel = <LoginViewModel>button.bindingContext;
+
         fbLogin((err, fbData) => {
           if (err) {
             alert("Error during login: " + err.message);
           } else {
             console.log(fbData.token);
+            let accessToken = fbData.token;
+
+            let url = `${GraphAPIConstants.Domain}/${GraphAPIConstants.MeEndpoint}`;
+
+            HttpClient.getJSONGraphAPIRequest(url, accessToken)
+                .then((response) => {
+
+                    let name = response.name;
+                    let userId = response.id;
+
+                    let emailUrl = `${GraphAPIConstants.Domain}/${userId}${GraphAPIConstants.FieldsEndpoint}`;
+
+                    HttpClient.getJSONGraphAPIRequest(emailUrl, accessToken)
+                        .then((response) => {
+                            TNSFancyAlert.showInfo(name, '', viewModel.confirm)
+                            .then(() => {
+                                // Check user and set stuff and redirect to appropriate page
+                            }); 
+                        }, (error) => {
+
+                        });           
+                }, (reject) => {
+
+                })
           }
         });
 }

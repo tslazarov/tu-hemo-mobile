@@ -10,6 +10,7 @@ export class LoginViewModel extends Observable {
     passwordHint: string;
     signIn: string;
     signInFacebook: string;
+    confirm: string;
 
     @ObservableProperty() email: string;
     @ObservableProperty() password: string;
@@ -35,6 +36,7 @@ export class LoginViewModel extends Observable {
         this.passwordHint = TranslationService.localizeValue("passwordHint", "login-page", "label");
         this.signIn = TranslationService.localizeValue("signIn", "login-page", "label");
         this.signInFacebook = TranslationService.localizeValue("signInFacebook", "login-page", "label");
+        this.confirm = TranslationService.localizeValue("confirm", "login-page", "label");
     }
 
     showInvalidEmailOrPasswordAndMessage():void {

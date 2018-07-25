@@ -16,6 +16,10 @@ export class LabelsAndMessages {
             "signInFacebook": {
                 "en": "SIGN IN WITH FACEBOOK",
                 "bg": "ВЛЕЗ С FACEBOOK"
+            },
+            "confirm": {
+                "en": "CONFIRM",
+                "bg": "ПОТВЪРДИ"
             }
         }
     };
