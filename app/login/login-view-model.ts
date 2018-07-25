@@ -8,8 +8,8 @@ export class LoginViewModel extends Observable {
     // labels
     emailHint: string;
     passwordHint: string;
-    signIn: string;
-    signInFacebook: string;
+    login: string;
+    loginFacebook: string;
     confirm: string;
 
     @ObservableProperty() email: string;
@@ -34,8 +34,8 @@ export class LoginViewModel extends Observable {
     setLabelsAndMessages():void {
         this.emailHint = TranslationService.localizeValue("emailHint", "login-page", "label");
         this.passwordHint = TranslationService.localizeValue("passwordHint", "login-page", "label");
-        this.signIn = TranslationService.localizeValue("signIn", "login-page", "label");
-        this.signInFacebook = TranslationService.localizeValue("signInFacebook", "login-page", "label");
+        this.login = TranslationService.localizeValue("login", "login-page", "label");
+        this.loginFacebook = TranslationService.localizeValue("loginFacebook", "login-page", "label");
         this.confirm = TranslationService.localizeValue("confirm", "login-page", "label");
     }
 

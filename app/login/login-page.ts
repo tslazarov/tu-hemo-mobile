@@ -24,7 +24,7 @@ export function onPageLoaded(args: EventData) {
     page.bindingContext = new LoginViewModel(secureStorage.getSync({key: "language" }));
 }
 
-export function onSignInWithFacebookButtonTap(args: EventData): void {
+export function onLoginWithFacebookButtonTap(args: EventData): void {
     const button = <Button>args.object;
     const viewModel = <LoginViewModel>button.bindingContext;
 
@@ -47,6 +47,7 @@ export function onSignInWithFacebookButtonTap(args: EventData): void {
 
                     HttpClient.getJSONGraphAPIRequest(emailUrl, accessToken)
                         .then((response) => {
+                            console.log(response);
                             TNSFancyAlert.showInfo(name, '', viewModel.confirm)
                             .then(() => {
                                 // Check user and set stuff and redirect to appropriate page
@@ -61,7 +62,7 @@ export function onSignInWithFacebookButtonTap(args: EventData): void {
         });
 }
 
-export function onSignInButtonTap(args: EventData): void {
+export function onLoginInButtonTap(args: EventData): void {
     const button = <Button>args.object;
     const viewModel = <LoginViewModel>button.bindingContext;
 

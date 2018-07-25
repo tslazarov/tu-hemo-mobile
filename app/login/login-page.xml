@@ -13,8 +13,8 @@
                 text="{{ email }}"></TextField>
             <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ passwordHint }}" secure="true" autocorrect="false" autocapitalization="none"
                 text="{{ password }}"></TextField>
-            <Button class="btn btn-primary" text="{{ signIn }}" tap="onSignInButtonTap"></Button>
-                <Button class="btn btn-secondary" text="{{ signInFacebook }}" tap="onSignInWithFacebookButtonTap"></Button>
+            <Button class="btn btn-primary" text="{{ login }}" tap="onLoginButtonTap"></Button>
+                <Button class="btn btn-secondary" text="{{ loginFacebook }}" tap="onLoginWithFacebookButtonTap"></Button>
         </StackLayout>
         <StackLayout row="2" backgroundColor="red">
             <Label text="asd"/>

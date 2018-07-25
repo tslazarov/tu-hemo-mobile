@@ -9,17 +9,51 @@ export class LabelsAndMessages {
                 "en": "Password",
                 "bg": "Парола"  
             },
-            "signIn": {
-                "en": "SIGN IN",
+            "login": {
+                "en": "LOGIN",
                 "bg": "ВЛЕЗ"
             },
-            "signInFacebook": {
-                "en": "SIGN IN WITH FACEBOOK",
+            "loginFacebook": {
+                "en": "LOGIN WITH FACEBOOK",
                 "bg": "ВЛЕЗ С FACEBOOK"
             },
             "confirm": {
                 "en": "CONFIRM",
                 "bg": "ПОТВЪРДИ"
+            }
+        },
+        "register-page": {
+            "emailHint": {
+                "en": "Email address",
+                "bg": "Имейл адрес"
+            },
+            "passwordHint": {
+                "en": "Password",
+                "bg": "Парола"  
+            },
+            "confirmPasswordHint": {
+                "en": "Confirm password",
+                "bg": "Потвърдете парола"  
+            },
+            "firstNameHint": {
+                "en": "First name",
+                "bg": "Име"
+            },
+            "lastNameHint": {
+                "en": "Last name",
+                "bg": "Фамилия"  
+            },
+            "phoneNumberHint": {
+                "en": "Phone number",
+                "bg": "Телефонен номер"  
+            },
+            "next": {
+                "en": "NEXT",
+                "bg": "ПРОДЪЛЖИ"
+            },
+            "register": {
+                "en": "REGISTER",
+                "bg": "РЕГИСТРИРАЙ СЕ"
             }
         }
     };
@@ -37,6 +71,32 @@ export class LabelsAndMessages {
             "emptyPassword": {
                 "en": "Please enter password",
                 "bg": "Моля въведете парола"
+            }
+        },
+        "register-page": {
+            "emptyEmail": {
+                "en": "Please enter email address",
+                "bg": "Моля въведете имейл адрес"
+            },
+            "emptyPassword": {
+                "en": "Please enter password",
+                "bg": "Моля въведете парола"
+            },
+            "emptyConfirmPassword": {
+                "en": "Please enter confirm password",
+                "bg": "Моля въведете потвърдена парола"
+            },
+            "emptyFirstName": {
+                "en": "Please enter first name",
+                "bg": "Моля въведете име"
+            },
+            "emptyLastName": {
+                "en": "Please enter last name",
+                "bg": "Моля въведете фамилия"
+            },
+            "emptyPhoneNumber": {
+                "en": "Please enter phone number",
+                "bg": "Моля въведете телефонен номер"
             }
         }
     }
