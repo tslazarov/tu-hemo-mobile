@@ -16,11 +16,20 @@ export function onNavigatingTo(args: EventData) {
 }
 
 export function onRegisterTap(args: EventData): void { 
-    console.log("tap");
+    const button = <Button>args.object;
+    const viewModel = <RegisterPersonalViewModel>button.bindingContext;
+
+    if(!viewModel.validateEmptyData() || !viewModel.validateFields()){
+        return;
+    }
+
+    // send request
 }
 
 export function onBloodTypeTap(args: EventData): void {
     const label = <Label>args.object;
+    const viewModel = <RegisterPersonalViewModel>label.bindingContext;
+
     const wrapLayout = label.parent;
     for(var i = 1; i <= 8; i += 1){
         var childLabel = wrapLayout.getViewById(`option-${i}`);
@@ -31,5 +40,5 @@ export function onBloodTypeTap(args: EventData): void {
     var myRegexp = /(.*)-([0-9]{1})/;
     var match = myRegexp.exec(label.id);
     
-    var selectedValue = match[2];
+    viewModel.selectedBloodType = +match[2];
 }

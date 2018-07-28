@@ -54,15 +54,15 @@ export class LoginViewModel extends Observable {
           });
     }
 
-    validateEmptyEmailOrPassword(email: string, password: string):boolean {
+    validateEmptyEmailOrPassword():boolean {
         let isValid:boolean = true;
         let message;
         
-        if(!(typeof email != 'undefined' && email)) {
+        if(!(typeof this.email != 'undefined' && this.email)) {
             
             message = TranslationService.localizeValue("emptyEmail", "login-page", "message");
             isValid = false;
-        } else if(!(typeof password != 'undefined' && password)) {
+        } else if(!(typeof this.password != 'undefined' && this.password)) {
             
             message = TranslationService.localizeValue("emptyPassword", "login-page", "message");
             isValid = false;

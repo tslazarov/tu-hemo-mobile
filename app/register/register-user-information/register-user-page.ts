@@ -7,6 +7,7 @@ import { RegisterUserViewModel } from "./register-user-view-model";
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
+    page.addCssFile("./register/register-user-information/register-user-information.css");
     page.bindingContext = new RegisterUserViewModel();
 }
 
@@ -14,8 +15,9 @@ export function onNextTap(args: EventData): void {
     const button = <Button>args.object;
     const viewModel = <RegisterUserViewModel>button.bindingContext;
 
-    console.log("tap");
-
+    // if(!viewModel.validateEmptyEmailOrPassword() || !viewModel.validateFields() || !viewModel.validateExistingEmail()){
+    //     return;
+    // }
     let topmostFrame: Frame = topmost(); 
 
     const navigationEntry = {

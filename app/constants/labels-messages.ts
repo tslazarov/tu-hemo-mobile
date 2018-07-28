@@ -23,6 +23,14 @@ export class LabelsAndMessages {
             }
         },
         "register-page": {
+            "userInformationHeader": {
+                "en": "User information",
+                "bg": "Потребителска информация"
+            },
+            "personalInformationHeader": {
+                "en": "Personal information",
+                "bg": "Лична информация"
+            },
             "emailHint": {
                 "en": "Email address",
                 "bg": "Имейл адрес"
@@ -74,6 +82,40 @@ export class LabelsAndMessages {
             }
         },
         "register-page": {
+            "invalidEmailAddressFormat": {
+                "en": "Please enter valid email address",
+                "bg": "Моля въведете валиден имейл адрес"
+            },
+            "invalidPasswordFormat": {
+                "en": "Password should contain at least 8 characters",
+                "bg": "Паролата не е в правилен формат"
+            },
+            "invalidPasswordMatch": {
+                "en": "Confirm password should match",
+                "bg": "Паролата за потвържаване трябва да съвпада"
+            },
+            "alreadyExistingEmail": {
+                "en": "Email address is already in use",
+                "bg": "Имейл адресът вече се използва"
+            },
+
+            "invalidFirstNameFormat": {
+                "en": "First name should contain only letters",
+                "bg": "Името трябва да съдържа само букви"
+            },
+            "invalidLastNameFormat": {
+                "en": "Last name should contain only letters",
+                "bg": "Фамилията трябва да съдържа само букви"
+            },
+            "invalidPhoneFormat": {
+                "en": "Phone number should contain 10 digits",
+                "bg": "Телефонният номер трябва да съдържа 10 цифри"
+            },
+            "invalidBloodType": {
+                "en": "Please select a blood type",
+                "bg": "Моля изберете кръвна група"
+            },
+
             "emptyEmail": {
                 "en": "Please enter email address",
                 "bg": "Моля въведете имейл адрес"

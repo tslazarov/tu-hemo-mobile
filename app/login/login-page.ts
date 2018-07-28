@@ -66,7 +66,7 @@ export function onLoginInButtonTap(args: EventData): void {
     const button = <Button>args.object;
     const viewModel = <LoginViewModel>button.bindingContext;
 
-    if(!viewModel.validateEmptyEmailOrPassword(viewModel.email, viewModel.password)) {
+    if(!viewModel.validateEmptyEmailOrPassword()) {
         return;
     }
 

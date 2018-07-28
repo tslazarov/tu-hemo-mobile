@@ -6,10 +6,13 @@ import { Color } from "tns-core-modules/color";
 
 export class RegisterUserViewModel extends Observable {
     // labels
+    progressValue: number = 0;
+    progressMaxValue: number = 2;
     emailHint: string;
     passwordHint: string;
     confirmPasswordHint: string;
     next: string;
+    userInformationHeader: string;
 
     @ObservableProperty() email: string;
     @ObservableProperty() password: string;
@@ -18,33 +21,90 @@ export class RegisterUserViewModel extends Observable {
 
     constructor() {
         super();
+
+        this.feedback = new Feedback();
         this.setLabelsAndMessages();
     }
 
     setLabelsAndMessages():void {
+        this.userInformationHeader = TranslationService.localizeValue("userInformationHeader", "register-page", "label")
         this.emailHint = TranslationService.localizeValue("emailHint", "register-page", "label");
         this.passwordHint = TranslationService.localizeValue("passwordHint", "register-page", "label");
         this.confirmPasswordHint = TranslationService.localizeValue("confirmPasswordHint", "register-page", "label");
         this.next = TranslationService.localizeValue("next", "register-page", "label");
     }
 
-    validateEmptyEmailOrPassword(email: string, password: string, confirmPassword: string):boolean {
+    validateEmptyEmailOrPassword():boolean {
         let isValid:boolean = true;
         let message;
         
-        if(!(typeof email != 'undefined' && email)) {
+        if(!(typeof this.email != 'undefined' && this.email)) {
             
             message = TranslationService.localizeValue("emptyEmail", "register-page", "message");
             isValid = false;
-        } else if(!(typeof password != 'undefined' && password)) {
+        } else if(!(typeof this.password != 'undefined' && this.password)) {
             
             message = TranslationService.localizeValue("emptyPassword", "register-page", "message");
             isValid = false;
-        } else if(!(typeof confirmPassword != 'undefined' && confirmPassword)) {
+        } else if(!(typeof this.confirmPassword != 'undefined' && this.confirmPassword)) {
             
             message = TranslationService.localizeValue("emptyConfirmPassword", "register-page", "message");
             isValid = false;
         }
+
+        if(!isValid) {
+            this.feedback.show({
+                message: message,
+                messageColor: new Color("#FFFFFF"),
+                messageSize: 16,
+                position: FeedbackPosition.Top,
+                type: FeedbackType.Error,
+                duration: 3000,
+                backgroundColor: new Color("#C91C1C"),
+                onTap: () => { this.feedback.hide() }
+              });
+        }
+
+        return isValid;
+    }
+
+    validateFields():boolean {
+        let isValid:boolean = true;
+        let message:string;
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if(!re.test(this.email.toLowerCase())){
+            isValid = false;
+            message = TranslationService.localizeValue("invalidEmailAddressFormat", "register-page", "message");
+        } else if(this.password.length < 8 || this.confirmPassword.length < 8) {
+            isValid = false;
+            message = TranslationService.localizeValue("invalidPasswordFormat", "register-page", "message");            
+        } else if(this.password !== this.confirmPassword) {
+            isValid = false;
+            message = TranslationService.localizeValue("invalidPasswordMatch", "register-page", "message");            
+        }     
+
+        if(!isValid) {
+            this.feedback.show({
+                message: message,
+                messageColor: new Color("#FFFFFF"),
+                messageSize: 16,
+                position: FeedbackPosition.Top,
+                type: FeedbackType.Error,
+                duration: 3000,
+                backgroundColor: new Color("#C91C1C"),
+                onTap: () => { this.feedback.hide() }
+              });
+        }
+
+        return isValid;
+    }
+
+    validateExistingEmail():boolean {
+        let isValid:boolean = true;
+        let message;
+        
+        // send request to check for existing user
 
         if(!isValid) {
             this.feedback.show({
