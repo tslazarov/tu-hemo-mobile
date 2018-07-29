@@ -1,8 +1,8 @@
-import { EventData } from "data/observable";
-import { Page } from "ui/page";
+import { EventData } from "tns-core-modules/data/observable/observable";
+import { Page } from "tns-core-modules/ui/page/page";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import { topmost  } from "tns-core-modules/ui/frame";
-import { SegmentedBar, SegmentedBarItem } from "ui/segmented-bar";
+import { topmost  } from "tns-core-modules/ui/frame/frame";
+import { SegmentedBar, SegmentedBarItem } from "tns-core-modules/ui/segmented-bar/segmented-bar";
 
 import { SearchViewModel } from "./search-view-model";
 
@@ -38,7 +38,6 @@ export function onSbLoaded(args) {
     segmentedBarComponent.on("selectedIndexChange", (sbargs) => {
         let segmentedBar = <SegmentedBar>sbargs.object;
         this.selectedIndex = segmentedBar.selectedIndex;
-        console.log('swipe');
         let viewModel = <SearchViewModel>segmentedBar.page.bindingContext;
 
         switch (this.selectedIndex) {

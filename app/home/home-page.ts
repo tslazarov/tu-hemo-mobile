@@ -1,7 +1,7 @@
-import { EventData } from "data/observable";
-import { Page } from "ui/page";
+import { EventData } from "tns-core-modules/data/observable/observable";
+import { Page } from "tns-core-modules/ui/page/page";
 import { BottomNavigation, BottomNavigationTab, OnTabSelectedEventData } from "nativescript-bottom-navigation";
-import { Frame, topmost, getFrameById  } from "tns-core-modules/ui/frame";
+import { Frame, topmost, getFrameById  } from "tns-core-modules/ui/frame/frame";
 
 import { HomeViewModel } from "./home-view-model";
 

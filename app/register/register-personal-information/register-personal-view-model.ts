@@ -1,8 +1,8 @@
-import { Observable } from "data/observable";
-import { ObservableProperty } from "../observable-property-decorator";
+import { Observable } from "tns-core-modules/data/observable/observable";
+import { ObservableProperty } from "../../shared/observable-property-decorator";
 import { TranslationService } from "../../utilities/translation-service"
 import { Feedback, FeedbackType, FeedbackPosition } from "nativescript-feedback";
-import { Color } from "tns-core-modules/color";
+import { Color } from "tns-core-modules/color/color";
 
 export class RegisterPersonalViewModel extends Observable {
     // labels

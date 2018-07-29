@@ -1,8 +1,8 @@
-import { Observable } from 'tns-core-modules/data/observable';
+import { Observable } from 'tns-core-modules/data/observable/observable';
 import { PLACES_API_URL, PLACES_DETAILS_API_URL_places } from './google-places-autocomplete.static';
-import * as app from 'tns-core-modules/application';
-import * as dialogs from 'tns-core-modules/ui/dialogs';
-import * as http from 'tns-core-modules/http';
+import * as app from 'tns-core-modules/application/application';
+import * as dialogs from 'tns-core-modules/ui/dialogs/dialogs';
+import * as http from 'tns-core-modules/http/http';
 
 export class GooglePlacesAutocomplete extends Observable {
   private apikey: string;

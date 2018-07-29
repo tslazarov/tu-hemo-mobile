@@ -1,5 +1,5 @@
-import { Observable } from "data/observable";
-import { ObservableArray } from "tns-core-modules/data/observable-array";
+import { Observable } from "tns-core-modules/data/observable/observable";
+import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
 import { TokenModel } from "nativescript-ui-autocomplete";
 import { GooglePlacesAutocomplete } from "../nativescript-google-places-autocomplete-forked/google-places-autocomplete.common"
 

@@ -1,9 +1,9 @@
-import { EventData } from "data/observable";
-import { Button } from "ui/button";
-import { Label } from "ui/label";
-import { Image } from "ui/image";
-import { Page } from "ui/page";
-import { topmost } from "tns-core-modules/ui/frame";
+import { EventData } from "tns-core-modules/data/observable/observable";
+import { Button } from "tns-core-modules/ui/button/button";
+import { Label } from "tns-core-modules/ui/label/label";
+import { Image } from "tns-core-modules/ui/image/image";
+import { Page } from "tns-core-modules/ui/page/page";
+import { topmost } from "tns-core-modules/ui/frame/frame";
 import { HttpClient } from "../../utilities/http-client";
 import { APIConstants } from "../../constants/api-endpoints";
 import { SecureStorage } from "nativescript-secure-storage";
@@ -21,9 +21,7 @@ export function onNavigatingTo(args: EventData) {
     page.bindingContext = new RegisterPersonalViewModel();
 
     if(typeof context != 'undefined' && context) {
-        console.log('here');
         if(context.isExternalLogin != 'undefined' && context.isExternalLogin) {
-            console.log('external');
             page.bindingContext.email = context.email;
             page.bindingContext.password = "";
             page.bindingContext.firstName = context.firstName;
@@ -73,7 +71,7 @@ export function onRegisterTap(args: EventData): void {
             const result = response.content.toJSON();
 
             if (response.statusCode == 400) {
-                console.log("Invalid");
+                // TODO: Handle error 
             }
 
             let loginUrl = `${APIConstants.Domain}/${APIConstants.AuthorizeEndpoint}`;
@@ -88,10 +86,8 @@ export function onRegisterTap(args: EventData): void {
                 .then((response) => {
                     const result = response.content.toJSON();
                     
-                    console.log(result);
-
                     if (response.statusCode == 400) {
-                        console.log("Invalid");
+                        // TODO: Handle error.
                     }
         
                     if (response.statusCode == 200 && result.hasOwnProperty("access_token")) {
@@ -112,9 +108,6 @@ export function onRegisterTap(args: EventData): void {
                 }, (reject) => {
                     //TODO: handle request failure
             });
-
-            console.log(result);
-
         }, (reject) => {
             //TODO: handle request failure
     });

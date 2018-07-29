@@ -4,20 +4,19 @@ import { TranslationService } from "../../utilities/translation-service"
 import { Feedback, FeedbackType, FeedbackPosition } from "nativescript-feedback";
 import { Color } from "tns-core-modules/color/color";
 
-export class RegisterUserViewModel extends Observable {
-    // labels
-    progressValue: number = 0;
-    progressMaxValue: number = 2;
-    emailHint: string;
+export class ForgotPasswordSecondaryViewModel extends Observable {
+
+    changePassword: string;
+    resetCodeHint: string;
     passwordHint: string;
     confirmPasswordHint: string;
-    next: string;
-    userInformationHeader: string;
+    change: string;
+    feedback: Feedback;
 
-    @ObservableProperty() email: string;
+    @ObservableProperty() resetCode: string;
     @ObservableProperty() password: string;
     @ObservableProperty() confirmPassword: string;
-    feedback: Feedback;
+    @ObservableProperty() email: string;
 
     constructor() {
         super();
@@ -27,28 +26,29 @@ export class RegisterUserViewModel extends Observable {
     }
 
     setLabelsAndMessages():void {
-        this.userInformationHeader = TranslationService.localizeValue("userInformationHeader", "register-page", "label")
-        this.emailHint = TranslationService.localizeValue("emailHint", "register-page", "label");
-        this.passwordHint = TranslationService.localizeValue("passwordHint", "register-page", "label");
-        this.confirmPasswordHint = TranslationService.localizeValue("confirmPasswordHint", "register-page", "label");
-        this.next = TranslationService.localizeValue("next", "register-page", "label");
+        console.log('set');
+        this.changePassword = TranslationService.localizeValue("changePassword", "forgot-password-page", "label");
+        this.resetCodeHint = TranslationService.localizeValue("resetCodeHint", "forgot-password-page", "label");
+        this.passwordHint = TranslationService.localizeValue("passwordHint", "forgot-password-page", "label");
+        this.confirmPasswordHint = TranslationService.localizeValue("confirmPasswordHint", "forgot-password-page", "label");
+        this.change = TranslationService.localizeValue("change", "forgot-password-page", "label");
     }
 
-    validateEmptyEmailOrPassword():boolean {
+    validateEmptyResetCodeAndPassword():boolean {
         let isValid:boolean = true;
         let message;
         
-        if(!(typeof this.email != 'undefined' && this.email)) {
+        if(!(typeof this.resetCode != 'undefined' && this.resetCode)) {
             
-            message = TranslationService.localizeValue("emptyEmail", "register-page", "message");
+            message = TranslationService.localizeValue("emptyResetCode", "forgot-password-page", "message");
             isValid = false;
         } else if(!(typeof this.password != 'undefined' && this.password)) {
             
-            message = TranslationService.localizeValue("emptyPassword", "register-page", "message");
+            message = TranslationService.localizeValue("emptyPassword", "forgot-password-page", "message");
             isValid = false;
         } else if(!(typeof this.confirmPassword != 'undefined' && this.confirmPassword)) {
             
-            message = TranslationService.localizeValue("emptyConfirmPassword", "register-page", "message");
+            message = TranslationService.localizeValue("emptyConfirmPassword", "forgot-password-page", "message");
             isValid = false;
         }
 
@@ -71,12 +71,8 @@ export class RegisterUserViewModel extends Observable {
     validateFields():boolean {
         let isValid:boolean = true;
         let message:string;
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-        if(!re.test(this.email.toLowerCase())){
-            isValid = false;
-            message = TranslationService.localizeValue("invalidEmailAddressFormat", "register-page", "message");
-        } else if(this.password.length < 8 || this.confirmPassword.length < 8) {
+        
+        if(this.password.length < 8 || this.confirmPassword.length < 8) {
             isValid = false;
             message = TranslationService.localizeValue("invalidPasswordFormat", "register-page", "message");            
         } else if(this.password !== this.confirmPassword) {

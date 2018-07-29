@@ -23,7 +23,7 @@ export class LabelsAndMessages {
             },
             "forgotPasswordQuestion": {
                 "en": "Forgot your password? ",
-                "bg": "Забравили сте паролата си? "
+                "bg": "Забравeна паролата? "
             },
             "resetPassword": {
                 "en": "Reset now.",
@@ -82,6 +82,40 @@ export class LabelsAndMessages {
             "register": {
                 "en": "REGISTER",
                 "bg": "РЕГИСТРИРАЙ СЕ"
+            }
+        },
+        "forgot-password-page": {
+            "emailHint": {
+                "en": "Email address",
+                "bg": "Имейл адрес"
+            },
+            "resetPassword": {
+                "en": "Reset password",
+                "bg": "Възстановете парола"
+            },
+            "next": {
+                "en": "NEXT",
+                "bg": "ПРОДЪЛЖИ"
+            },
+            "changePassword": {
+                "en": "Change password",
+                "bg": "Променeте парола"
+            },
+            "resetCodeHint": {
+                "en": "Reset code",
+                "bg": "Код за възстановяване"
+            },
+            "passwordHint": {
+                "en": "Password",
+                "bg": "Парола"  
+            },
+            "confirmPasswordHint": {
+                "en": "Confirm password",
+                "bg": "Потвърдете парола"  
+            },
+            "change": {
+                "en": "CHANGE",
+                "bg": "ПРОМЕНИ"
             }
         }
     };
@@ -143,7 +177,6 @@ export class LabelsAndMessages {
                 "en": "Please select a blood type",
                 "bg": "Моля изберете кръвна група"
             },
-
             "emptyEmail": {
                 "en": "Please enter email address",
                 "bg": "Моля въведете имейл адрес"
@@ -171,6 +204,36 @@ export class LabelsAndMessages {
             "emptyAge": {
                 "en": "Please enter age",
                 "bg": "Моля въведете години"
+            }
+        },
+        "forgot-password-page": {
+            "emptyEmail": {
+                "en": "Please enter email address",
+                "bg": "Моля въведете имейл адрес"
+            },
+            "nonExistingEmail": {
+                "en": "Email address is not in use",
+                "bg": "Имейл адресът не се използва"
+            },
+            "emptyResetCode": {
+                "en": "Please enter reset code",
+                "bg": "Моля въведете код за възстановяване"
+            },
+            "emptyPassword": {
+                "en": "Please enter password",
+                "bg": "Моля въведете парола"
+            },
+            "emptyConfirmPassword": {
+                "en": "Please enter confirm password",
+                "bg": "Моля въведете потвърдена парола"
+            },
+            "invalidPasswordFormat": {
+                "en": "Password should contain at least 8 characters",
+                "bg": "Паролата не е в правилен формат"
+            },
+            "invalidPasswordMatch": {
+                "en": "Confirm password should match",
+                "bg": "Паролата за потвържаване трябва да съвпада"
             }
         }
     }

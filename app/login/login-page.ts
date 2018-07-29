@@ -1,8 +1,8 @@
-import { EventData } from "data/observable";
-import { Button } from "ui/button";
-import { NavigatedData, Page } from "ui/page";
+import { EventData } from "tns-core-modules/data/observable/observable";
+import { Button } from "tns-core-modules/ui/button/button";
+import { NavigatedData, Page } from "tns-core-modules/ui/page/page";
 import { LoginViewModel } from "./login-view-model";
-import { Frame, topmost } from "tns-core-modules/ui/frame";
+import { Frame, topmost } from "tns-core-modules/ui/frame/frame";
 import { APIConstants } from "../constants/api-endpoints";
 import { GraphAPIConstants } from "../constants/graph-api-endpoints";
 import { HttpClient } from "../utilities/http-client";
@@ -29,9 +29,7 @@ export function onLoginWithFacebookButtonTap(args: EventData): void {
 
         fbLogin((err, fbData) => {
           if (err) {
-            alert("Error during login: " + err.message);
           } else {
-            console.log(fbData.token);
             let fbAccessToken = fbData.token;
 
             let url = `${GraphAPIConstants.Domain}/${GraphAPIConstants.MeEndpoint}`;
@@ -46,8 +44,6 @@ export function onLoginWithFacebookButtonTap(args: EventData): void {
 
                     HttpClient.getJSONGraphAPIRequest(fieldsUrl, fbAccessToken)
                         .then((response) => {
-                            console.log(response);
-
                             let fbEmail = response.email;
                             let fbFirstName = response.first_name;
                             let fbLastName = response.last_name;
@@ -73,10 +69,7 @@ export function onLoginWithFacebookButtonTap(args: EventData): void {
                                             .then((response) => {
                                                 const result = response.content.toJSON();
                                                 
-                                                console.log(result);
-
                                                 if (response.statusCode == 400) {
-                                                    console.log("Invalid");
                                                     viewModel.showInvalidEmailOrPasswordAndMessage();
                                                 }
                                     
@@ -166,6 +159,16 @@ export function onLoginButtonTap(args: EventData): void {
         }, (reject) => {
             //TODO: handle request failure
     });
+}
+
+export function onForgotPasswordTap(args: EventData): void {
+    let navigationEntry = {
+        moduleName: "forgot-password/initial/forgot-password-initial-page",
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
+
 }
 
 export function onListPickerLoaded(args): void {

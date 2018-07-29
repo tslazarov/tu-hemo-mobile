@@ -1,4 +1,4 @@
-import { Observable } from "data/observable";
+import { Observable } from "tns-core-modules/data/observable/observable";
 
 export class ProfileViewModel extends Observable {
     constructor() {

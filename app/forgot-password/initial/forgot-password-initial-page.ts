@@ -1,6 +1,6 @@
 import { EventData } from "tns-core-modules/data/observable/observable";
-import { Button } from "tns-core-modules/ui/button/button";
 import { Page } from "tns-core-modules/ui/page/page";
+import { Button } from "ui/button";
 import { topmost } from "tns-core-modules/ui/frame/frame";
 import { HttpClient } from "../../utilities/http-client";
 import { APIConstants } from "../../constants/api-endpoints";
@@ -8,27 +8,26 @@ import { TranslationService } from "../../utilities/translation-service";
 import { Color } from "tns-core-modules/color/color";
 import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
 
-import { RegisterUserViewModel } from "./register-user-view-model";
+import { ForgotPasswordInitialViewModel } from "./forgot-password-initial-view-model";
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     const context: any = page.navigationContext;
 
-    page.addCssFile("./register/register-user-information/register-user-information.css");
-    page.bindingContext = new RegisterUserViewModel();
+    page.addCssFile("./forgot-password/initial/forgot-password-initial.css");
 
+    page.bindingContext = new ForgotPasswordInitialViewModel();
+    
     if(typeof context != 'undefined' && context) {
         page.bindingContext.email = context.email;
-        page.bindingContext.password = context.password;
-        page.bindingContext.confirmPassword = context.password;
     }
 }
 
 export function onNextTap(args: EventData): void { 
     const button = <Button>args.object;
-    const viewModel = <RegisterUserViewModel>button.bindingContext;
+    const viewModel = <ForgotPasswordInitialViewModel>button.bindingContext;
 
-    if(!viewModel.validateEmptyEmailOrPassword() || !viewModel.validateFields()){
+    if(!viewModel.validateEmptyEmail()){
         return;
     }
 
@@ -42,8 +41,8 @@ export function onNextTap(args: EventData): void {
     .then((response) => {
         const result = response.content.toJSON();
 
-        if(result) {
-            message = TranslationService.localizeValue("alreadyExistingEmail", "register-page", "message");
+        if(!result) {
+            message = TranslationService.localizeValue("nonExistingEmail", "forgot-password-page", "message");
 
             viewModel.feedback.show({
                 message: message,
@@ -58,11 +57,9 @@ export function onNextTap(args: EventData): void {
         }
         else {
             const navigationEntry = {
-                moduleName: "register/register-personal-information/register-personal-page",
+                moduleName: "forgot-password/secondary/forgot-password-secondary-page",
                 context: { 
-                    "email": viewModel.email, 
-                    "password": viewModel.password,
-                    "isExternalLogin": false },
+                    "email": viewModel.email },
                 clearHistory: true
             };
         
@@ -70,4 +67,19 @@ export function onNextTap(args: EventData): void {
         }
     }, (reject) => {
     });
+}
+
+export function onBackTap(args: EventData): void { 
+    const button = <Button>args.object;
+    const viewModel = <ForgotPasswordInitialViewModel>button.bindingContext;
+
+    const navigationEntry = {
+        moduleName: "login/login-page",
+        context: { 
+            "email": viewModel.email 
+        },
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
 }

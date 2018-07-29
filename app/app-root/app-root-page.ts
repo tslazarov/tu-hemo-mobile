@@ -1,6 +1,6 @@
-import { EventData } from "data/observable";
-import { Page } from "ui/page";
-import { Frame, topmost } from "tns-core-modules/ui/frame";
+import { EventData } from "tns-core-modules/data/observable/observable";
+import { Page } from "tns-core-modules/ui/page/page";
+import { Frame, topmost } from "tns-core-modules/ui/frame/frame";
 import { AppRootViewModel } from "./app-root-view-model";
 import { SecureStorage } from "nativescript-secure-storage";
 
