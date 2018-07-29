@@ -20,6 +20,11 @@ export class RegisterPersonalViewModel extends Observable {
     @ObservableProperty() phoneNumber: string;
     @ObservableProperty() selectedBloodType: number;
     @ObservableProperty() age: string;
+    @ObservableProperty() email: string;
+    @ObservableProperty() password: string;
+    @ObservableProperty() isExternal: string;
+    @ObservableProperty() userExternalId: string;
+    @ObservableProperty() externalAccessToken: string;
     feedback: Feedback;
 
     constructor() {

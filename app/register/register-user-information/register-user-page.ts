@@ -1,7 +1,7 @@
 import { EventData } from "data/observable";
 import { Button } from "ui/button";
 import { Page } from "ui/page";
-import { Frame, topmost } from "tns-core-modules/ui/frame";
+import { topmost } from "tns-core-modules/ui/frame";
 import { HttpClient } from "../../utilities/http-client";
 import { APIConstants } from "../../constants/api-endpoints";
 import { TranslationService } from "../../utilities/translation-service";
@@ -12,8 +12,18 @@ import { RegisterUserViewModel } from "./register-user-view-model";
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
+    const context: any = page.navigationContext;
+
     page.addCssFile("./register/register-user-information/register-user-information.css");
     page.bindingContext = new RegisterUserViewModel();
+
+    if(typeof context != 'undefined' && context) {
+        page.bindingContext.email = context.email;
+        page.bindingContext.password = context.password;
+        page.bindingContext.confirmPassword = context.password;
+    }
+
+    console.log(context);
 }
 
 export function onNextTap(args: EventData): void { 
@@ -49,14 +59,11 @@ export function onNextTap(args: EventData): void {
             });
         }
         else {
-            let topmostFrame: Frame = topmost(); 
-
             const navigationEntry = {
                 moduleName: "register/register-personal-information/register-personal-page",
                 context: { 
                     "email": viewModel.email, 
                     "password": viewModel.password,
-                    "confirmPassword": viewModel.confirmPassword,
                     "isExternalLogin": false },
                 clearHistory: true
             };

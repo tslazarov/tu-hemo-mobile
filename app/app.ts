@@ -14,7 +14,8 @@ app.on(app.launchEvent, function (args) {
 });
 
 // app.start({ moduleName: "app-root/app-root-page" });
-app.start({ moduleName: "register/register-user-information/register-user-page" });
+// app.start({ moduleName: "register/register-user-information/register-user-page" });
+app.start({ moduleName: "login/login-page" });
 
 /*
 Do not place any code after the application has been started as it will not

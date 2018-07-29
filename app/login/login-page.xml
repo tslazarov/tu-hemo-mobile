@@ -16,8 +16,8 @@
             <Button class="btn btn-primary" text="{{ login }}" tap="onLoginButtonTap"></Button>
                 <Button class="btn btn-secondary" text="{{ loginFacebook }}" tap="onLoginWithFacebookButtonTap"></Button>
         </StackLayout>
-        <StackLayout row="2" backgroundColor="red">
-            <Label text="asd"/>
+        <StackLayout row="2">
+            <Label text="Don't have an account, Register now" tap="onNavigateRegisterTap"/>
         </StackLayout>
     </GridLayout>
 </Page>
