@@ -3,21 +3,40 @@
     class="page"
     loaded="onPageLoaded"
     xmlns="http://schemas.nativescript.org/tns.xsd">
-    <GridLayout rows="180,*,auto">
+    <GridLayout rows="200,8*,7*,auto">
         <StackLayout row="0">
-            <ListPicker id="languagePicker" items="{{ languages }}" selectedIndex="{{ selectedLanguage }}" style="margin:0% 25%" loaded="onListPickerLoaded" ></ListPicker>           
+            <ListPicker id="languagePicker" items="{{ languages }}" selectedIndex="{{ selectedLanguage }}" class="language-picker" loaded="onListPickerLoaded" ></ListPicker>           
         </StackLayout>
-        <StackLayout orientation="vertical" verticalAlignment="center" row="1" class="p-t-15" id="LoginPanel" backgroundColor="yellow">
-            <Image src="https://play.nativescript.org/dist/assets/img/NativeScript_logo.png" width="150" class="m-b-30"></Image>
-            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ emailHint }}" keyboardType="email" autocorrect="false" autocapitalization="none"
+        <StackLayout orientation="vertical" verticalAlignment="top" row="1" class="p-t-15">
+            <Image src="res://login_logo" width="200" class=""></Image>
+            <TextField class="m-15" hint="{{ emailHint }}" keyboardType="email" autocorrect="false" autocapitalization="none"
                 text="{{ email }}"></TextField>
-            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ passwordHint }}" secure="true" autocorrect="false" autocapitalization="none"
+            <TextField class="m-15" hint="{{ passwordHint }}" secure="true" autocorrect="false" autocapitalization="none"
                 text="{{ password }}"></TextField>
-            <Button class="btn btn-primary" text="{{ login }}" tap="onLoginButtonTap"></Button>
-                <Button class="btn btn-secondary" text="{{ loginFacebook }}" tap="onLoginWithFacebookButtonTap"></Button>
         </StackLayout>
-        <StackLayout row="2">
-            <Label text="Don't have an account, Register now" tap="onNavigateRegisterTap"/>
+        <StackLayout row="2" verticalAlignment="top" class="p-t-15">
+            <Button class="btn btn-primary" text="{{ login }}" tap="onLoginButtonTap"></Button>
+            <Label class="login-label" tap="onForgotPasswordTap">
+                <FormattedString>
+                    <Span text="{{ forgotPasswordQuestion }}"></Span>
+                    <Span text="{{ resetPassword }}" class="bold"></Span>
+                </FormattedString>
+            </Label>
+            <GridLayout horizontalAlignment="center" verticalAlignment="center" columns="5*,2*,5*" class="m-t-20 m-b-10 m-l-20 m-r-20">
+                <!-- <StackLayout col="0" class="hr-light m-10"></StackLayout> -->
+                <StackLayout col="0" class="hr-regular"></StackLayout>
+                <Label col="1" class="login-label" text="OR"></Label>
+                <StackLayout col="2" class="hr-regular"></StackLayout>
+            </GridLayout>
+            <Button class="btn btn-fb" text="{{ loginFacebook }}" tap="onLoginWithFacebookButtonTap"></Button>
+        </StackLayout>
+        <StackLayout row="3">
+        	<Label class="login-label sign-up-label" tap="onNavigateRegisterTap">
+                <FormattedString>
+                    <Span text="{{ noAccountQuestion }}"></Span>
+                    <Span text="{{ registerNow }}" class="bold"></Span>
+                </FormattedString>
+            </Label>
         </StackLayout>
     </GridLayout>
 </Page>

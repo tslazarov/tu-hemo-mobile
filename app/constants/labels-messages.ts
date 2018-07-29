@@ -20,6 +20,22 @@ export class LabelsAndMessages {
             "confirm": {
                 "en": "CONFIRM",
                 "bg": "ПОТВЪРДИ"
+            },
+            "forgotPasswordQuestion": {
+                "en": "Forgot your password? ",
+                "bg": "Забравили сте паролата си? "
+            },
+            "resetPassword": {
+                "en": "Reset now.",
+                "bg": "Възстановете я."
+            },
+            "noAccountQuestion": {
+                "en": "Don't have an account? ",
+                "bg": "Нямате акаунт? "
+            },
+            "registerNow": {
+                "en": "Register now.",
+                "bg": "Регистрирайте се."
             }
         },
         "register-page": {
