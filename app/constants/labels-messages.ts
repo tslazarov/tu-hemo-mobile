@@ -55,6 +55,10 @@ export class LabelsAndMessages {
                 "en": "Phone number",
                 "bg": "Телефонен номер"  
             },
+            "ageHint": {
+                "en": "Age",
+                "bg": "Години"  
+            },
             "next": {
                 "en": "NEXT",
                 "bg": "ПРОДЪЛЖИ"
@@ -111,6 +115,14 @@ export class LabelsAndMessages {
                 "en": "Phone number should contain 10 digits",
                 "bg": "Телефонният номер трябва да съдържа 10 цифри"
             },
+            "invalidAgeFormat": {
+                "en": "Please enter valid age",
+                "bg": "Моля въведете валидни години"
+            },
+            "allowedAge": {
+                "en": "You should be between 18 and 65 years old",
+                "bg": "Трябва да сте между 18 и 65 годишна възраст"
+            },
             "invalidBloodType": {
                 "en": "Please select a blood type",
                 "bg": "Моля изберете кръвна група"
@@ -139,6 +151,10 @@ export class LabelsAndMessages {
             "emptyPhoneNumber": {
                 "en": "Please enter phone number",
                 "bg": "Моля въведете телефонен номер"
+            },
+            "emptyAge": {
+                "en": "Please enter age",
+                "bg": "Моля въведете години"
             }
         }
     }

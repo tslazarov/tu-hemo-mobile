@@ -7,12 +7,15 @@
             <Label col="1" text="{{ personalInformationHeader }}" class="h3 action-bar-title"></Label>
         </GridLayout>
         <StackLayout orientation="vertical" verticalAlignment="center" row="1" class="p-t-15">
-            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ firstNameHint }}" keyboardType="email" autocorrect="false" autocapitalization="none"
+            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ firstNameHint }}" autocorrect="false" autocapitalization="none"
                 text="{{ firstName }}"></TextField>
-            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ lastNameHint }}" keyboardType="email" autocorrect="false" autocapitalization="none"
+            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ lastNameHint }}" autocorrect="false" autocapitalization="none"
                 text="{{ lastName }}"></TextField>
             <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ phoneNumberHint }}" keyboardType="phone" autocorrect="false" autocapitalization="none"
                 text="{{ phoneNumber }}">
+            </TextField>
+            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ ageHint }}" keyboardType="number" autocorrect="false" autocapitalization="none"
+                text="{{ age }}">
             </TextField>
             <Label text="Blood type" class="m-l-20 h4"/>
             <WrapLayout orientation="horizontal" class="m-l-15 m-r-15">

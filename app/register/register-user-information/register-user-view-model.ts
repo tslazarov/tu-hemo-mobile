@@ -99,26 +99,4 @@ export class RegisterUserViewModel extends Observable {
 
         return isValid;
     }
-
-    validateExistingEmail():boolean {
-        let isValid:boolean = true;
-        let message;
-        
-        // send request to check for existing user
-
-        if(!isValid) {
-            this.feedback.show({
-                message: message,
-                messageColor: new Color("#FFFFFF"),
-                messageSize: 16,
-                position: FeedbackPosition.Top,
-                type: FeedbackType.Error,
-                duration: 3000,
-                backgroundColor: new Color("#C91C1C"),
-                onTap: () => { this.feedback.hide() }
-              });
-        }
-
-        return isValid;
-    }
 }

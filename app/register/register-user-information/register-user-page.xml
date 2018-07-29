@@ -4,15 +4,15 @@
     xmlns="http://schemas.nativescript.org/tns.xsd">
     <GridLayout rows="auto,*,auto, auto">
         <GridLayout row="0" columns="auto,*" width="100%" class="custom-action-bar">
-            <Label col="0" text="&#xf0c9;" class="fa"></Label>
+            <Label col="0" text=""></Label>
             <Label col="1" text="{{ userInformationHeader }}" class="h3 action-bar-title"></Label>
         </GridLayout>
         <StackLayout orientation="vertical" verticalAlignment="center" row="1" class="p-t-15">
-            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ emailHint }}" keyboardType="email" autocorrect="false" autocapitalization="none"
+            <TextField class="m-15" hint="{{ emailHint }}" keyboardType="email" autocorrect="false" autocapitalization="none"
                 text="{{ email }}"></TextField>
-            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ passwordHint }}" secure="true" autocorrect="false" autocapitalization="none"
+            <TextField class="m-15" hint="{{ passwordHint }}" secure="true" autocorrect="false" autocapitalization="none"
                 text="{{ password }}"></TextField>
-            <TextField class="m-t-10 m-b-10 m-l-15 m-r-15" hint="{{ confirmPasswordHint }}" secure="true" autocorrect="false" autocapitalization="none"
+            <TextField class="m-15" hint="{{ confirmPasswordHint }}" secure="true" autocorrect="false" autocapitalization="none"
                 text="{{ confirmPassword }}">
             </TextField>
         </StackLayout>
