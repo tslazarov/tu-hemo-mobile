@@ -33,44 +33,49 @@ export function onChangeTap(args: EventData): void {
     let url = `${APIConstants.Domain}/${APIConstants.ChangePasswordEndpoint}`;
     let contentType = 'application/json';
     let content = JSON.stringify({ "oldPassword": viewModel.oldPassword, "newPassword": viewModel.newPassword });
-    console.log(url);
+
     HttpClient.putRequest(url, content, secureStorage.getSync({key: "access_token" }), contentType)
     .then((response) => {
         const result = response.content.toJSON();
-        console.log(result);
-        if(!result) {
-            message = TranslationService.localizeValue("incorrectOldPassword", "change-password-page", "message");
 
-            viewModel.feedback.show({
-                message: message,
-                messageColor: new Color("#FFFFFF"),
-                messageSize: 16,
-                position: FeedbackPosition.Top,
-                type: FeedbackType.Error,
-                duration: 3000,
-                backgroundColor: new Color("#C91C1C"),
-                onTap: () => { this.feedback.hide() }
-            });
-        }
-        else {
-            message = TranslationService.localizeValue("passwordChanged", "change-password-page", "message");
+        if(response.statusCode == 200 && result.hasOwnProperty("isChanged")){
+            if(result["isChanged"]) {
+                message = TranslationService.localizeValue("passwordChanged", "change-password-page", "message");
+    
+                viewModel.feedback.show({
+                    message: message,
+                    messageColor: new Color("#FFFFFF"),
+                    messageSize: 16,
+                    position: FeedbackPosition.Top,
+                    type: FeedbackType.Success,
+                    duration: 3000,
+                    onTap: () => { this.feedback.hide() }
+                });
+    
+                const navigationEntry = {
+                    moduleName: "settings/settings-page",
+                    clearHistory: true
+                };
+            
+                topmost().navigate(navigationEntry);
+            }
+            else if(result.hasOwnProperty("state")) {
 
-            viewModel.feedback.show({
-                message: message,
-                messageColor: new Color("#FFFFFF"),
-                messageSize: 16,
-                position: FeedbackPosition.Top,
-                type: FeedbackType.Success,
-                duration: 3000,
-                onTap: () => { this.feedback.hide() }
-            });
+                if(result["state"] == "incorrect_password") {               
+                    message = TranslationService.localizeValue("incorrectOldPassword", "change-password-page", "message");
+                }
 
-            const navigationEntry = {
-                moduleName: "settings/settings-page",
-                clearHistory: true
-            };
-        
-            topmost().navigate(navigationEntry);
+                viewModel.feedback.show({
+                    message: message,
+                    messageColor: new Color("#FFFFFF"),
+                    messageSize: 16,
+                    position: FeedbackPosition.Top,
+                    type: FeedbackType.Error,
+                    duration: 3000,
+                    backgroundColor: new Color("#C91C1C"),
+                    onTap: () => { this.feedback.hide() }
+                });
+            }
         }
     }, (reject) => {
     });

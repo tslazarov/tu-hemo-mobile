@@ -20,7 +20,6 @@ export class ChangePasswordViewModel extends Observable {
     constructor() {
         super();
 
-        
         this.feedback = new Feedback();
         this.setLabelsAndMessages();
     }

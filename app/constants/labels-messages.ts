@@ -165,6 +165,24 @@ export class LabelsAndMessages {
                 "en": "CHANGE",
                 "bg": "ПРОМЕНИ"  
             }
+        },
+        "change-email-page": {
+            "changeEmail": {
+                "en": "Change email address",
+                "bg": "Промени имейл адрес"  
+            }, 
+            "newEmailHint": {
+                "en": "New email address",
+                "bg": "Нов имейл адрес"  
+            },
+            "passwordHint": {
+                "en": "Password",
+                "bg": "Парола"  
+            },
+            "change": {
+                "en": "CHANGE",
+                "bg": "ПРОМЕНИ"  
+            }
         }
     };
 
@@ -200,7 +218,6 @@ export class LabelsAndMessages {
                 "en": "Email address is already in use",
                 "bg": "Имейл адресът вече се използва"
             },
-
             "invalidFirstNameFormat": {
                 "en": "First name should contain only letters",
                 "bg": "Името трябва да съдържа само букви"
@@ -306,12 +323,38 @@ export class LabelsAndMessages {
                 "bg": "Паролата за потвържаване трябва да съвпада"
             },
             "incorrectOldPassword": {
-                "en": "Old password is invalid",
+                "en": "Old password is incorrect",
                 "bg": "Старата парола е невалидна"
             },
             "passwordChanged": {
                 "en": "Password was changed successfully",
                 "bg": "Паролата беше променена успешно"
+            }
+        },
+        "change-email-page": {
+            "emptyNewEmail": {
+                "en": "Please enter new email address",
+                "bg": "Моля въведете нов имейл адрес"
+            },
+            "emptyPassword": {
+                "en": "Please enter password",
+                "bg": "Моля въведете парола"
+            },
+            "invalidEmailAddressFormat": {
+                "en": "Please enter valid email address",
+                "bg": "Моля въведете валиден имейл адрес"
+            },
+            "alreadyExistingEmail": {
+                "en": "Email address is already in use",
+                "bg": "Имейл адресът вече се използва"
+            },
+            "incorrectPassword": {
+                "en": "Password is incorrect",
+                "bg": "Старата парола е невалидна"
+            },
+            "emailChanged": {
+                "en": "Email address was changed successfully",
+                "bg": "Имейл адресът беше променен успешно"
             }
         }
     }

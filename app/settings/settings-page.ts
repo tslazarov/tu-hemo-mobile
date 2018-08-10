@@ -64,6 +64,15 @@ export function onChangePasswordTap(args: EventData): void {
     topmost().navigate(navigationEntry);
 }
 
+export function onChangeEmailTap(args: EventData): void {
+    let navigationEntry = {
+        moduleName: "settings/change-email/change-email-page",
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
+}
+
 export function onLogoutTap(args: EventData): void {
     secureStorage.removeAll().then((success) => {
         exit();

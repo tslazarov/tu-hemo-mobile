@@ -14,7 +14,7 @@
         </StackLayout>
         <StackLayout row="3" class="hr-regular" visibility="{{ visibilityMode }}"></StackLayout>
         <StackLayout row="4" visibility="{{ visibilityMode }}">
-        	<Label text="{{ changeEmail }}" class="settings-label m-20"></Label>
+        	<Label text="{{ changeEmail }}" tap="onChangeEmailTap" class="settings-label m-20"></Label>
         </StackLayout>
         <StackLayout row="5" class="hr-regular" visibility="{{ visibilityMode }}"></StackLayout>
         <StackLayout row="6" visibility="{{ visibilityMode }}" >

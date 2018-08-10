@@ -7,5 +7,6 @@ export class APIConstants {
     static readonly UsersBasicProfileEndpoint : string = "api/users/basicProfile";
 
     static readonly ChangePasswordEndpoint : string = "api/settings/changePassword";
+    static readonly ChangeEmailEndpoint : string = "api/settings/changeEmail";
 
 }
