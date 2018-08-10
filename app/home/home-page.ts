@@ -59,6 +59,12 @@ export function tabSelected(args: OnTabSelectedEventData) {
         clearHistory: true
       };
     }
+    case 4: {
+      navigationEntry = {
+        moduleName: "settings/settings-page",
+        clearHistory: true
+      }
+    }
   }
 
   frame.navigate(navigationEntry);

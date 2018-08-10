@@ -15,10 +15,11 @@
                                     keyLineColor="#c91c1c"
                                     loaded="bottomNavigationLoaded"
                                     row="1">
-            <bottomNav:BottomNavigationTab title="First" icon="ic_home"></bottomNav:BottomNavigationTab>
-            <bottomNav:BottomNavigationTab title="Second" icon="ic_view_list"></bottomNav:BottomNavigationTab>
-            <bottomNav:BottomNavigationTab title="Third" icon="ic_menu"></bottomNav:BottomNavigationTab>
-            <bottomNav:BottomNavigationTab title="Fourth" icon="ic_menu"></bottomNav:BottomNavigationTab>
+            <bottomNav:BottomNavigationTab title="Donate" icon="ic_donate"></bottomNav:BottomNavigationTab>
+            <bottomNav:BottomNavigationTab title="Centers" icon="ic_med_centers"></bottomNav:BottomNavigationTab>
+            <bottomNav:BottomNavigationTab title="Request" icon="ic_request"></bottomNav:BottomNavigationTab>
+            <bottomNav:BottomNavigationTab title="Statistics" icon="ic_stats"></bottomNav:BottomNavigationTab>
+            <bottomNav:BottomNavigationTab title="Settings" icon="ic_settings"></bottomNav:BottomNavigationTab>
         </bottomNav:BottomNavigation>
     </GridLayout>
 </Page>

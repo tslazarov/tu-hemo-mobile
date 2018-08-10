@@ -13,9 +13,9 @@ app.on(app.launchEvent, function (args) {
     init(ThirdPartyCredentials.FacebookAPIId);
 });
 
-// app.start({ moduleName: "app-root/app-root-page" });
-// app.start({ moduleName: "register/register-user-information/register-user-page" });
-app.start({ moduleName: "forgot-password/initial/forgot-password-initial-page" });
+app.start({ moduleName: "app-root/app-root-page" });
+// app.start({ moduleName: "settings/settings-page" });
+// app.start({ moduleName: "forgot-password/initial/forgot-password-initial-page" });
 
 /*
 Do not place any code after the application has been started as it will not

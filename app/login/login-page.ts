@@ -54,11 +54,11 @@ export function onLoginWithFacebookButtonTap(args: EventData): void {
                                 let existingUserUrl = `${APIConstants.Domain}/${APIConstants.UsersExistEndpoint}`;
                                 let existingUserContentType = 'application/json';
                                 let existingUserContent = JSON.stringify({ "email": fbEmail });
-
+                                
                                 HttpClient.putRequest(existingUserUrl, existingUserContent, null, existingUserContentType)
                                 .then((response) => {
                                     const result = response.content.toJSON();
-                            
+                         
                                     if(result) {
                                         
                                         let loginUrl = `${APIConstants.Domain}/${APIConstants.AuthorizeEndpoint}`;

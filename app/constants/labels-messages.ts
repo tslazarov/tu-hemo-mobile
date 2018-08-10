@@ -117,6 +117,32 @@ export class LabelsAndMessages {
                 "en": "CHANGE",
                 "bg": "ПРОМЕНИ"
             }
+        },
+        "settings-page": {
+            "changePersonalInformation": {
+                "en": "Change personal information",
+                "bg": "Промени лична информация"  
+            }, 
+            "changeEmail": {
+                "en": "Change email address",
+                "bg": "Промени имейл адрес"  
+            },
+            "changePassword": {
+                "en": "Change password",
+                "bg": "Промени парола"  
+            },
+            "changeLanguage": {
+                "en": "Change preferred language",
+                "bg": "Промени предпочитан език"  
+            },
+            "deleteAccount": {
+                "en": "Delete account",
+                "bg": "Изтрий акаунт"  
+            },
+            "logOut": {
+                "en": "Log out",
+                "bg": "Излез"  
+            }
         }
     };
 
