@@ -1,6 +1,7 @@
 import { EventData } from "data/observable";
 import { Page } from "ui/page";
 import { Image } from "ui/image";
+import { Label } from "ui/label";
 import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
@@ -76,6 +77,21 @@ export function onChangeEmailTap(args: EventData): void {
 export function onChangeLanguageTap(args: EventData): void {
     let navigationEntry = {
         moduleName: "settings/change-language/change-language-page",
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
+}
+
+export function onDeleteAccountTap(args: EventData): void {
+    const label = <Label>args.object;
+    const viewModel = <SettingsViewModel>label.bindingContext;
+
+    let navigationEntry = {
+        moduleName: "settings/delete-account/delete-account-page",
+        context: { 
+            "visible": viewModel.visibilityMode 
+        },
         clearHistory: true
     };
 

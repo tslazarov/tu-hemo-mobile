@@ -10,5 +10,6 @@ export class APIConstants {
     static readonly ChangePasswordEndpoint : string = "api/settings/changePassword";
     static readonly ChangeEmailEndpoint : string = "api/settings/changeEmail";
     static readonly ChangeLanguageEndpoint : string = "api/settings/changeLanguage";
+    static readonly DeleteAccountEndpoint : string = "api/settings/deleteAccount";
 
 }

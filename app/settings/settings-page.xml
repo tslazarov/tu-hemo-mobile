@@ -26,7 +26,7 @@
         </StackLayout>
         <StackLayout row="9" class="hr-regular"></StackLayout>
         <StackLayout row="10">
-        	<Label text="{{ deleteAccount }}" class="settings-label m-20"></Label>
+        	<Label text="{{ deleteAccount }}" tap="onDeleteAccountTap" class="settings-label m-20"></Label>
         </StackLayout>
         <StackLayout row="11" class="hr-regular"></StackLayout>
         <StackLayout row="12">

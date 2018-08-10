@@ -193,6 +193,32 @@ export class LabelsAndMessages {
                 "en": "CHANGE",
                 "bg": "ПРОМЕНИ"  
             }
+        },
+        "delete-account-page": {
+            "deleteAccount": {
+                "en": "Delete account",
+                "bg": "Изтрий акаунт"  
+            }, 
+            "passwordHint": {
+                "en": "Password",
+                "bg": "Парола"  
+            },
+            "delete": {
+                "en": "DELETE",
+                "bg": "ИЗТРИЙ"  
+            },
+            "warning": {
+                "en": "WARNING",
+                "bg": "ВНИМАНИЕ"  
+            },
+            "warningMessage": {
+                "en": "All account information will permanently be deleted",
+                "bg": "Цялата информация за акаунта ще бъде изтрита перманентно"  
+            },
+            "confirm": {
+                "en": "CONFIRM",
+                "bg": "ПОТВЪРДИ"  
+            },
         }
     };
 
@@ -365,6 +391,16 @@ export class LabelsAndMessages {
             "emailChanged": {
                 "en": "Email address was changed successfully",
                 "bg": "Имейл адресът беше променен успешно"
+            }
+        },
+        "delete-account-page": {
+            "emptyPassword": {
+                "en": "Please enter password",
+                "bg": "Моля въведете парола"
+            },
+            "incorrectPassword": {
+                "en": "Password is incorrect",
+                "bg": "Старата парола е невалидна"
             }
         }
     }

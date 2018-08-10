@@ -38,9 +38,9 @@ export function onChangeTap(args: EventData): void {
     .then((response) => {
         const result = response.content.toJSON();
 
-        if(response.statusCode == 200 && result.hasOwnProperty("isChanged")) {
+        if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")) {
 
-            if(result["isChanged"]) {
+            if(result["isSuccessful"]) {
 
                 let url = `${APIConstants.Domain}/${APIConstants.AuthorizeEndpoint}`;
                 let contentType = 'application/x-www-form-urlencoded';

@@ -38,8 +38,8 @@ export function onChangeTap(args: EventData): void {
     .then((response) => {
         const result = response.content.toJSON();
 
-        if(response.statusCode == 200 && result.hasOwnProperty("isChanged")){
-            if(result["isChanged"]) {
+        if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")){
+            if(result["isSuccessful"]) {
                 message = TranslationService.localizeValue("passwordChanged", "change-password-page", "message");
     
                 viewModel.feedback.show({
