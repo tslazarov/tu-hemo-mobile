@@ -9,10 +9,6 @@ export function onNavigatingTo(args: EventData) {
   const page = <Page>args.object;
   page.bindingContext = new HomeViewModel();
 }
-
-export function pageLoaded(args: EventData) {
-  let page = <Page>args.object;
-}
    
 export function bottomNavigationLoaded(args) {
   let bottomNavigation: BottomNavigation = args.object;

@@ -22,7 +22,7 @@
         </StackLayout>
         <StackLayout row="7" class="hr-regular"></StackLayout>
         <StackLayout row="8">
-        	<Label text="{{ changeLanguage }}" class="settings-label m-20"></Label>
+        	<Label text="{{ changeLanguage }}" tap="onChangeLanguageTap" class="settings-label m-20"></Label>
         </StackLayout>
         <StackLayout row="9" class="hr-regular"></StackLayout>
         <StackLayout row="10">

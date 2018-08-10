@@ -1,5 +1,4 @@
 <Page navigatingTo="onNavigatingTo" 
-  loaded="pageLoaded" 
   class="page"
   xmlns="http://schemas.nativescript.org/tns.xsd" 
   xmlns:nsDrawer="nativescript-ui-sidedrawer"

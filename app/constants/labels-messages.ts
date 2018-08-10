@@ -183,6 +183,16 @@ export class LabelsAndMessages {
                 "en": "CHANGE",
                 "bg": "ПРОМЕНИ"  
             }
+        },
+        "change-language-page": {
+            "changeLanguage": {
+                "en": "Change preferred language",
+                "bg": "Промени предпочитан език"  
+            }, 
+            "change": {
+                "en": "CHANGE",
+                "bg": "ПРОМЕНИ"  
+            }
         }
     };
 

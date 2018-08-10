@@ -65,7 +65,8 @@ export function onRegisterTap(args: EventData): void {
         "phoneNumber": viewModel.phoneNumber,
         "age": viewModel.age,
         "bloodType": viewModel.selectedBloodType,
-        "accessToken": viewModel.externalAccessToken
+        "accessToken": viewModel.externalAccessToken,
+        "preferredLanguage": secureStorage.getSync({key: "language" })
      });
 
     HttpClient.postRequest(url, content, null, contentType)

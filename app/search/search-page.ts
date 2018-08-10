@@ -17,11 +17,6 @@ export function onNavigatingTo(args: EventData) {
     page.bindingContext.selectedBarIndex = 0;
 }
 
-export function pageLoaded(args: EventData) {
-    const page = <Page>args.object;
-    page.bindingContext = new SearchViewModel(args);
-}
-
 export function onOpenDrawerTap() {
     let sideDrawer: RadSideDrawer = <RadSideDrawer>(topmost().getViewById("sideDrawer"));
     sideDrawer.showDrawer();

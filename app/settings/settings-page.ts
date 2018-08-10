@@ -73,6 +73,15 @@ export function onChangeEmailTap(args: EventData): void {
     topmost().navigate(navigationEntry);
 }
 
+export function onChangeLanguageTap(args: EventData): void {
+    let navigationEntry = {
+        moduleName: "settings/change-language/change-language-page",
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
+}
+
 export function onLogoutTap(args: EventData): void {
     secureStorage.removeAll().then((success) => {
         exit();

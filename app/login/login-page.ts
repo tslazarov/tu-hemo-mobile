@@ -15,11 +15,10 @@ const secureStorage = new SecureStorage();
 export function onNavigatingTo(args: NavigatedData) {    
     const page = <Page>args.object;
     page.addCssFile("login-page.css");
-    page.bindingContext = new LoginViewModel(secureStorage.getSync({key: "language" }));
-}
+    if(!secureStorage.getSync({key: "language" })){
+        secureStorage.setSync({ key: "language", value: "en" });
+    }
 
-export function onPageLoaded(args: EventData) {
-    const page = <Page>args.object;
     page.bindingContext = new LoginViewModel(secureStorage.getSync({key: "language" }));
 }
 
@@ -77,13 +76,10 @@ export function onLoginWithFacebookButtonTap(args: EventData): void {
                                                     secureStorage.set({
                                                         key: "access_token",
                                                         value: result["access_token"]
-                                                      }).then((resolve) => {                                    
-                                                            let navigationEntry = {
-                                                                moduleName: "home/home-page",
-                                                                clearHistory: true
-                                                            };
+                                                      }).then((resolve) => { 
 
-                                                            topmost().navigate(navigationEntry);
+                                                        setPreferredLanguage();
+
                                                       }, (reject) => {
                                                         //TODO: handle access token set failure
                                                     });
@@ -146,12 +142,9 @@ export function onLoginButtonTap(args: EventData): void {
                     key: "access_token",
                     value: result["access_token"]
                   }).then((resolve) => {
-                        let navigationEntry = {
-                            moduleName: "home/home-page",
-                            clearHistory: true
-                        };
 
-                        topmost().navigate(navigationEntry);
+                    setPreferredLanguage();
+                    
                   }, (reject) => {
                     //TODO: handle access token set failure
                 });
@@ -197,4 +190,31 @@ export function onNavigateRegisterTap() {
     };
 
     topmost().navigate(navigationEntry);
+}
+
+export function setPreferredLanguage() {
+    
+    let preferredLanguageUrl = `${APIConstants.Domain}/${APIConstants.UsersPreferredLanguageEndpoint}`;
+
+    HttpClient.getRequest(preferredLanguageUrl, secureStorage.getSync({key: "access_token" }))
+    .then((response) => {
+        const result = response.content.toJSON();
+
+        if(result && result.hasOwnProperty("preferredLanguage")) {
+            let languages = ["en", "bg"];
+            secureStorage.set({ 
+                key: "language", 
+                value: languages[result["preferredLanguage"]] 
+            }).then((resolve) => {
+                let navigationEntry = {
+                    moduleName: "home/home-page",
+                    clearHistory: true
+                };
+
+                topmost().navigate(navigationEntry);
+            }, (reject) => {
+            });
+        }
+    }, (reject) => {
+    })
 }
