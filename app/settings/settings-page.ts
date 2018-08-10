@@ -6,6 +6,7 @@ import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
 import { ImageSource, fromBase64 } from "image-source";
 import { Frame, topmost } from "tns-core-modules/ui/frame/frame";
+import {exit} from 'nativescript-exit';
 
 import { SettingsViewModel } from "./settings-view-model";
 
@@ -32,6 +33,15 @@ export function setProfile(page: Page) {
         if(result && result.hasOwnProperty("email") && result.hasOwnProperty("name") && result.hasOwnProperty("profileImage")) {
             viewModel.email = result["email"];
             viewModel.name = result["name"];
+            viewModel.isExternal = result["isExternal"];
+
+            if(viewModel.isExternal) {
+                viewModel.visibilityMode = "collapsed";
+            }
+            else {
+                viewModel.visibilityMode = "visible";
+            }
+
            if(result["profileImage"] != null) {
                 let image = <Image>page.getViewById("ProfileImage");
 
@@ -45,14 +55,17 @@ export function setProfile(page: Page) {
     });
 }
 
-export function onLogoutTap() {
+export function onChangePasswordTap(args: EventData): void {
+    let navigationEntry = {
+        moduleName: "settings/change-password/change-password-page",
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
+}
+
+export function onLogoutTap(args: EventData): void {
     secureStorage.removeAll().then((success) => {
-        let navigationEntry = {
-            moduleName: "login/login-page",
-            clearHistory: true,
-            animated: false
-        };
-    
-        topmost().navigate(navigationEntry);
+        exit();
     });
 }

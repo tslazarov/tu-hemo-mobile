@@ -58,12 +58,14 @@ export function tabSelected(args: OnTabSelectedEventData) {
         moduleName: "profile/profile-page",
         clearHistory: true
       };
+      break;
     }
     case 4: {
       navigationEntry = {
         moduleName: "settings/settings-page",
         clearHistory: true
-      }
+      };
+      break;
     }
   }
 

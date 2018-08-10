@@ -143,6 +143,28 @@ export class LabelsAndMessages {
                 "en": "Log out",
                 "bg": "Излез"  
             }
+        },
+        "change-password-page": {
+            "changePassword": {
+                "en": "Change password",
+                "bg": "Промени парола"  
+            }, 
+            "oldPasswordHint": {
+                "en": "Old password",
+                "bg": "Стара парола"  
+            },
+            "newPasswordHint": {
+                "en": "New password",
+                "bg": "Нова парола"  
+            },
+            "confirmNewPasswordHint": {
+                "en": "Confirm new password",
+                "bg": "Потвърдете нова парола"  
+            },
+            "change": {
+                "en": "CHANGE",
+                "bg": "ПРОМЕНИ"  
+            }
         }
     };
 
@@ -260,6 +282,36 @@ export class LabelsAndMessages {
             "invalidPasswordMatch": {
                 "en": "Confirm password should match",
                 "bg": "Паролата за потвържаване трябва да съвпада"
+            }
+        },
+        "change-password-page": {
+            "emptyOldPassword": {
+                "en": "Please enter old password",
+                "bg": "Моля въведете стара парола"
+            },
+            "emptyNewPassword": {
+                "en": "Please enter new password",
+                "bg": "Моля въведете нова парола"
+            },
+            "emptyConfirmNewPassword": {
+                "en": "Please enter new confirm password",
+                "bg": "Моля въведете нова потвърдена парола"
+            },
+            "invalidNewPasswordFormat": {
+                "en": "Password should contain at least 8 characters",
+                "bg": "Паролата не е в правилен формат"
+            },
+            "invalidPasswordMatch": {
+                "en": "Confirm password should match",
+                "bg": "Паролата за потвържаване трябва да съвпада"
+            },
+            "incorrectOldPassword": {
+                "en": "Old password is invalid",
+                "bg": "Старата парола е невалидна"
+            },
+            "passwordChanged": {
+                "en": "Password was changed successfully",
+                "bg": "Паролата беше променена успешно"
             }
         }
     }

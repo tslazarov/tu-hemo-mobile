@@ -15,6 +15,8 @@ export class SettingsViewModel extends Observable {
     @ObservableProperty() imageSource: string;
     @ObservableProperty() name: string;
     @ObservableProperty() email: string;
+    @ObservableProperty() isExternal: boolean;
+    @ObservableProperty() visibilityMode: string;
 
     constructor() {
         super();

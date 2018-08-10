@@ -2,7 +2,7 @@
     actionBarHidden="true"
     class="page"
     xmlns="http://schemas.nativescript.org/tns.xsd">
-    <GridLayout rows="auto, 20, auto, 20, auto, 20, auto, 20, auto, 20, auto, 20, auto, auto">
+    <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto">
         <StackLayout orientation="vertical" row="0" verticalAlignment="top" class="p-t-15 m-t-30 m-b-20">
             <Image id="ProfileImage" src="res://profile_image" width="100" class="m-t-30 m-b-20 profile-image"></Image>
             <Label class="profile-name-label" text="{{ name }}"></Label>
@@ -10,27 +10,27 @@
         </StackLayout>
         <StackLayout row="1" class="hr-regular"></StackLayout>
         <StackLayout row="2">
-        	<Label  text="{{ changePersonalInformation }}" class="settings-label m-10"></Label>
+        	<Label  text="{{ changePersonalInformation }}" class="settings-label m-20"></Label>
         </StackLayout>
-        <StackLayout row="3" class="hr-regular"></StackLayout>
-        <StackLayout row="4">
-        	<Label text="{{ changeEmail }}" class="settings-label m-10"></Label>
+        <StackLayout row="3" class="hr-regular" visibility="{{ visibilityMode }}"></StackLayout>
+        <StackLayout row="4" visibility="{{ visibilityMode }}">
+        	<Label text="{{ changeEmail }}" class="settings-label m-20"></Label>
         </StackLayout>
-        <StackLayout row="5" class="hr-regular"></StackLayout>
-        <StackLayout row="6">
-        	<Label text="{{ changePassword }}" class="settings-label m-10"></Label>
+        <StackLayout row="5" class="hr-regular" visibility="{{ visibilityMode }}"></StackLayout>
+        <StackLayout row="6" visibility="{{ visibilityMode }}" >
+        	<Label text="{{ changePassword }}" tap="onChangePasswordTap" class="settings-label m-20"></Label>
         </StackLayout>
         <StackLayout row="7" class="hr-regular"></StackLayout>
         <StackLayout row="8">
-        	<Label text="{{ changeLanguage }}" class="settings-label m-10"></Label>
+        	<Label text="{{ changeLanguage }}" class="settings-label m-20"></Label>
         </StackLayout>
         <StackLayout row="9" class="hr-regular"></StackLayout>
         <StackLayout row="10">
-        	<Label text="{{ deleteAccount }}" class="settings-label m-10"></Label>
+        	<Label text="{{ deleteAccount }}" class="settings-label m-20"></Label>
         </StackLayout>
         <StackLayout row="11" class="hr-regular"></StackLayout>
         <StackLayout row="12">
-        	<Label text="{{ logOut }}" tap="onLogoutTap" class="settings-label m-10"></Label>
+        	<Label text="{{ logOut }}" tap="onLogoutTap" class="settings-label m-20"></Label>
         </StackLayout>
     </GridLayout>
 </Page>
