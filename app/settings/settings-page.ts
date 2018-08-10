@@ -5,6 +5,7 @@ import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
 import { ImageSource, fromBase64 } from "image-source";
+import { Frame, topmost } from "tns-core-modules/ui/frame/frame";
 
 import { SettingsViewModel } from "./settings-view-model";
 
@@ -41,5 +42,17 @@ export function setProfile(page: Page) {
         }
     }, (reject) => {
 
+    });
+}
+
+export function onLogoutTap() {
+    secureStorage.removeAll().then((success) => {
+        let navigationEntry = {
+            moduleName: "login/login-page",
+            clearHistory: true,
+            animated: false
+        };
+    
+        topmost().navigate(navigationEntry);
     });
 }

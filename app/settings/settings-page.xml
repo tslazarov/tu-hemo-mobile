@@ -10,51 +10,27 @@
         </StackLayout>
         <StackLayout row="1" class="hr-regular"></StackLayout>
         <StackLayout row="2">
-        	<Label class="settings-label m-10">
-                <FormattedString>
-                    <Span text="{{ changePersonalInformation }}"></Span>
-                </FormattedString>
-            </Label>
+        	<Label  text="{{ changePersonalInformation }}" class="settings-label m-10"></Label>
         </StackLayout>
         <StackLayout row="3" class="hr-regular"></StackLayout>
         <StackLayout row="4">
-        	<Label class="settings-label m-10">
-                <FormattedString>
-                    <Span text="{{ changeEmail }}"></Span>
-                </FormattedString>
-            </Label>
+        	<Label text="{{ changeEmail }}" class="settings-label m-10"></Label>
         </StackLayout>
         <StackLayout row="5" class="hr-regular"></StackLayout>
         <StackLayout row="6">
-        	<Label class="settings-label m-10">
-                <FormattedString>
-                    <Span text="{{ changePassword }}"></Span>
-                </FormattedString>
-            </Label>
+        	<Label text="{{ changePassword }}" class="settings-label m-10"></Label>
         </StackLayout>
         <StackLayout row="7" class="hr-regular"></StackLayout>
         <StackLayout row="8">
-        	<Label class="settings-label m-10">
-                <FormattedString>
-                    <Span text="{{ changeLanguage }}"></Span>
-                </FormattedString>
-            </Label>
+        	<Label text="{{ changeLanguage }}" class="settings-label m-10"></Label>
         </StackLayout>
         <StackLayout row="9" class="hr-regular"></StackLayout>
         <StackLayout row="10">
-        	<Label class="settings-label m-10">
-                <FormattedString>
-                    <Span text="{{ deleteAccount }}"></Span>
-                </FormattedString>
-            </Label>
+        	<Label text="{{ deleteAccount }}" class="settings-label m-10"></Label>
         </StackLayout>
         <StackLayout row="11" class="hr-regular"></StackLayout>
         <StackLayout row="12">
-        	<Label class="settings-label m-10">
-                <FormattedString>
-                    <Span text="{{ logOut }}"></Span>
-                </FormattedString>
-            </Label>
+        	<Label text="{{ logOut }}" tap="onLogoutTap" class="settings-label m-10"></Label>
         </StackLayout>
     </GridLayout>
 </Page>

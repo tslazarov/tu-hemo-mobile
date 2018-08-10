@@ -183,7 +183,8 @@ export function onListPickerLoaded(args): void {
         // hacky way to rebind labels - not optimal but necessary due to issue with binding context
         let navigationEntry = {
             moduleName: "login/login-page",
-            clearHistory: true
+            clearHistory: true,
+            animated: false
         };
 
         topmost().navigate(navigationEntry);
