@@ -54,6 +54,7 @@ export function onRegisterTap(args: EventData): void {
 
     let url = `${APIConstants.Domain}/${APIConstants.UsersCreateEndpoint}`;
     let contentType = 'application/json';
+
     let content = JSON.stringify({ 
         "email": viewModel.email,
         "firstName": viewModel.firstName,
@@ -63,7 +64,8 @@ export function onRegisterTap(args: EventData): void {
         "userExternalId": viewModel.userExternalId,
         "phoneNumber": viewModel.phoneNumber,
         "age": viewModel.age,
-        "bloodType": viewModel.selectedBloodType
+        "bloodType": viewModel.selectedBloodType,
+        "accessToken": viewModel.externalAccessToken
      });
 
     HttpClient.postRequest(url, content, null, contentType)
