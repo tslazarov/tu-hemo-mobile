@@ -10,7 +10,7 @@
         </StackLayout>
         <StackLayout row="1" class="hr-regular"></StackLayout>
         <StackLayout row="2">
-        	<Label  text="{{ changePersonalInformation }}" class="settings-label m-20"></Label>
+        	<Label  text="{{ changePersonalInformation }}" tap="onChangePersonalInformationTap" class="settings-label m-20"></Label>
         </StackLayout>
         <StackLayout row="3" class="hr-regular" visibility="{{ visibilityMode }}"></StackLayout>
         <StackLayout row="4" visibility="{{ visibilityMode }}">

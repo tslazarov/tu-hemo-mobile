@@ -1,0 +1,9 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <ActionBar title="Image Picker" />
+    </Page.actionBar>
+    <GridLayout rows="auto">
+        <Image src="{{ imageSrc }}" visibility="{{ isSingleMode ? 'visible' : 'collapsed' }}" width="{{ previewSize }}" height="{{ previewSize }}" stretch="aspectFit" />
+        <Button text="Pick Single" tap="onSelectSingleTap" horizontalAlignment="center" />
+    </GridLayout>
+</Page>

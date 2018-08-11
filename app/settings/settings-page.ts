@@ -56,6 +56,15 @@ export function setProfile(page: Page) {
     });
 }
 
+export function onChangePersonalInformationTap(args: EventData): void {
+    let navigationEntry = {
+        moduleName: "settings/change-personal-information/change-personal-information-page",
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
+}
+
 export function onChangePasswordTap(args: EventData): void {
     let navigationEntry = {
         moduleName: "settings/change-password/change-password-page",
