@@ -1,11 +1,11 @@
-import { EventData } from "data/observable";
-import { Page } from "ui/page";
-import { Image } from "ui/image";
-import { Label } from "ui/label";
+import { EventData } from "tns-core-modules/data/observable/observable";
+import { Page } from "tns-core-modules/ui/page/page";
+import { Image } from "tns-core-modules/ui/image/image";
+import { Label } from "tns-core-modules/ui/label/label";
 import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
-import { fromBase64 } from "image-source";
+import { fromBase64 } from "tns-core-modules/image-source/image-source";
 import { topmost } from "tns-core-modules/ui/frame/frame";
 import {exit} from 'nativescript-exit';
 

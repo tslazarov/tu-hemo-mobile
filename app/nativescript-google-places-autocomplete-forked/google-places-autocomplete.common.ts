@@ -1,5 +1,5 @@
 import { Observable } from 'tns-core-modules/data/observable/observable';
-import { PLACES_API_URL, PLACES_DETAILS_API_URL_places } from './google-places-autocomplete.static';
+import { PLACES_API_URL, PLACES_DETAILS_API_URL_places, GEOCODE_URL_geocode } from './google-places-autocomplete.static';
 import * as app from 'tns-core-modules/application/application';
 import * as dialogs from 'tns-core-modules/ui/dialogs/dialogs';
 import * as http from 'tns-core-modules/http/http';
@@ -51,6 +51,42 @@ export class GooglePlacesAutocomplete extends Observable {
         return place
       })
   }
+
+  public getGeolocationByPoint(latitude: any, longtitude: any) {
+    let requestUrl = GEOCODE_URL_geocode +
+      "?latlng=" + latitude + "," + longtitude + "&key=" +
+      this.apikey;
+    return http
+      .getJSON(requestUrl)
+      .then((data: any) => {
+        let place: any = {};
+        
+        if(data.results && data.results.length > 0)
+        {
+          let addressComponents = data.results[0].address_components;
+          
+          if(addressComponents && addressComponents.length > 0) {
+            addressComponents.forEach(element => {
+              element.types.forEach(type => {
+                if(type == "locality") {
+                  place.city = element.long_name;
+                } 
+                else if(type == "country") {
+                  place.country = element.long_name;
+                }
+              })
+            });
+          }
+
+          place.address = data.results[0].formatted_address;
+          place.latitude = latitude;
+          place.longitude = longtitude;
+        }
+        return place;
+      });
+  }
+
+
   private handleErrors(response) {
     if (!response.result) {
       console.log("google-geocoder error")

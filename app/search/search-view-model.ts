@@ -5,8 +5,7 @@ import { GooglePlacesAutocomplete } from "../nativescript-google-places-autocomp
 
 import { ThirdPartyCredentials } from "../constants/third-party-credentials"
 
-let googlePlacesAutocomplete = new GooglePlacesAutocomplete(ThirdPartyCredentials.PlacesAPIKey);
-
+const googlePlacesAutocomplete = new GooglePlacesAutocomplete(ThirdPartyCredentials.PlacesAPIKey);
 
 export class SearchViewModel extends Observable {
     private autocomplete;

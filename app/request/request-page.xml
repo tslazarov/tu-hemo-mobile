@@ -4,5 +4,6 @@
     </ActionBar>
 
     <StackLayout>
+    <Button class="btn btn-primary" text="SELECT" tap="onSelectTap"></Button>
     </StackLayout>
 </Page>

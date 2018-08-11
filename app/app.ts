@@ -13,8 +13,8 @@ app.on(app.launchEvent, function (args) {
     init(ThirdPartyCredentials.FacebookAPIId);
 });
 
-app.start({ moduleName: "app-root/app-root-page" });
-// app.start({ moduleName: "settings/settings-page" });
+// app.start({ moduleName: "app-root/app-root-page" });
+app.start({ moduleName: "request/request-page" });
 // app.start({ moduleName: "login/login-page" });
 
 /*

@@ -1,6 +1,6 @@
-import { EventData } from "data/observable";
-import { Page } from "ui/page";
-import { Button } from "ui/button";
+import { EventData } from "tns-core-modules/data/observable/observable";
+import { Page } from "tns-core-modules/ui/page/page";
+import { Button } from "tns-core-modules/ui/button/button";
 import { APIConstants } from "../../constants/api-endpoints";
 import { SecureStorage } from "nativescript-secure-storage";
 import { Frame, topmost } from "tns-core-modules/ui/frame/frame";

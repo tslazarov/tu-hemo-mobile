@@ -1,0 +1,26 @@
+<Page navigatingTo="onNavigatingTo" 
+    actionBarHidden="true"
+    class="page" 
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:map="nativescript-mapbox"
+    xmlns:fab="nativescript-floatingactionbutton">
+    <GridLayout rows="auto, *">
+    <GridLayout row="0" columns="*" width="100%" class="custom-action-bar p-10">
+        <Label col="1" text="{{ address }}" class="h4 action-bar-title"></Label>
+    </GridLayout>
+    <fab:fab tap="fabTapSave"
+        row="1"
+        icon="res://ic_save"
+        rippleColor="#c91c1c"
+        class="fab-button-save" />
+    <StackLayout row="1">
+        <map:MapboxView
+            accessToken="{{ mapBoxAPIKey }}"
+            mapStyle="streets"
+            zoomLevel="16"
+            showUserLocation="true"
+            mapReady="onMapReady">
+        </map:MapboxView>
+    </StackLayout>
+    </GridLayout>
+</Page>
