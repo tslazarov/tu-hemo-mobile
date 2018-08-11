@@ -354,6 +354,10 @@ export class LabelsAndMessages {
                 "en": "Email address is not in use",
                 "bg": "Имейл адресът не се използва"
             },
+            "sendResetCode": {
+                "en": "Reset code was sent",
+                "bg": "Кодът за възстановяване беше изпратен"
+            },
             "emptyResetCode": {
                 "en": "Please enter reset code",
                 "bg": "Моля въведете код за възстановяване"
@@ -365,6 +369,14 @@ export class LabelsAndMessages {
             "emptyConfirmPassword": {
                 "en": "Please enter confirm password",
                 "bg": "Моля въведете потвърдена парола"
+            },
+            "invalidResetCode": {
+                "en": "The reset code does not match",
+                "bg": "Кодът за възстановяване не отговаря"
+            },
+            "passwordReset": {
+                "en": "Password was changed successfully",
+                "bg": "Паролата беше променена успешно"
             },
             "invalidPasswordFormat": {
                 "en": "Password should contain at least 8 characters",

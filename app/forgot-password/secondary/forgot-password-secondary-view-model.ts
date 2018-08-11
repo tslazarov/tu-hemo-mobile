@@ -13,6 +13,7 @@ export class ForgotPasswordSecondaryViewModel extends Observable {
     change: string;
     feedback: Feedback;
 
+    @ObservableProperty() correctResetCode: string;
     @ObservableProperty() resetCode: string;
     @ObservableProperty() password: string;
     @ObservableProperty() confirmPassword: string;
@@ -72,12 +73,16 @@ export class ForgotPasswordSecondaryViewModel extends Observable {
         let isValid:boolean = true;
         let message:string;
         
+        if(this.resetCode != this.correctResetCode) {
+            isValid = false;
+            message = TranslationService.localizeValue("invalidResetCode", "forgot-password-page", "message");            
+        } 
         if(this.password.length < 8 || this.confirmPassword.length < 8) {
             isValid = false;
-            message = TranslationService.localizeValue("invalidPasswordFormat", "register-page", "message");            
+            message = TranslationService.localizeValue("invalidPasswordFormat", "forgot-password-page", "message");            
         } else if(this.password !== this.confirmPassword) {
             isValid = false;
-            message = TranslationService.localizeValue("invalidPasswordMatch", "register-page", "message");            
+            message = TranslationService.localizeValue("invalidPasswordMatch", "forgot-password-page", "message");            
         }     
 
         if(!isValid) {

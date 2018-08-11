@@ -4,6 +4,8 @@ export class APIConstants {
     
     static readonly UsersExistEndpoint : string = "api/users/exist";
     static readonly UsersCreateEndpoint : string = "api/users/create";
+    static readonly UsersSendResetCodeEndpoint : string = "api/users/sendResetCode";
+    static readonly UsersResetPasswordEndpoint : string = "api/users/resetPassword";
     static readonly UsersBasicProfileEndpoint : string = "api/users/basicProfile";
     static readonly UsersFullProfileEndpoint : string = "api/users/fullProfile";
     static readonly UsersPreferredLanguageEndpoint : string = "api/users/preferredLanguage";

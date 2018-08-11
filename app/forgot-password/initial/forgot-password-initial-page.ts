@@ -3,12 +3,15 @@ import { Page } from "tns-core-modules/ui/page/page";
 import { Button } from "ui/button";
 import { topmost } from "tns-core-modules/ui/frame/frame";
 import { HttpClient } from "../../utilities/http-client";
+import { SecureStorage } from "nativescript-secure-storage";
 import { APIConstants } from "../../constants/api-endpoints";
 import { TranslationService } from "../../utilities/translation-service";
 import { Color } from "tns-core-modules/color/color";
 import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
 
 import { ForgotPasswordInitialViewModel } from "./forgot-password-initial-view-model";
+
+const secureStorage = new SecureStorage();
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
@@ -33,9 +36,9 @@ export function onNextTap(args: EventData): void {
 
     let message;
     
-    let url = `${APIConstants.Domain}/${APIConstants.UsersExistEndpoint}`;
+    let url = `${APIConstants.Domain}/${APIConstants.UsersSendResetCodeEndpoint}`;
     let contentType = 'application/json';
-    let content = JSON.stringify({ "email": viewModel.email });
+    let content = JSON.stringify({ "email": viewModel.email, "language": secureStorage.getSync({key: "language" }) });
 
     HttpClient.putRequest(url, content, null, contentType)
     .then((response) => {
@@ -56,14 +59,29 @@ export function onNextTap(args: EventData): void {
             });
         }
         else {
-            const navigationEntry = {
-                moduleName: "forgot-password/secondary/forgot-password-secondary-page",
-                context: { 
-                    "email": viewModel.email },
-                clearHistory: true
-            };
-        
-            topmost().navigate(navigationEntry);
+            if(result.hasOwnProperty("resetCode")){
+                message = TranslationService.localizeValue("sendResetCode", "forgot-password-page", "message");
+
+                viewModel.feedback.show({
+                    message: message,
+                    messageColor: new Color("#FFFFFF"),
+                    messageSize: 16,
+                    position: FeedbackPosition.Top,
+                    type: FeedbackType.Success,
+                    duration: 3000,
+                    onTap: () => { this.feedback.hide() }
+                });
+
+                const navigationEntry = {
+                    moduleName: "forgot-password/secondary/forgot-password-secondary-page",
+                    context: { 
+                        "email": viewModel.email,
+                        "resetCode": result["resetCode"] },
+                    clearHistory: true
+                };
+            
+                topmost().navigate(navigationEntry);
+            }
         }
     }, (reject) => {
     });
@@ -75,9 +93,6 @@ export function onBackTap(args: EventData): void {
 
     const navigationEntry = {
         moduleName: "login/login-page",
-        context: { 
-            "email": viewModel.email 
-        },
         clearHistory: true
     };
 
