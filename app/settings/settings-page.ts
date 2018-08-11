@@ -5,8 +5,8 @@ import { Label } from "ui/label";
 import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
-import { ImageSource, fromBase64 } from "image-source";
-import { Frame, topmost } from "tns-core-modules/ui/frame/frame";
+import { fromBase64 } from "image-source";
+import { topmost } from "tns-core-modules/ui/frame/frame";
 import {exit} from 'nativescript-exit';
 
 import { SettingsViewModel } from "./settings-view-model";

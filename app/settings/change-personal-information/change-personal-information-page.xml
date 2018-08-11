@@ -1,9 +1,38 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
-    <Page.actionBar>
-        <ActionBar title="Image Picker" />
-    </Page.actionBar>
-    <GridLayout rows="auto">
-        <Image src="{{ imageSrc }}" visibility="{{ isSingleMode ? 'visible' : 'collapsed' }}" width="{{ previewSize }}" height="{{ previewSize }}" stretch="aspectFit" />
-        <Button text="Pick Single" tap="onSelectSingleTap" horizontalAlignment="center" />
+<Page navigatingTo="onNavigatingTo"    
+ actionBarHidden="true"
+ class="page" xmlns="http://schemas.nativescript.org/tns.xsd">
+    <GridLayout rows="auto,*">
+        <GridLayout row="0" columns="auto,*" width="100%" class="custom-action-bar">
+            <Image col="0" id="back" src="res://ic_back_arrow" class="m-l-20" verticalAlignment="center" stretch="aspectFit" tap="onBackTap"></Image>
+            <Label col="1" text="{{ changePersonalInformation }}" class="h3 action-bar-title"></Label>
+        </GridLayout>
+        <StackLayout orientation="vertical" verticalAlignment="center" row="1" class="p-t-15">
+            <TextField class="m-15" hint="{{ firstNameHint }}" autocorrect="false" autocapitalization="none"
+                text="{{ firstName }}"></TextField>
+            <TextField class="m-15" hint="{{ lastNameHint }}" autocorrect="false" autocapitalization="none"
+                text="{{ lastName }}"></TextField>
+            <TextField class="m-15" hint="{{ phoneNumberHint }}" keyboardType="phone" autocorrect="false" autocapitalization="none"
+                text="{{ phoneNumber }}">
+            </TextField>
+            <TextField class="m-15" hint="{{ ageHint }}" keyboardType="number" autocorrect="false" autocapitalization="none"
+                text="{{ age }}">
+            </TextField>
+            <Label text="{{ profileImage }}" class="m-l-20 m-t-15 m-b-15 h4"/>
+            <StackLayout horizontalAlignment="left">
+                <Image id="ProfileImage" tap="onSelectSingleTap" width="{{ previewSize }}" height="{{ previewSize }}" stretch="aspectFit" class="m-l-20 m-t-5 m-b-5" />
+            </StackLayout>
+            <Label text="{{ bloodType }}" class="m-l-20 m-t-15 m-b-15 h4"/>
+            <WrapLayout id="bloodTypeWrap" orientation="horizontal" class="m-l-15 m-r-15">
+                <Label id="option-1" text="A+" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-2" text="A-" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-3" text="B+" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-4" text="B-" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-5" text="O+" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-6" text="O-" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-7" text="AB+" class="blood-type-button" tap="onBloodTypeTap" />
+                <Label id="option-8" text="AB-" class="blood-type-button" tap="onBloodTypeTap" />
+            </WrapLayout>
+            <Button class="btn btn-primary" text="{{ change }}" tap="onChangeTap"></Button>
+        </StackLayout>
     </GridLayout>
 </Page>

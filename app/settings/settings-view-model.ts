@@ -12,7 +12,6 @@ export class SettingsViewModel extends Observable {
     deleteAccount: string;
     logOut: string;
 
-    @ObservableProperty() imageSource: string;
     @ObservableProperty() name: string;
     @ObservableProperty() email: string;
     @ObservableProperty() isExternal: boolean;

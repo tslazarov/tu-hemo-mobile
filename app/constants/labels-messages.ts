@@ -75,6 +75,10 @@ export class LabelsAndMessages {
                 "en": "Age",
                 "bg": "Години"  
             },
+            "bloodType": {
+                "en": "Blood type",
+                "bg": "Кръвна група"
+            },
             "next": {
                 "en": "NEXT",
                 "bg": "ПРОДЪЛЖИ"
@@ -219,6 +223,40 @@ export class LabelsAndMessages {
                 "en": "CONFIRM",
                 "bg": "ПОТВЪРДИ"  
             },
+        },
+        "change-personal-information-page": {
+            "changePersonalInformation": {
+                "en": "Change personal information",
+                "bg": "Промени лична информация"  
+            },
+            "firstNameHint": {
+                "en": "First name",
+                "bg": "Име"
+            },
+            "lastNameHint": {
+                "en": "Last name",
+                "bg": "Фамилия"  
+            },
+            "phoneNumberHint": {
+                "en": "Phone number",
+                "bg": "Телефонен номер"  
+            },
+            "ageHint": {
+                "en": "Age",
+                "bg": "Години"  
+            },
+            "profileImage": {
+                "en": "Profile image",
+                "bg": "Профилна снимка"
+            },
+            "bloodType": {
+                "en": "Blood type",
+                "bg": "Кръвна група"
+            },
+            "change": {
+                "en": "CHANGE",
+                "bg": "ПРОМЕНИ"  
+            }
         }
     };
 
@@ -401,6 +439,56 @@ export class LabelsAndMessages {
             "incorrectPassword": {
                 "en": "Password is incorrect",
                 "bg": "Старата парола е невалидна"
+            }
+        },
+        "change-personal-information-page": {
+            "invalidFirstNameFormat": {
+                "en": "First name should contain only letters",
+                "bg": "Името трябва да съдържа само букви"
+            },
+            "invalidLastNameFormat": {
+                "en": "Last name should contain only letters",
+                "bg": "Фамилията трябва да съдържа само букви"
+            },
+            "invalidPhoneFormat": {
+                "en": "Phone number should contain 10 digits",
+                "bg": "Телефонният номер трябва да съдържа 10 цифри"
+            },
+            "invalidAgeFormat": {
+                "en": "Please enter valid age",
+                "bg": "Моля въведете валидни години"
+            },
+            "allowedAge": {
+                "en": "You should be between 18 and 65 years old",
+                "bg": "Трябва да сте между 18 и 65 годишна възраст"
+            },
+            "invalidBloodType": {
+                "en": "Please select a blood type",
+                "bg": "Моля изберете кръвна група"
+            },
+            "emptyFirstName": {
+                "en": "Please enter first name",
+                "bg": "Моля въведете име"
+            },
+            "emptyLastName": {
+                "en": "Please enter last name",
+                "bg": "Моля въведете фамилия"
+            },
+            "emptyPhoneNumber": {
+                "en": "Please enter phone number",
+                "bg": "Моля въведете телефонен номер"
+            },
+            "emptyAge": {
+                "en": "Please enter age",
+                "bg": "Моля въведете години"
+            },
+            "personalInformationChanged": {
+                "en": "Personal information was changed successfully",
+                "bg": "Личната информация беше променена успешно"
+            },
+            "personalInformationNotChanged": {
+                "en": "Problem occured while saving changes",
+                "bg": "Възникна проблем при записването на промените"
             }
         }
     }

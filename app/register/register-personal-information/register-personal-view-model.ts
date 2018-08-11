@@ -13,6 +13,7 @@ export class RegisterPersonalViewModel extends Observable {
     lastNameHint: string;
     phoneNumberHint: string;
     ageHint: string;
+    bloodType: string;
     register: string;
 
     @ObservableProperty() firstName: string;
@@ -40,8 +41,8 @@ export class RegisterPersonalViewModel extends Observable {
         this.lastNameHint = TranslationService.localizeValue("lastNameHint", "register-page", "label");
         this.phoneNumberHint = TranslationService.localizeValue("phoneNumberHint", "register-page", "label");
         this.ageHint = TranslationService.localizeValue("ageHint", "register-page", "label");
+        this.bloodType = TranslationService.localizeValue("bloodType", "register-page", "label");
         this.register = TranslationService.localizeValue("register", "register-page", "label");
-
     }
 
     validateEmptyData():boolean {
@@ -86,7 +87,7 @@ export class RegisterPersonalViewModel extends Observable {
         let isValid:boolean = true;
         let message:string;
         const nameRe = /^[^0-9\!\?\@\#\$\%\^\&\*\(\)\\\"\_\+\-\/\~]+$/;
-        const phoneRe = /[0-9]{10}/;
+        const phoneRe = /^[0-9]{10}$/;
         const ageRe = /^[0-9]{1,3}$/;
 
         if(!nameRe.test(this.firstName.toLowerCase())){

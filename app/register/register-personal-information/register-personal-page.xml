@@ -17,7 +17,7 @@
             <TextField class="m-15" hint="{{ ageHint }}" keyboardType="number" autocorrect="false" autocapitalization="none"
                 text="{{ age }}">
             </TextField>
-            <Label text="Blood type" class="m-l-20 m-t-15 m-b-15 h4"/>
+            <Label text="{{ bloodType }}" class="m-l-20 m-t-15 m-b-15 h4"/>
             <WrapLayout orientation="horizontal" class="m-l-15 m-r-15">
                 <Label id="option-1" text="A+" class="blood-type-button" tap="onBloodTypeTap"/>
                 <Label id="option-2" text="A-" class="blood-type-button" tap="onBloodTypeTap"/>
