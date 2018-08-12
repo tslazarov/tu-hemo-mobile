@@ -78,7 +78,7 @@ export function onChangeTap(args: EventData): void {
 
     let message;
 
-    let url = `${APIConstants.Domain}/${APIConstants.ChangePersonalInformationEndpoint}`;
+    let url = `${APIConstants.Domain}/${APIConstants.SettingsChangePersonalInformationEndpoint}`;
     let contentType = 'application/json';
 
     let content = JSON.stringify({ 

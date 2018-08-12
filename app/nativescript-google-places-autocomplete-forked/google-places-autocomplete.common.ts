@@ -52,9 +52,9 @@ export class GooglePlacesAutocomplete extends Observable {
       })
   }
 
-  public getGeolocationByPoint(latitude: any, longtitude: any) {
+  public getGeolocationByPoint(latitude: any, longitude: any) {
     let requestUrl = GEOCODE_URL_geocode +
-      "?latlng=" + latitude + "," + longtitude + "&key=" +
+      "?latlng=" + latitude + "," + longitude + "&key=" +
       this.apikey;
     return http
       .getJSON(requestUrl)
@@ -80,7 +80,7 @@ export class GooglePlacesAutocomplete extends Observable {
 
           place.address = data.results[0].formatted_address;
           place.latitude = latitude;
-          place.longitude = longtitude;
+          place.longitude = longitude;
         }
         return place;
       });

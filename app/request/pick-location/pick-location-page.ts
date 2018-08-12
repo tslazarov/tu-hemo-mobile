@@ -5,6 +5,7 @@ import * as geolocation from "nativescript-geolocation";
 import { Accuracy } from "tns-core-modules/ui/enums/enums";
 import { MapboxViewApi, LatLng } from "nativescript-mapbox";
 import { GooglePlacesAutocomplete } from "../../nativescript-google-places-autocomplete-forked/google-places-autocomplete.common"
+import { topmost } from "tns-core-modules/ui/frame/frame";
 
 import { PickLocationPageViewModel } from "./pick-location-view-model";
 
@@ -12,10 +13,21 @@ const googlePlacesAutocomplete = new GooglePlacesAutocomplete(ThirdPartyCredenti
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
+    const context: any = page.navigationContext;
 
     page.addCssFile("./request/pick-location/pick-location-page.css");
 
     page.bindingContext = new PickLocationPageViewModel();
+
+    if(typeof context != 'undefined' && context && context.container) {
+        page.bindingContext.address = context.container.address;
+        page.bindingContext.city = context.container.city;
+        page.bindingContext.country = context.container.country;
+        page.bindingContext.latitude = context.container.latitude;
+        page.bindingContext.longitude = context.container.longitude;
+        page.bindingContext.bloodQuantity = context.container.bloodQuantity;
+        page.bindingContext.selectedBloodType = context.container.selectedBloodType;
+    }
 }
 
 export function onMapReady(args) {
@@ -32,17 +44,24 @@ export function onMapReady(args) {
           });
     });
 
+    if(viewModel.latitude && viewModel.longitude) {
+        map.addMarkers([{
+            id: 2,
+            lat: viewModel.latitude,
+            lng: viewModel.longitude,
+      }]);
+    }
+
     map.setOnMapClickListener((point: LatLng) => {
         map.removeMarkers([2]);
-        map.addMarkers([
-            {
+        map.addMarkers([{
               id: 2,
               lat: point.lat,
               lng: point.lng,
         }]);
-        
-        console.log(`Map tapped: ${JSON.stringify(point)}`); 
+         
         googlePlacesAutocomplete.getGeolocationByPoint(point.lat, point.lng).then((result) => {
+            console.log(result);
             viewModel.address = result.address;
             viewModel.city = result.city;
             viewModel.country = result.country;
@@ -52,9 +71,25 @@ export function onMapReady(args) {
     });
 }
 
-export function fabTapSave(args) {
-    let page = args.object.page;
+export function onfabSaveTap(args) {
+    const page = args.object.page;
     const viewModel = <PickLocationPageViewModel>page.bindingContext;
 
-    console.log(viewModel.city);
+    const navigationEntry = {
+        moduleName: "request/request-create/request-create-page",
+        context: {
+            "container": {
+                "address": viewModel.address,
+                "city": viewModel.city,
+                "country": viewModel.country,
+                "latitude": viewModel.latitude,
+                "longitude": viewModel.longitude,
+                "bloodQuantity": viewModel.bloodQuantity,
+                "selectedBloodType": viewModel.selectedBloodType
+            }
+        },
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
 }

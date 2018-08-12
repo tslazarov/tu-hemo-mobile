@@ -186,7 +186,7 @@ export function onListPickerLoaded(args): void {
 
 export function onNavigateRegisterTap() {
     let navigationEntry = {
-        moduleName: "register/register-user-information/register-user-page",
+        moduleName: "register/register-user-information/register-user-information-page",
     };
 
     topmost().navigate(navigationEntry);

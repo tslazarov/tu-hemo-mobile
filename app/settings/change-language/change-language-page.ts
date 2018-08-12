@@ -20,7 +20,7 @@ export function onChangeTap(args: EventData): void {
     const button = <Button>args.object;
     const viewModel = <ChangeLanguageViewModel>button.bindingContext;
 
-    let url = `${APIConstants.Domain}/${APIConstants.ChangeLanguageEndpoint}`;
+    let url = `${APIConstants.Domain}/${APIConstants.SettingsChangeLanguageEndpoint}`;
     let contentType = 'application/json';
     let content = JSON.stringify({ "selectedLanguage": viewModel.selectedLanguage });
     secureStorage.set({ 

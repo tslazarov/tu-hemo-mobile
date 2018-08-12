@@ -72,7 +72,7 @@ export function deleteAccount(viewModel: DeleteAccountViewModel, isExternal: boo
     
     let message;
     
-    let url = `${APIConstants.Domain}/${APIConstants.DeleteAccountEndpoint}`;
+    let url = `${APIConstants.Domain}/${APIConstants.SettingsDeleteAccountEndpoint}`;
     let contentType = 'application/json';
     let content = JSON.stringify({ "password": viewModel.password, "isExternal": isExternal });
 

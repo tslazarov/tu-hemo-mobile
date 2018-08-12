@@ -121,7 +121,7 @@ export function onBackTap(args: EventData): void {
     const viewModel = <RegisterPersonalViewModel>button.bindingContext;
 
     const navigationEntry = {
-        moduleName: "register/register-user-information/register-user-page",
+        moduleName: "register/register-user-information/register-user-information-page",
         context: { 
             "email": viewModel.email, 
             "password": viewModel.password },

@@ -257,7 +257,29 @@ export class LabelsAndMessages {
                 "en": "CHANGE",
                 "bg": "ПРОМЕНИ"  
             }
-        }
+        },
+        "request-create-page": {
+            "requestCreate": {
+                "en": "Create request",
+                "bg": "Създай заявка" 
+            },
+            "addressHint": {
+                "en": "Address",
+                "bg": "Адрес"  
+            }, 
+            "bloodQuantityHint": {
+                "en": "Needed blood quantity (ml.)",
+                "bg": "Необходимо количество кръв (мл.)"  
+            },
+            "bloodType": {
+                "en": "Blood type",
+                "bg": "Кръвна група"
+            },
+            "create": {
+                "en": "CREATE",
+                "bg": "СЪЗДАЙ"
+            }
+        },
     };
 
     static readonly messages = {
@@ -502,6 +524,24 @@ export class LabelsAndMessages {
                 "en": "Problem occured while saving changes",
                 "bg": "Възникна проблем при записването на промените"
             }
-        }
+        },
+        "request-create-page": {
+            "emptyAddress": {
+                "en": "Please enter address",
+                "bg": "Моля въведете адрес"
+            },
+            "emptyBloodQuantity": {
+                "en": "Please enter needed blood quantity",
+                "bg": "Моля въведете необходимото количество кръв"
+            },
+            "allowedBloodQuantity": {
+                "en": "The allowed blood quantity is between 0 and 50 000 ml",
+                "bg": "Позволеното количество кръв е между 0 и 50 000 мл"
+            },
+            "invalidBloodType": {
+                "en": "Please select a blood type",
+                "bg": "Моля изберете кръвна група"
+            }
+        },
     }
 }

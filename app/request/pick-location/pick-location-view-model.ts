@@ -8,12 +8,14 @@ export class PickLocationPageViewModel extends Observable {
     mapBoxAPIKey: string = ThirdPartyCredentials.MapboxAPIKey;
 
     @ObservableProperty() currentLatitude: string;
-    @ObservableProperty() currentLongtitude: string;
+    @ObservableProperty() currentlongitude: string;
     @ObservableProperty() address: string;
     @ObservableProperty() city: string;
     @ObservableProperty() country: string;
     @ObservableProperty() latitude: string;
     @ObservableProperty() longitude: string;
+    @ObservableProperty() selectedBloodType: number;
+    @ObservableProperty() bloodQuantity: number;
 
     constructor() {
         super();

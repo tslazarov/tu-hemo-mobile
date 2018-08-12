@@ -8,7 +8,7 @@
     <GridLayout row="0" columns="*" width="100%" class="custom-action-bar p-10">
         <Label col="1" text="{{ address }}" class="h4 action-bar-title"></Label>
     </GridLayout>
-    <fab:fab tap="fabTapSave"
+    <fab:fab tap="onfabSaveTap"
         row="1"
         icon="res://ic_save"
         rippleColor="#c91c1c"

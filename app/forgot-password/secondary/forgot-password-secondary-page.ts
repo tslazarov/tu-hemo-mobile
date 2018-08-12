@@ -14,7 +14,7 @@ export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     const context: any = page.navigationContext;
 
-    page.addCssFile("./forgot-password/initial/forgot-password-initial.css");
+    page.addCssFile("./forgot-password/initial/forgot-password-secondary-page.css");
 
     console.log('here');
 

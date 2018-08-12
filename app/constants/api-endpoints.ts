@@ -10,10 +10,12 @@ export class APIConstants {
     static readonly UsersFullProfileEndpoint : string = "api/users/fullProfile";
     static readonly UsersPreferredLanguageEndpoint : string = "api/users/preferredLanguage";
 
-    static readonly ChangePersonalInformationEndpoint : string = "api/settings/changePersonalInformation";
-    static readonly ChangePasswordEndpoint : string = "api/settings/changePassword";
-    static readonly ChangeEmailEndpoint : string = "api/settings/changeEmail";
-    static readonly ChangeLanguageEndpoint : string = "api/settings/changeLanguage";
-    static readonly DeleteAccountEndpoint : string = "api/settings/deleteAccount";
+    static readonly SettingsChangePersonalInformationEndpoint : string = "api/settings/changePersonalInformation";
+    static readonly SettingsChangePasswordEndpoint : string = "api/settings/changePassword";
+    static readonly SettingsChangeEmailEndpoint : string = "api/settings/changeEmail";
+    static readonly SettingsChangeLanguageEndpoint : string = "api/settings/changeLanguage";
+    static readonly SettingsDeleteAccountEndpoint : string = "api/settings/deleteAccount";
+
+    static readonly RequestsCreateRequestEndpoint : string = "api/requests/create"
 
 }

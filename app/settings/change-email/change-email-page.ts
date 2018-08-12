@@ -30,7 +30,7 @@ export function onChangeTap(args: EventData): void {
 
     let message;
     
-    let url = `${APIConstants.Domain}/${APIConstants.ChangeEmailEndpoint}`;
+    let url = `${APIConstants.Domain}/${APIConstants.SettingsChangeEmailEndpoint}`;
     let contentType = 'application/json';
     let content = JSON.stringify({ "email": viewModel.newEmail, "password": viewModel.password });
     

@@ -30,7 +30,7 @@ export function onChangeTap(args: EventData): void {
 
     let message;
     
-    let url = `${APIConstants.Domain}/${APIConstants.ChangePasswordEndpoint}`;
+    let url = `${APIConstants.Domain}/${APIConstants.SettingsChangePasswordEndpoint}`;
     let contentType = 'application/json';
     let content = JSON.stringify({ "oldPassword": viewModel.oldPassword, "newPassword": viewModel.newPassword });
 

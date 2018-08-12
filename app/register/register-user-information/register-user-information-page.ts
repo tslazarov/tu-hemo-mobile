@@ -8,13 +8,13 @@ import { TranslationService } from "../../utilities/translation-service";
 import { Color } from "tns-core-modules/color/color";
 import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
 
-import { RegisterUserViewModel } from "./register-user-view-model";
+import { RegisterUserViewModel } from "./register-user-information-view-model";
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     const context: any = page.navigationContext;
 
-    page.addCssFile("./register/register-user-information/register-user-information.css");
+    page.addCssFile("./register/register-user-information/register-user-information-page.css");
     page.bindingContext = new RegisterUserViewModel();
 
     if(typeof context != 'undefined' && context) {
