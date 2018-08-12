@@ -2,12 +2,52 @@
     actionBarHidden="true"
     class="page" 
     xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:lv="nativescript-ui-listview"
+    xmlns:card="nativescript-cardview"
     xmlns:fab="nativescript-floatingactionbutton">
-    <StackLayout>
-    <fab:fab tap="onFabCreateTap"
-        row="1"
-        icon="res://ic_save"
-        rippleColor="#c91c1c"
-        class="fab-button-create" />
-    </StackLayout>
+        <GridLayout rows="auto, *">
+        <GridLayout row="0" columns="*" width="100%" class="custom-action-bar p-10 m-b-5">
+            <Label col="1" text="{{ requests }}" class="h3 action-bar-title"></Label>
+        </GridLayout>
+        <StackLayout row="1">
+            <lv:RadListView id="ls" items="{{ items }}"  row="0"  loadOnDemandMode="Auto" loadMoreDataRequested="onLoadMoreItemsRequested">
+                <lv:RadListView.listViewLayout>
+                    <lv:ListViewLinearLayout scrollDirection="Vertical" itemHeight="100"/>
+                </lv:RadListView.listViewLayout>
+                <lv:RadListView.itemTemplate>
+                    <StackLayout orientation="vertical">
+                        <StackLayout orientation="horizontal" horizontalAlignment="center" class="m-l-10 m-r-10 m-t-10">
+                                <card:CardView id="{{ id }}" class="cardStyle m-5" width="96%" ripple="true" elevation="10" radius="0"  tap="onItemTap">
+                                    <StackLayout orientation="vertical" class="p-10 item-wrapper">
+                                        <Label class="m-l-5 m-t-5">
+                                            <FormattedString>
+                                                <Span text="{{ bloodTypeLabel }}" class="normal-label h4"></Span>
+                                                <Span text="{{ bloodType }}" class="bold h4"></Span>
+                                            </FormattedString>
+                                        </Label>
+                                        <Label class="m-l-5 m-b-5 m-t-5">
+                                            <FormattedString>
+                                                <Span text="{{ requestedBloodQuantityLabel }}" class="normal-label h4"></Span>
+                                                <Span text="{{ requestedBloodQuantity }}" class="bold h4"></Span>
+                                            </FormattedString>
+                                        </Label>
+                                        <Label class="m-l-5 m-b-5">
+                                            <FormattedString>
+                                                <Span text="{{ dateLabel }}" class="normal-label h4"></Span>
+                                                <Span text="{{ date }}" class="bold h4"></Span>
+                                            </FormattedString>
+                                        </Label>
+                                    </StackLayout>
+                                </card:CardView>
+                        </StackLayout>
+                    </StackLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+        </StackLayout>
+        <fab:fab tap="onFabCreateTap"
+            row="1"
+            icon="res://ic_save"
+            rippleColor="#c91c1c"
+            class="fab-button-create" />
+    </GridLayout>
 </Page>

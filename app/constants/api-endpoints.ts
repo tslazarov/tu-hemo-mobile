@@ -17,5 +17,6 @@ export class APIConstants {
     static readonly SettingsDeleteAccountEndpoint : string = "api/settings/deleteAccount";
 
     static readonly RequestsCreateRequestEndpoint : string = "api/requests/create"
+    static readonly RequestsGetListEndpoint : string = "api/requests"
 
 }

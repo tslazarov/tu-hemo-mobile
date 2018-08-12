@@ -280,6 +280,24 @@ export class LabelsAndMessages {
                 "bg": "СЪЗДАЙ"
             }
         },
+        "request-page": {
+            "bloodTypeLabel": {
+                "en": "Blood type: ",
+                "bg": "Кръвна група :" 
+            },
+            "dateLabel": {
+                "en": "Date: ",
+                "bg": "Дата: "  
+            }, 
+            "requestedBloodQuantityLabel": {
+                "en": "Blood quantity: ",
+                "bg": "Количество кръв"  
+            },
+            "requests": {
+                "en": "Requests",
+                "bg": "Заявки"  
+            },
+        }
     };
 
     static readonly messages = {

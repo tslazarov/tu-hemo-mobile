@@ -154,7 +154,7 @@ export function onBloodTypeTap(args: EventData): void {
     const viewModel = <ChangePersonalInformationViewModel>label.bindingContext;
 
     const wrapLayout = label.parent;
-    for(var i = 1; i <= 8; i += 1){
+    for(var i = 0; i <= 7; i += 1){
         var childLabel = wrapLayout.getViewById(`option-${i}`);
         childLabel.className = "blood-type-button";
     }

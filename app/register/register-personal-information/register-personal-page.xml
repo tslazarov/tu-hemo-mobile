@@ -19,14 +19,14 @@
             </TextField>
             <Label text="{{ bloodType }}" class="m-l-20 m-t-15 m-b-15 h4"/>
             <WrapLayout orientation="horizontal" class="m-l-15 m-r-15">
-                <Label id="option-1" text="A+" class="blood-type-button" tap="onBloodTypeTap"/>
-                <Label id="option-2" text="A-" class="blood-type-button" tap="onBloodTypeTap"/>
-                <Label id="option-3" text="B+" class="blood-type-button" tap="onBloodTypeTap"/>
-                <Label id="option-4" text="B-" class="blood-type-button" tap="onBloodTypeTap"/>
-                <Label id="option-5" text="O+" class="blood-type-button" tap="onBloodTypeTap"/>
-                <Label id="option-6" text="O-" class="blood-type-button" tap="onBloodTypeTap"/>
-                <Label id="option-7" text="AB+" class="blood-type-button" tap="onBloodTypeTap" />
-                <Label id="option-8" text="AB-" class="blood-type-button" tap="onBloodTypeTap" />
+                <Label id="option-0" text="A+" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-1" text="A-" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-2" text="B+" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-3" text="B-" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-4" text="O+" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-5" text="O-" class="blood-type-button" tap="onBloodTypeTap"/>
+                <Label id="option-6" text="AB+" class="blood-type-button" tap="onBloodTypeTap" />
+                <Label id="option-7" text="AB-" class="blood-type-button" tap="onBloodTypeTap" />
             </WrapLayout>
         </StackLayout>
         <StackLayout verticalAlign="center" row="2">
