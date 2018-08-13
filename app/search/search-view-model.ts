@@ -23,7 +23,7 @@ export class SearchViewModel extends Observable {
 
     autocomplete;
     searchText: string;
-    searchSuggestions: ObservableArray<TokenModel>;
+    suggestedItems: ObservableArray<TokenModel>;
     items: ObservableArray<any>;
     @ObservableProperty() visibility1: boolean;
     @ObservableProperty() visibility2: boolean;
@@ -46,13 +46,11 @@ export class SearchViewModel extends Observable {
             return new Promise((resolve, reject) => {
             googlePlacesAutocomplete.search(text, "(cities)")
                 .then((places: any) => {
-                    this.searchSuggestions = new ObservableArray<TokenModel>();
+                    const suggestedItems: Array<TokenModel> = new Array();
+        
+                    places.forEach(place => suggestedItems.push(new TokenModel(place.description, null)));
                     
-                    if(places.length > 0) {        
-                        places.forEach(place => this.searchSuggestions.push(new TokenModel(place.description, null)));
-                        
-                        resolve(this.searchSuggestions);
-                    }
+                    resolve(suggestedItems);
                 }, (error => {
                     reject([]);
                 }));
