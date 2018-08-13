@@ -11,9 +11,15 @@ export function onNavigatingTo(args: EventData) {
 }
    
 export function bottomNavigationLoaded(args) {
-  let bottomNavigation: BottomNavigation = args.object;
-  bottomNavigation.on('tabSelected', tabSelected);
-   
+  const page = <Page>args.object;
+  
+  if(!page.bindingContext.isInitialized)
+  {
+    let bottomNavigation: BottomNavigation = args.object;
+    bottomNavigation.on('tabSelected', tabSelected);
+
+    page.bindingContext.isInitialized = true;
+  }   
 }
    
 export function tabSelected(args: OnTabSelectedEventData) {

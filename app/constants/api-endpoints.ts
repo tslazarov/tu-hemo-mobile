@@ -18,5 +18,6 @@ export class APIConstants {
 
     static readonly RequestsCreateRequestEndpoint : string = "api/requests/create"
     static readonly RequestsGetListEndpoint : string = "api/requests"
+    static readonly RequestsGetListFullEndpoint : string = "api/requests/full"
 
 }

@@ -14,6 +14,9 @@ const secureStorage = new SecureStorage();
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
+
+    page.addCssFile("./request/request-page.css");
+
     page.bindingContext = new RequestViewModel();
 
     populateList(page.bindingContext);

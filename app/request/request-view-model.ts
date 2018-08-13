@@ -1,6 +1,5 @@
 import { Observable } from "tns-core-modules/data/observable/observable";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
-import { ObservableProperty } from "../shared/observable-property-decorator";
 import { TranslationService } from "../utilities/translation-service"
 
 export class RequestViewModel extends Observable {
@@ -20,9 +19,9 @@ export class RequestViewModel extends Observable {
     }
 
     setLabelsAndMessages():void {
-        this.requests = TranslationService.localizeValue("requests", "request-page", "label")        
-        this.bloodTypeLabel = TranslationService.localizeValue("bloodTypeLabel", "request-page", "label")        
-        this.dateLabel = TranslationService.localizeValue("dateLabel", "request-page", "label")        
+        this.requests = TranslationService.localizeValue("requests", "request-page", "label");        
+        this.bloodTypeLabel = TranslationService.localizeValue("bloodTypeLabel", "request-page", "label");        
+        this.dateLabel = TranslationService.localizeValue("dateLabel", "request-page", "label");
         this.requestedBloodQuantityLabel = TranslationService.localizeValue("requestedBloodQuantityLabel", "request-page", "label");
     }
 }

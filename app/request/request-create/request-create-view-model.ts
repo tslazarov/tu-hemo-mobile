@@ -73,7 +73,7 @@ export class RequestCreateViewModel extends Observable {
         if(+this.bloodQuantity < 0 || +this.bloodQuantity > 50000) {
             isValid = false;
             message = TranslationService.localizeValue("allowedBloodQuantity", "request-create-page", "message"); 
-        } else if(typeof this.selectedBloodType == 'undefined' || !this.selectedBloodType  || this.selectedBloodType < 1 || this.selectedBloodType > 8) {
+        } else if(typeof this.selectedBloodType == 'undefined' || !this.selectedBloodType  || this.selectedBloodType < 0 || this.selectedBloodType > 7) {
             isValid = false;
             message = TranslationService.localizeValue("invalidBloodType", "request-create-page", "message"); 
         }

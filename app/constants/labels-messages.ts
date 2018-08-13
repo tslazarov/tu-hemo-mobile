@@ -122,6 +122,32 @@ export class LabelsAndMessages {
                 "bg": "ПРОМЕНИ"
             }
         },
+        "search-page": {
+            "searchHint": {
+                "en": "Search",
+                "bg": "Търси"
+            },
+            "searchHeader": {
+                "en": "Search",
+                "bg": "Търси"
+            },
+            "listOption": {
+                "en": "LIST",
+                "bg": "СПИСЪК"
+            },
+            "mapOption": {
+                "en": "MAP",
+                "bg": "КАРТА"
+            },
+            "bloodTypeLabel": {
+                "en": "Blood type: ",
+                "bg": "Кръвна група: " 
+            },
+            "dateLabel": {
+                "en": "Date: ",
+                "bg": "Дата: "  
+            }
+        },
         "settings-page": {
             "changePersonalInformation": {
                 "en": "Change personal information",
@@ -283,7 +309,7 @@ export class LabelsAndMessages {
         "request-page": {
             "bloodTypeLabel": {
                 "en": "Blood type: ",
-                "bg": "Кръвна група :" 
+                "bg": "Кръвна група: " 
             },
             "dateLabel": {
                 "en": "Date: ",
@@ -291,7 +317,7 @@ export class LabelsAndMessages {
             }, 
             "requestedBloodQuantityLabel": {
                 "en": "Blood quantity: ",
-                "bg": "Количество кръв"  
+                "bg": "Количество кръв: "  
             },
             "requests": {
                 "en": "Requests",

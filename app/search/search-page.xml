@@ -1,15 +1,12 @@
 <Page navigatingTo="onNavigatingTo" 
+  actionBarHidden="true"
   class="page"
   xmlns="http://schemas.nativescript.org/tns.xsd" 
   xmlns:nsDrawer="nativescript-ui-sidedrawer"
   xmlns:au="nativescript-ui-autocomplete" 
-  xmlns:map="nativescript-mapbox">
-    <ActionBar class="action-bar">
-      <GridLayout columns="auto,*,auto" height="100%" width="100%">
-        <Label col="0" text="&#xf0c9;" class="fa" tap="onOpenDrawerTap"></Label>
-        <Label col="1" text="Search" class="action-bar-title" tap="onOpenDrawerTap"></Label>
-      </GridLayout>
-    </ActionBar>
+  xmlns:map="nativescript-mapbox"
+  xmlns:lv="nativescript-ui-listview"
+  xmlns:card="nativescript-cardview">
     <nsDrawer:RadSideDrawer id="sideDrawer" drawerLocation="top" xmlns:nsDrawer="nativescript-ui-sidedrawer" loaded="onLoaded">
         <nsDrawer:RadSideDrawer.drawerTransition>
             <nsDrawer:SlideInOnTopTransition/>
@@ -18,7 +15,7 @@
         <nsDrawer:RadSideDrawer.drawerContent>
             <GridLayout rows="auto" class="sidedrawer sidedrawer-left">
                 <StackLayout class="sidedrawer-header">
-                  <au:RadAutoCompleteTextView hint="Search" id="autocomplete" items="{{ dataItems }}" suggestMode="Suggest" displayMode="Plain">
+                  <au:RadAutoCompleteTextView hint="{{ searchHint }}" id="autocomplete" items="{{ searchSuggestions }}" suggestMode="Suggest" displayMode="Plain">
                       <au:RadAutoCompleteTextView.suggestionView>
                           <au:SuggestionView suggestionViewHeight="300">
                               <au:SuggestionView.suggestionItemTemplate>
@@ -34,25 +31,61 @@
         </nsDrawer:RadSideDrawer.drawerContent>
 
         <nsDrawer:RadSideDrawer.mainContent>
-        <GridLayout rows="auto,*">
-            <SegmentedBar row="0" loaded="onSbLoaded" class="m-5" selectedIndex="{{ selectedBarIndex }}">
+        <GridLayout rows="auto,auto,*">
+            <GridLayout row="0"  tap="onOpenDrawerTap" columns="*" width="100%" class="custom-action-bar p-10">
+                <Label col="1" text="{{ searchHeader }}" class="h3 action-bar-title"></Label>
+            </GridLayout>
+            <SegmentedBar row="1" loaded="onSbLoaded" class="m-l-5 m-b-5 m-r-5" selectedIndex="{{ selectedBarIndex }}">
                 <SegmentedBar.items>
-                    <SegmentedBarItem title="Item 1" />
-                    <SegmentedBarItem title="Item 2" />
+                    <SegmentedBarItem title="{{ listOption }}" />
+                    <SegmentedBarItem title="{{ mapOption }}" />
                 </SegmentedBar.items>
-            </SegmentedBar>            
-                <GridLayout row="1" rows="*" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}" backgroundColor="white">
+            </SegmentedBar> 
+                <GridLayout row="2" rows="*" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}">
+                    <lv:RadListView id="ls" items="{{ items }}"  row="0"  loadOnDemandMode="Auto" loadMoreDataRequested="onLoadMoreItemsRequested">
+                        <lv:RadListView.listViewLayout>
+                            <lv:ListViewLinearLayout scrollDirection="Vertical" itemHeight="100"/>
+                        </lv:RadListView.listViewLayout>
+                        <lv:RadListView.itemTemplate>
+                            <StackLayout orientation="vertical">
+                                <StackLayout orientation="horizontal" horizontalAlignment="center" class="m-l-10 m-r-10 m-t-10">
+                                        <card:CardView id="{{ id }}" class="cardStyle m-5" width="96%" ripple="true" elevation="10" radius="0"  tap="onItemTap">
+                                            <GridLayout columns="auto, *" class="p-10">
+                                                <Image col="0" id="back" src="{{ image }}" width="80" height="80" class="m-5 card-image" stretch="aspectFit"></Image>
+                                                <StackLayout col="1" orientation="vertical" >
+                                                    <Label class="m-l-20 m-t-5">
+                                                        <FormattedString>
+                                                            <Span text="{{ name }}" class="h3"></Span>
+                                                        </FormattedString>
+                                                    </Label>
+                                                    <Label class="m-l-20 m-t-5">
+                                                        <FormattedString>
+                                                            <Span text="{{ bloodTypeLabel }}" class="normal-label h4"></Span>
+                                                            <Span text="{{ bloodType }}" class="bold h4"></Span>
+                                                        </FormattedString>
+                                                    </Label>
+                                                    <Label class="m-l-20 m-b-5">
+                                                        <FormattedString>
+                                                            <Span text="{{ dateLabel }}" class="normal-label h4"></Span>
+                                                            <Span text="{{ date }}" class="bold h4"></Span>
+                                                        </FormattedString>
+                                                    </Label>
+                                                </StackLayout>
+                                            </GridLayout>
+                                        </card:CardView>
+                                </StackLayout>
+                            </StackLayout>
+                        </lv:RadListView.itemTemplate>
+                    </lv:RadListView>
+                </GridLayout>           
+                <GridLayout row="2" rows="*" visibility="{{ visibility2 ? 'visible' : 'collapsed' }}" backgroundColor="white">
                     <map:MapboxView
-                        accessToken="pk.eyJ1IjoidGxhemFyb3YiLCJhIjoiY2pqdm9sc3pjMHVrdTNycnI1ZXJkNzZkMSJ9.vET6BrN5mb3mfq9wvlRlYA"
+                        accessToken="{{ mapBoxAPIKey }}"
                         mapStyle="streets"
-                        latitude="52.3702160"
-                        longitude="4.8951680"
-                        zoomLevel="7"
-                        showUserLocation="true">
-                    </map:MapboxView>                
-                </GridLayout>
-                <GridLayout row="1" rows="*" visibility="{{ visibility2 ? 'visible' : 'collapsed' }}" backgroundColor="green">
-                    <Label text="Index 2" class="m-15 h3 p-5 text-center" color="white"/>
+                        zoomLevel="16"
+                        showUserLocation="true"
+                        mapReady="onMapReady">
+                    </map:MapboxView>              
                 </GridLayout>
         </GridLayout>            
         </nsDrawer:RadSideDrawer.mainContent>
