@@ -23,9 +23,9 @@ export class SearchViewModel extends Observable {
 
     autocomplete;
     searchText: string;
-    suggestedItems: ObservableArray<TokenModel>;
+    suggestedItems: Array<TokenModel>;
     items: ObservableArray<any>;
-    selectedSearchBloodTypes: ObservableArray<any>;
+    selectedSearchBloodTypes: ObservableArray<number>;
     @ObservableProperty() visibility1: boolean;
     @ObservableProperty() visibility2: boolean;
     @ObservableProperty() currentLatitude: number;
@@ -36,13 +36,13 @@ export class SearchViewModel extends Observable {
     
     selectedBarIndex: number;
     bloodTypes = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" ]
-
-    constructor(args) {
+    
+    constructor(args, isPreserveHistory) {
         super();
         const page = args.object;
 
         this.items = new ObservableArray<any>();
-        this.selectedSearchBloodTypes = new ObservableArray<any>();
+        this.selectedSearchBloodTypes = new ObservableArray<number>();
 
         this.autocomplete = page.getViewById("autocomplete");
         this.autocomplete.minimumCharactersToSearch = 3;
@@ -51,7 +51,7 @@ export class SearchViewModel extends Observable {
             return new Promise((resolve, reject) => {
             googlePlacesAutocomplete.search(text, "(cities)")
                 .then((places: any) => {
-                    const suggestedItems: Array<TokenModel> = new Array();
+                    const suggestedItems: Array<TokenModel> = new Array<TokenModel>();
         
                     places.forEach(place => suggestedItems.push(new TokenModel(place.description, null)));
                     

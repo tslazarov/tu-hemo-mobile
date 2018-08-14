@@ -23,10 +23,12 @@ const secureStorage = new SecureStorage();
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
+    const context: any = page.navigationContext;
+
     page.addCssFile("./search/search-page.css");
 
-    page.bindingContext = new SearchViewModel(args);
-
+    page.bindingContext = new SearchViewModel(args, false);
+    
     page.bindingContext.visibility1 = true;
     page.bindingContext.visibility2 = false;
     page.bindingContext.selectedBarIndex = 0;
@@ -183,7 +185,7 @@ export function updateMapMarkers(viewModel: SearchViewModel, map, searchable) {
 
     viewModel.items.forEach((item, index) => {
         if(searchable && index == 0){
-            console.log('here');
+
             map.setCenter({
                 lat: item.latitude,
                 lng: item.longitude,
@@ -198,10 +200,24 @@ export function updateMapMarkers(viewModel: SearchViewModel, map, searchable) {
               title: item.name,
               subtitle: `${viewModel.bloodTypeLabel}${item.bloodType}\n${viewModel.dateLabel}${item.date}`,
               onCalloutTap: function(marker){
-                  console.log(marker);
+                  callDetailPage(item.id, viewModel);
               }
             }]
     )});
+}
+
+export function callDetailPage(id:string, viewModel: SearchViewModel)
+{
+    const navigationEntry = {
+        moduleName: "search/search-detail/search-detail-page",
+        context: {
+            "id": id,
+            "wrappedMaster": viewModel,
+        },
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
 }
 
 export function onBloodTypeTap(args: EventData): void {
@@ -237,14 +253,15 @@ export function onSearchTap(args: EventData): void {
 
     const re = /,\s/g; 
 
-    let concatenatedSearchTerm = viewModel.searchTerm.replace(re, ","); 
-    
+    let concatenatedSearchTerm = viewModel.searchTerm ? viewModel.searchTerm.replace(re, ",") : ""; 
+
     let cityAndCountry = concatenatedSearchTerm.split(",");
 
     if(cityAndCountry.length > 1) {
         viewModel.city = cityAndCountry[0];
-        viewModel.country = cityAndCountry[1];
+        viewModel.country = cityAndCountry[cityAndCountry.length - 1];
     }
+
 
     let sideDrawer: RadSideDrawer = <RadSideDrawer>(topmost().getViewById("sideDrawer"));
     sideDrawer.closeDrawer();
@@ -276,4 +293,9 @@ export function onSearchTap(args: EventData): void {
                 updateMapMarkers(viewModel, map, true);
             }, (reject) => {
     });
+}
+
+export function onItemTap(args) {
+    const viewModel = <SearchViewModel>args.object.page.bindingContext;
+    callDetailPage(args.object.id, viewModel);
 }

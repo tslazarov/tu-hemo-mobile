@@ -1,0 +1,13 @@
+<Page navigatingTo="onNavigatingTo"    
+ actionBarHidden="true"
+ class="page" xmlns="http://schemas.nativescript.org/tns.xsd">
+    <GridLayout rows="auto,*">
+        <GridLayout row="0" columns="auto,*" width="100%" class="custom-action-bar">
+            <Image col="0" id="back" src="res://ic_back_arrow" class="m-l-20" verticalAlignment="center" stretch="aspectFit" tap="onBackTap"></Image>
+            <Label col="1" text="Test" class="h3 action-bar-title"></Label>
+        </GridLayout>
+        <StackLayout orientation="vertical" verticalAlignment="center" row="1" class="p-t-15">
+            <Label text="{{ id }}" class="h1"></Label>
+        </StackLayout>
+    </GridLayout>
+</Page>

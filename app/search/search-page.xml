@@ -28,7 +28,7 @@
                   </au:RadAutoCompleteTextView>
                 </StackLayout>
                 <StackLayout row="1" verticalAlign="center">
-                    <WrapLayout orientation="horizontal" class="m-l-15 m-r-15">
+                    <WrapLayout id="bloodTypeWrap" orientation="horizontal" class="m-l-15 m-r-15">
                         <Label id="option-0" text="A+" class="blood-type-button" tap="onBloodTypeTap"/>
                         <Label id="option-1" text="A-" class="blood-type-button" tap="onBloodTypeTap"/>
                         <Label id="option-2" text="B+" class="blood-type-button" tap="onBloodTypeTap"/>

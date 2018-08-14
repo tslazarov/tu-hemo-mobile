@@ -16,7 +16,7 @@ export function onNavigatingTo(args: EventData) {
     const page: Page = <Page>args.object;
     const context: any = page.navigationContext;
 
-    page.addCssFile("./register/register-personal-information/register-personal-information.css");
+    page.addCssFile("./register/register-personal-information/register-personal-information-page.css");
 
     page.bindingContext = new RegisterPersonalViewModel();
 
