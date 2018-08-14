@@ -25,10 +25,14 @@ export class SearchViewModel extends Observable {
     searchText: string;
     suggestedItems: ObservableArray<TokenModel>;
     items: ObservableArray<any>;
+    selectedSearchBloodTypes: ObservableArray<any>;
     @ObservableProperty() visibility1: boolean;
     @ObservableProperty() visibility2: boolean;
     @ObservableProperty() currentLatitude: number;
     @ObservableProperty() currentLongitude: number;
+    @ObservableProperty() searchTerm: string;
+    @ObservableProperty() city: string;
+    @ObservableProperty() country: string;
     
     selectedBarIndex: number;
     bloodTypes = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" ]
@@ -38,6 +42,7 @@ export class SearchViewModel extends Observable {
         const page = args.object;
 
         this.items = new ObservableArray<any>();
+        this.selectedSearchBloodTypes = new ObservableArray<any>();
 
         this.autocomplete = page.getViewById("autocomplete");
         this.autocomplete.minimumCharactersToSearch = 3;

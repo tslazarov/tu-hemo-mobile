@@ -13,9 +13,9 @@
         </nsDrawer:RadSideDrawer.drawerTransition>
 
         <nsDrawer:RadSideDrawer.drawerContent>
-            <GridLayout rows="auto" class="sidedrawer sidedrawer-left">
-                <StackLayout class="sidedrawer-header">
-                  <au:RadAutoCompleteTextView hint="{{ searchHint }}" id="autocomplete" items="{{ suggestedItems }}" suggestMode="Suggest" displayMode="Plain">
+            <GridLayout rows="auto,auto,auto" class="sidedrawer sidedrawer-left">
+                <StackLayout row="0" class="m-t-20">
+                  <au:RadAutoCompleteTextView hint="{{ searchHint }}" text="{{ searchTerm }}" id="autocomplete" items="{{ suggestedItems }}" class="m-15" suggestMode="Suggest" displayMode="Plain">
                       <au:RadAutoCompleteTextView.suggestionView>
                           <au:SuggestionView suggestionViewHeight="300">
                               <au:SuggestionView.suggestionItemTemplate>
@@ -26,6 +26,21 @@
                           </au:SuggestionView>
                       </au:RadAutoCompleteTextView.suggestionView>
                   </au:RadAutoCompleteTextView>
+                </StackLayout>
+                <StackLayout row="1" verticalAlign="center">
+                    <WrapLayout orientation="horizontal" class="m-l-15 m-r-15">
+                        <Label id="option-0" text="A+" class="blood-type-button" tap="onBloodTypeTap"/>
+                        <Label id="option-1" text="A-" class="blood-type-button" tap="onBloodTypeTap"/>
+                        <Label id="option-2" text="B+" class="blood-type-button" tap="onBloodTypeTap"/>
+                        <Label id="option-3" text="B-" class="blood-type-button" tap="onBloodTypeTap"/>
+                        <Label id="option-4" text="O+" class="blood-type-button" tap="onBloodTypeTap"/>
+                        <Label id="option-5" text="O-" class="blood-type-button" tap="onBloodTypeTap"/>
+                        <Label id="option-6" text="AB+" class="blood-type-button" tap="onBloodTypeTap" />
+                        <Label id="option-7" text="AB-" class="blood-type-button" tap="onBloodTypeTap" />
+                    </WrapLayout>
+                </StackLayout>
+                <StackLayout verticalAlign="center" row="2">
+                    <Button class="btn btn-primary" text="SEARCH" tap="onSearchTap"></Button>
                 </StackLayout>
             </GridLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
@@ -42,7 +57,7 @@
                 </SegmentedBar.items>
             </SegmentedBar> 
                 <GridLayout row="2" rows="*" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}">
-                    <lv:RadListView id="ls" items="{{ items }}"  row="0"  loadOnDemandMode="Auto" loadMoreDataRequested="onLoadMoreItemsRequested">
+                    <lv:RadListView id="listItems" items="{{ items }}"  row="0"  loadOnDemandMode="Auto" loadMoreDataRequested="onLoadMoreItemsRequested">
                         <lv:RadListView.listViewLayout>
                             <lv:ListViewLinearLayout scrollDirection="Vertical" itemHeight="100"/>
                         </lv:RadListView.listViewLayout>
@@ -80,10 +95,14 @@
                 </GridLayout>           
                 <GridLayout row="2" rows="*" visibility="{{ visibility2 ? 'visible' : 'collapsed' }}" backgroundColor="white">
                     <map:MapboxView
+                        id="mapView"
                         accessToken="{{ mapBoxAPIKey }}"
                         mapStyle="streets"
                         zoomLevel="16"
                         showUserLocation="true"
+                        disableRotation="true"
+                        disableTilt="true"
+                        hideCompass="true"
                         mapReady="onMapReady">
                     </map:MapboxView>              
                 </GridLayout>

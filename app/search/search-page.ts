@@ -1,8 +1,11 @@
 import { EventData } from "tns-core-modules/data/observable/observable";
 import { Page } from "tns-core-modules/ui/page/page";
+import { Label } from "ui/label";
+import { Button } from "ui/button";
+import { View } from "ui/core/view";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { topmost  } from "tns-core-modules/ui/frame/frame";
-import { SegmentedBar, SegmentedBarItem } from "tns-core-modules/ui/segmented-bar/segmented-bar";
+import { SegmentedBar, SegmentedBarItem, itemsProperty } from "tns-core-modules/ui/segmented-bar/segmented-bar";
 import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { ThirdPartyCredentials } from "../constants/third-party-credentials";
@@ -14,6 +17,7 @@ import { ListViewEventData, RadListView, ListViewLoadOnDemandMode } from "native
 import { fromBase64 } from "image-source";
 
 import { SearchViewModel } from "./search-view-model";
+import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
 
 const secureStorage = new SecureStorage();
 
@@ -31,13 +35,12 @@ export function onNavigatingTo(args: EventData) {
 }
 
 export function populateList(viewModel: SearchViewModel) {
-    console.log('populate');
     geolocation.getCurrentLocation({ desiredAccuracy: Accuracy.any, maximumAge: 5000, timeout: 3000 })
     .then((response) => {
         viewModel.currentLatitude = response.latitude;
         viewModel.currentLongitude = response.longitude;
 
-        getItems(0, viewModel.currentLatitude, viewModel.currentLongitude, null, null)
+        getItems(0, viewModel.currentLatitude, viewModel.currentLongitude, viewModel.city, viewModel.country, null)
             .then((response) => {
                 if (response && response.length > 0) {
                     response.forEach(item => {
@@ -60,7 +63,7 @@ export function populateList(viewModel: SearchViewModel) {
     });
 }
 
-export function getItems(skip: number, latitude, longitude, city, country): Promise<any> {
+export function getItems(skip: number, latitude, longitude, city, country, selectedSearchBloodTypes): Promise<any> {
     return new Promise<any>(
         (resolve, reject) => {
             let url = `${APIConstants.Domain}/${APIConstants.RequestsGetListFullEndpoint}?skip=${skip}&take=5`;
@@ -70,11 +73,15 @@ export function getItems(skip: number, latitude, longitude, city, country): Prom
             url += city ? `&city=${city}` : "";
             url += country ? `&country=${country}` : "";
 
+            if(selectedSearchBloodTypes) {
+                selectedSearchBloodTypes.forEach(bloodType => {
+                    url += `&bloodTypes=${bloodType}`;
+                });
+            }
 
             HttpClient.getRequest(url, secureStorage.getSync({key: "access_token" }))
             .then((response) => {
                 const result = response.content.toJSON();
-                console.log(result);
                 resolve(result);
             }, (reject) => {
                 reject(reject);
@@ -91,7 +98,7 @@ export function onLoadMoreItemsRequested(args: ListViewEventData) {
     setTimeout(function () {
         const listView: RadListView = args.object;
         
-        getItems(viewModel.items.length, viewModel.currentLatitude, viewModel.currentLongitude, null, null)
+        getItems(viewModel.items.length, viewModel.currentLatitude, viewModel.currentLongitude, viewModel.city, viewModel.country, viewModel.selectedSearchBloodTypes)
             .then((response) => {
                 if (response && response.length > 0) {
                     response.forEach(item => {
@@ -152,4 +159,121 @@ export function onSbLoaded(args) {
                 break;
         }
     })
+}
+
+export function onMapReady(args) {
+    let map = args.map;
+    const viewModel = <SearchViewModel>map.bindingContext;
+
+
+    geolocation.getCurrentLocation({ desiredAccuracy: Accuracy.high, maximumAge: 5000, timeout: 20000 })
+    .then((response) => {
+        map.setCenter({
+            lat: response.latitude,
+            lng: response.longitude,
+            animated: true
+          });
+    });
+
+    updateMapMarkers(viewModel, map, false);
+}
+
+export function updateMapMarkers(viewModel: SearchViewModel, map, searchable) {
+    map.removeMarkers();
+
+    viewModel.items.forEach((item, index) => {
+        if(searchable && index == 0){
+            console.log('here');
+            map.setCenter({
+                lat: item.latitude,
+                lng: item.longitude,
+                animated: true
+              });
+        }
+        map.addMarkers([
+            {
+              id: item.index,
+              lat: item.latitude,
+              lng: item.longitude,
+              title: item.name,
+              subtitle: `${viewModel.bloodTypeLabel}${item.bloodType}\n${viewModel.dateLabel}${item.date}`,
+              onCalloutTap: function(marker){
+                  console.log(marker);
+              }
+            }]
+    )});
+}
+
+export function onBloodTypeTap(args: EventData): void {
+    const optionRegex = /(.*)-([0-9]{1})/;
+    const label = <Label>args.object;
+    const viewModel = <SearchViewModel>label.bindingContext;
+
+    if(label.className == "blood-type-button selected"){
+        label.className = "blood-type-button";
+        
+        var match = optionRegex.exec(label.id);
+        viewModel.selectedSearchBloodTypes.forEach( (item, index) => {
+            if(item === +match[2]) viewModel.selectedSearchBloodTypes.splice(index,1);
+        });
+    }
+    else {
+        label.className = "blood-type-button selected"
+
+        var match = optionRegex.exec(label.id);
+        
+        viewModel.selectedSearchBloodTypes.push(+match[2]);
+    }
+}
+
+export function onSearchTap(args: EventData): void { 
+    const view = <View>args.object;
+    const page = view.page;
+    const button = <Button>args.object;
+    const viewModel = <SearchViewModel>button.bindingContext;
+
+    viewModel.currentLatitude = null;
+    viewModel.currentLongitude = null;
+
+    const re = /,\s/g; 
+
+    let concatenatedSearchTerm = viewModel.searchTerm.replace(re, ","); 
+    
+    let cityAndCountry = concatenatedSearchTerm.split(",");
+
+    if(cityAndCountry.length > 1) {
+        viewModel.city = cityAndCountry[0];
+        viewModel.country = cityAndCountry[1];
+    }
+
+    let sideDrawer: RadSideDrawer = <RadSideDrawer>(topmost().getViewById("sideDrawer"));
+    sideDrawer.closeDrawer();
+
+    getItems(0, viewModel.currentLatitude, viewModel.currentLongitude, viewModel.city, viewModel.country, viewModel.selectedSearchBloodTypes)
+            .then((response) => {
+                viewModel.items.splice(0);
+                if (response && response.length > 0) {
+                    response.forEach(item => {
+                        viewModel.items.push({ 
+                            "id": item.id, 
+                            "bloodType": viewModel.bloodTypes[item.bloodType], 
+                            "name": item.name,
+                            "address": item.address,
+                            "latitude": item.latitude,
+                            "longitude": item.longitude,
+                            "image": fromBase64(item.image),
+                            "date": DateFormatter.toDate(item.date),
+                            "dateLabel": viewModel.dateLabel,
+                            "bloodTypeLabel": viewModel.bloodTypeLabel
+                        });
+                    });
+
+                    let listView = <RadListView>page.getViewById("listItems");   
+                    listView.loadOnDemandMode = ListViewLoadOnDemandMode[ListViewLoadOnDemandMode.Auto];
+                }
+
+                let map = page.getViewById("mapView"); 
+                updateMapMarkers(viewModel, map, true);
+            }, (reject) => {
+    });
 }
