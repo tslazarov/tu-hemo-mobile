@@ -6,6 +6,13 @@ export class SearchDetailViewModel extends Observable {
 
     @ObservableProperty() wrappedMaster: any;
     @ObservableProperty() id: string;
+    @ObservableProperty() owner: any;
+    @ObservableProperty() address: string;
+    @ObservableProperty() date: string;
+    @ObservableProperty() longitude;
+    @ObservableProperty() latitude;
+    @ObservableProperty() requestedBloodType;
+    @ObservableProperty() requestedBloodQuantity;
 
     constructor() {
         super();

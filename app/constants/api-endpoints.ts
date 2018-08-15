@@ -16,8 +16,9 @@ export class APIConstants {
     static readonly SettingsChangeLanguageEndpoint : string = "api/settings/changeLanguage";
     static readonly SettingsDeleteAccountEndpoint : string = "api/settings/deleteAccount";
 
-    static readonly RequestsCreateRequestEndpoint : string = "api/requests/create"
-    static readonly RequestsGetListEndpoint : string = "api/requests"
-    static readonly RequestsGetListFullEndpoint : string = "api/requests/full"
+    static readonly RequestsCreateRequestEndpoint : string = "api/requests/create";
+    static readonly RequestsGetListEndpoint : string = "api/requests";
+    static readonly RequestsGetListFullEndpoint : string = "api/requests/full";
+    static readonly RequestGetRequestEndpoint : string = "api/requests";
 
 }

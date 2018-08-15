@@ -1,13 +1,27 @@
 <Page navigatingTo="onNavigatingTo"    
  actionBarHidden="true"
  class="page" xmlns="http://schemas.nativescript.org/tns.xsd">
-    <GridLayout rows="auto,*">
+    <GridLayout rows="auto,*,*,*,auto">
         <GridLayout row="0" columns="auto,*" width="100%" class="custom-action-bar">
             <Image col="0" id="back" src="res://ic_back_arrow" class="m-l-20" verticalAlignment="center" stretch="aspectFit" tap="onBackTap"></Image>
             <Label col="1" text="Test" class="h3 action-bar-title"></Label>
         </GridLayout>
-        <StackLayout orientation="vertical" verticalAlignment="center" row="1" class="p-t-15">
-            <Label text="{{ id }}" class="h1"></Label>
+        <StackLayout orientation="vertical" row="1" verticalAlignment="top" class="p-t-15 m-t-30 m-b-20">
+            <Image id="ProfileImage" src="res://profile_image" width="100" height="100" stretch="aspectFill" class="m-t-30 m-b-20 request-profile-image"></Image>
+            <Label class="request-profile-name-label" text="{{ owner.name }}"></Label>
+            <Label class="request-profile-email-label m-b-30" text="{{ owner.email }}"></Label>
+            <Label class="profile-email-label m-b-30" text="{{ owner.phoneNumber }}"></Label>
+        </StackLayout>
+        <StackLayout orientation="vertical" row="2" verticalAlignment="top" class="p-t-15 m-t-30 m-b-20">
+            <Label class="h3" text="{{ requestedBloodType }}"></Label>
+            <Label class="h3" text="{{ requestedBloodQuantity }}"></Label>
+            <Label class="h3" text="{{ date }}"></Label>
+        </StackLayout>
+        <StackLayout orientation="vertical" row="3" verticalAlignment="top" class="p-t-15 m-t-30 m-b-20">
+            <Label class="h3" text="{{ address }}"></Label>
+        </StackLayout>
+        <StackLayout verticalAlign="center" row="4">
+            <Button class="btn btn-primary" text="SIGN UP FOR DONATION" tap="onDonateTap"></Button>
         </StackLayout>
     </GridLayout>
 </Page>
