@@ -6,7 +6,8 @@ import { topmost } from "tns-core-modules/ui/frame/frame";
 import { APIConstants } from "../../constants/api-endpoints";
 import { HttpClient } from "../../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
-import { fromBase64 } from "tns-core-modules/image-source/image-source";
+import { fromBase64, fromResource } from "tns-core-modules/image-source/image-source";
+import { DateFormatter } from "../../utilities/date-formatter";
 
 import { SearchDetailViewModel } from "./search-detail-view-model";
 
@@ -36,28 +37,34 @@ export function setRequest(page, id:string) {
     HttpClient.getRequest(userBasicProfileUrl, secureStorage.getSync({key: "access_token" }))
     .then((response) => {
         const result = response.content.toJSON();
-        console.log(result);
         if(result && result.hasOwnProperty("owner")) {
-            console.log(result);
             viewModel.owner = result["owner"];
-            viewModel.requestedBloodType = result["requestedBloodType"];
+            viewModel.requestedBloodType = viewModel.bloodTypes[result["requestedBloodType"]];
             viewModel.requestedBloodQuantity = result["requestedBloodQuantity"];
-        //     viewModel.isExternal = result["isExternal"];
+            viewModel.date = DateFormatter.toDate(result["date"]);
+            viewModel.address = result["address"];
+            viewModel.latitude = result["latitude"];
+            viewModel.longitude = result["longitude"];
+            viewModel.isSigned = result["IsSigned"];
+            
+           if(result["owner"]["image"] != null) {
+                let image = <Image>page.getViewById("ProfileImage");
+            console.log(result["owner"]["image"]);
+                if(image != null) {
+                    let image = <Image>page.getViewById("ProfileImage");
 
-        //     if(viewModel.isExternal) {
-        //         viewModel.visibilityMode = "collapsed";
-        //     }
-        //     else {
-        //         viewModel.visibilityMode = "visible";
-        //     }
+                    if(image != null) {
+                        image.imageSource = fromBase64(result["owner"]["image"]);
+                    }
+                }
+                else{
+                    let image = <Image>page.getViewById("ProfileImage");
 
-        //    if(result["profileImage"] != null) {
-        //         let image = <Image>page.getViewById("ProfileImage");
-
-        //         if(image != null) {
-        //             image.imageSource = fromBase64(result["profileImage"]);
-        //         }
-        //    }
+                    if(image != null) {
+                        image.imageSource = fromResource("res://profile_image");
+                    }                
+                }
+           }
         }
     }, (reject) => {
 
@@ -74,4 +81,24 @@ export function onBackTap(args: EventData): void {
     };
 
     topmost().navigate(navigationEntry);
+}
+
+export function onMapReady(args) {
+    console.log("map ready");
+    let map = args.map;
+    const viewModel = <SearchDetailViewModel>map.bindingContext;
+    console.log(viewModel.latitude);
+    console.log(viewModel.longitude);
+    map.setCenter({
+        lat: viewModel.latitude,
+        lng: viewModel.longitude,
+        animated: true
+        });
+
+    map.addMarkers([
+        {
+            id: 1,
+            lat: viewModel.latitude,
+            lng: viewModel.longitude
+    }]);
 }

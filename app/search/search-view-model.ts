@@ -70,7 +70,7 @@ export class SearchViewModel extends Observable {
         this.searchHeader = TranslationService.localizeValue("searchHeader", "search-page", "label");
         this.listOption = TranslationService.localizeValue("listOption", "search-page", "label");       
         this.mapOption = TranslationService.localizeValue("mapOption", "search-page", "label");
-        this.bloodTypeLabel = TranslationService.localizeValue("bloodTypeLabel", "request-page", "label");        
-        this.dateLabel = TranslationService.localizeValue("dateLabel", "request-page", "label");        
+        this.bloodTypeLabel = TranslationService.localizeValue("bloodTypeLabel", "search-page", "label");        
+        this.dateLabel = TranslationService.localizeValue("dateLabel", "search-page", "label");        
     }
 }

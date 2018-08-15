@@ -1,27 +1,80 @@
 <Page navigatingTo="onNavigatingTo"    
  actionBarHidden="true"
- class="page" xmlns="http://schemas.nativescript.org/tns.xsd">
-    <GridLayout rows="auto,*,*,*,auto">
+ class="page" xmlns="http://schemas.nativescript.org/tns.xsd"
+ xmlns:map="nativescript-mapbox">
+    <GridLayout rows="auto,auto,auto,auto,*,auto">
         <GridLayout row="0" columns="auto,*" width="100%" class="custom-action-bar">
             <Image col="0" id="back" src="res://ic_back_arrow" class="m-l-20" verticalAlignment="center" stretch="aspectFit" tap="onBackTap"></Image>
-            <Label col="1" text="Test" class="h3 action-bar-title"></Label>
         </GridLayout>
-        <StackLayout orientation="vertical" row="1" verticalAlignment="top" class="p-t-15 m-t-30 m-b-20">
-            <Image id="ProfileImage" src="res://profile_image" width="100" height="100" stretch="aspectFill" class="m-t-30 m-b-20 request-profile-image"></Image>
+        <StackLayout orientation="vertical" row="1" verticalAlignment="top" class="m-b-10">
+            <Image id="ProfileImage" width="100" height="100" stretch="aspectFill" class="m-b-20 request-profile-image"></Image>
             <Label class="request-profile-name-label" text="{{ owner.name }}"></Label>
-            <Label class="request-profile-email-label m-b-30" text="{{ owner.email }}"></Label>
-            <Label class="profile-email-label m-b-30" text="{{ owner.phoneNumber }}"></Label>
         </StackLayout>
-        <StackLayout orientation="vertical" row="2" verticalAlignment="top" class="p-t-15 m-t-30 m-b-20">
-            <Label class="h3" text="{{ requestedBloodType }}"></Label>
-            <Label class="h3" text="{{ requestedBloodQuantity }}"></Label>
-            <Label class="h3" text="{{ date }}"></Label>
+        <StackLayout orientation="vertical" row="2" verticalAlignment="top" class="p-t-15 m-t-20 m-l-20 m-r-20">   
+            <GridLayout rows="auto" columns="auto, *" class="m-b-10">
+                <Label row="0" col="0" class="m-r-20 section-header-label" text="REQUEST INFORMATION"></Label>
+                <StackLayout row="0" col="1" class="hr-regular"></StackLayout>
+            </GridLayout>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ bloodTypeLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ requestedBloodType }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ bloodQuantityLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ requestedBloodQuantity }}" class="normal-label"></Span>
+                    <Span text="{{ quantityMlMeasurment }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ dateLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ date }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
         </StackLayout>
-        <StackLayout orientation="vertical" row="3" verticalAlignment="top" class="p-t-15 m-t-30 m-b-20">
-            <Label class="h3" text="{{ address }}"></Label>
+        <StackLayout orientation="vertical" row="3" verticalAlignment="top" class="p-t-15 m-l-20 m-b-20 m-r-20">
+            <GridLayout rows="auto" columns="auto, *" class="m-b-10">
+                <Label row="0" col="0" class="m-r-20 section-header-label" text="CONTACT INFORMATION"></Label>
+                <StackLayout row="0" col="1" class="hr-regular"></StackLayout>
+            </GridLayout>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ emailLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ owner.email }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ phoneNumberLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ owner.phoneNumber }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+            <Label class="m-b-5 m-l-10" textWrap="true">
+                <FormattedString>
+                    <Span text="{{ addressLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ address }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
         </StackLayout>
-        <StackLayout verticalAlign="center" row="4">
-            <Button class="btn btn-primary" text="SIGN UP FOR DONATION" tap="onDonateTap"></Button>
+        <StackLayout orientation="vertical" row="4" verticalAlignment="top" class="m-l-20 m-r-20 m-b-10">
+            <map:MapboxView
+                id="mapView"
+                accessToken="{{ mapBoxAPIKey }}"
+                mapStyle="streets"
+                zoomLevel="16"
+                showUserLocation="true"
+                disableRotation="true"
+                disableTilt="true"
+                hideCompass="true"
+                mapReady="onMapReady">
+            </map:MapboxView>
+        </StackLayout>
+        <StackLayout verticalAlign="center" row="5">
+            <Button  visibility="{{ isSigned ? 'collapsed' : 'visible' }}" class="btn btn-primary" text="{{ signUpDonation }}" tap="onSignUpTap"></Button>
+            <Button  visibility="{{ isSigned ? 'visible' : 'collapsed' }}" class="btn btn-primary" text="{{ cancelDonation }}" tap="onCancelTap"></Button>
         </StackLayout>
     </GridLayout>
 </Page>

@@ -148,6 +148,44 @@ export class LabelsAndMessages {
                 "bg": "Дата: "  
             }
         },
+        "search-detail-page": {
+            "phoneNumberLabel": {
+                "en": "Phone number: ",
+                "bg": "Телефонен номер: "
+            },
+            "emailLabel": {
+                "en": "Email: ",
+                "bg": "Имейл: "
+            },
+            "quantityMlMeasurment": {
+                "en": " ml.",
+                "bg": " мл."
+            },
+            "bloodQuantityLabel": {
+                "en": "Blood quantity: ",
+                "bg": "Количество кръв: "
+            },
+            "bloodTypeLabel": {
+                "en": "Blood type: ",
+                "bg": "Кръвна група: " 
+            },
+            "dateLabel": {
+                "en": "Date: ",
+                "bg": "Дата: "  
+            },
+            "addressLabel": {
+                "en": "Address: ",
+                "bg": "Адрес: "  
+            },
+            "signUpDonation": {
+                "en": "SIGN UP FOR DONATION",
+                "bg": "ЗАПИШИ СЕ ЗА ДАРЯВАНЕ"  
+            },
+            "cancelDonation": {
+                "en": "CANCEL DONATION",
+                "bg": "ОТКАЖИ СЕ ОТ ДАРЯВАНЕ"  
+            }
+        },
         "settings-page": {
             "changePersonalInformation": {
                 "en": "Change personal information",
