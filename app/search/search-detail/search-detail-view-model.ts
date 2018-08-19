@@ -2,6 +2,7 @@ import { Observable } from "data/observable";
 import { ObservableProperty } from "../../shared/observable-property-decorator";
 import { TranslationService } from "../../utilities/translation-service"
 import { ThirdPartyCredentials } from "../../constants/third-party-credentials"
+import { Feedback } from "nativescript-feedback";
 
 export class SearchDetailViewModel extends Observable {
     mapBoxAPIKey: string = ThirdPartyCredentials.MapboxAPIKey;    
@@ -16,6 +17,7 @@ export class SearchDetailViewModel extends Observable {
     addressLabel: string;
     signUpDonation: string;
     cancelDonation: string;
+    feedback: Feedback;
 
     @ObservableProperty() wrappedMaster: any;
     @ObservableProperty() id: string;
@@ -32,6 +34,7 @@ export class SearchDetailViewModel extends Observable {
     constructor() {
         super();
 
+        this.feedback = new Feedback();
         this.setLabelsAndMessages();
     }
 

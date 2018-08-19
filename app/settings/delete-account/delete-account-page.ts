@@ -5,12 +5,11 @@ import { topmost } from "tns-core-modules/ui/frame/frame";
 import { APIConstants } from "../../constants/api-endpoints";
 import { HttpClient } from "../../utilities/http-client";
 import { TranslationService } from "../../utilities/translation-service";
-import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
-import { Color } from "tns-core-modules/color/color";
 import { SecureStorage } from "nativescript-secure-storage";
 import { TNSFancyAlert } from 'nativescript-fancyalert';
 import {exit} from 'nativescript-exit';
 import { login as fbLogin } from "nativescript-facebook";
+import { MessageService } from "../../utilities/message-service"
 
 const secureStorage = new SecureStorage();
 
@@ -91,16 +90,7 @@ export function deleteAccount(viewModel: DeleteAccountViewModel, isExternal: boo
                         message = TranslationService.localizeValue("incorrectPassword", "delete-account-page", "message");
                     }
 
-                    viewModel.feedback.show({
-                        message: message,
-                        messageColor: new Color("#FFFFFF"),
-                        messageSize: 16,
-                        position: FeedbackPosition.Top,
-                        type: FeedbackType.Error,
-                        duration: 3000,
-                        backgroundColor: new Color("#C91C1C"),
-                        onTap: () => { this.feedback.hide() }
-                    });
+                    MessageService.showError(message, viewModel.feedback);
                 }
             }
         }, (reject) => {

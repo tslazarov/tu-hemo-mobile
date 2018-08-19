@@ -5,8 +5,7 @@ import { topmost } from "tns-core-modules/ui/frame/frame";
 import { HttpClient } from "../../utilities/http-client";
 import { APIConstants } from "../../constants/api-endpoints";
 import { TranslationService } from "../../utilities/translation-service";
-import { Color } from "tns-core-modules/color/color";
-import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
+import { MessageService } from "../../utilities/message-service"
 
 import { RegisterUserViewModel } from "./register-user-information-view-model";
 
@@ -45,16 +44,7 @@ export function onNextTap(args: EventData): void {
         if(result) {
             message = TranslationService.localizeValue("alreadyExistingEmail", "register-page", "message");
 
-            viewModel.feedback.show({
-                message: message,
-                messageColor: new Color("#FFFFFF"),
-                messageSize: 16,
-                position: FeedbackPosition.Top,
-                type: FeedbackType.Error,
-                duration: 3000,
-                backgroundColor: new Color("#C91C1C"),
-                onTap: () => { this.feedback.hide() }
-            });
+            MessageService.showError(message, viewModel.feedback);
         }
         else {
             const navigationEntry = {

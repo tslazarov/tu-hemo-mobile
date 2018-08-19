@@ -1,8 +1,8 @@
 import { Observable } from "tns-core-modules/data/observable/observable";
 import { ObservableProperty } from "../../shared/observable-property-decorator";
 import { TranslationService } from "../../utilities/translation-service"
-import { Feedback, FeedbackType, FeedbackPosition } from "nativescript-feedback";
-import { Color } from "tns-core-modules/color/color";
+import { Feedback } from "nativescript-feedback";
+import { MessageService } from "../../utilities/message-service"
 
 export class ChangePersonalInformationViewModel extends Observable {
     // labels
@@ -66,16 +66,7 @@ export class ChangePersonalInformationViewModel extends Observable {
             isValid = false;
         }
         if(!isValid) {
-            this.feedback.show({
-                message: message,
-                messageColor: new Color("#FFFFFF"),
-                messageSize: 16,
-                position: FeedbackPosition.Top,
-                type: FeedbackType.Error,
-                duration: 3000,
-                backgroundColor: new Color("#C91C1C"),
-                onTap: () => { this.feedback.hide() }
-              });
+            MessageService.showError(message, this.feedback);
         }
 
         return isValid;
@@ -110,16 +101,7 @@ export class ChangePersonalInformationViewModel extends Observable {
         }
 
         if(!isValid) {
-            this.feedback.show({
-                message: message,
-                messageColor: new Color("#FFFFFF"),
-                messageSize: 16,
-                position: FeedbackPosition.Top,
-                type: FeedbackType.Error,
-                duration: 3000,
-                backgroundColor: new Color("#C91C1C"),
-                onTap: () => { this.feedback.hide() }
-              });
+            MessageService.showError(message, this.feedback);
         }
 
         return isValid;

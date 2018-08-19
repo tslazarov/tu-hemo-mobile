@@ -8,6 +8,9 @@ import { HttpClient } from "../../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
 import { fromBase64, fromResource } from "tns-core-modules/image-source/image-source";
 import { DateFormatter } from "../../utilities/date-formatter";
+import { MessageService } from "../../utilities/message-service"
+import { TranslationService } from "../../utilities/translation-service"
+
 
 import { SearchDetailViewModel } from "./search-detail-view-model";
 
@@ -104,6 +107,7 @@ export function onSignUpTap(args: EventData): void {
     const button = <Button>args.object;
     const viewModel = <SearchDetailViewModel>button.bindingContext;
 
+    let message;
     let url = `${APIConstants.Domain}/${APIConstants.RequestAddDonatorEndpoint}`;
     let contentType = 'application/json';
     let content = JSON.stringify({ "id": viewModel.id });
@@ -111,11 +115,17 @@ export function onSignUpTap(args: EventData): void {
     HttpClient.postRequest(url, content, secureStorage.getSync({key: "access_token" }), contentType)
     .then((response) => {
         const result = response.content.toJSON();
-        
+
         if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")) {
             if(result["isSuccessful"]) {
-                        // send message
+                message = TranslationService.localizeValue("addDonatorSuccess", "search-detail-page", "message");
+                MessageService.showSuccess(message, viewModel.feedback);
 
+                viewModel.isSigned = true;
+            }
+            else{
+                message = TranslationService.localizeValue("addDonatorFail", "search-detail-page", "message");
+                MessageService.showError(message, viewModel.feedback);
             }
         }
     }, (reject) => {
@@ -127,6 +137,7 @@ export function onCancelTap(args: EventData): void {
     const button = <Button>args.object;
     const viewModel = <SearchDetailViewModel>button.bindingContext;
 
+    let message;
     let url = `${APIConstants.Domain}/${APIConstants.RequestRemoveDonatorEndpoint}`;
     let contentType = 'application/json';
     let content = JSON.stringify({ "id": viewModel.id });
@@ -137,8 +148,14 @@ export function onCancelTap(args: EventData): void {
 
         if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")) {
             if(result["isSuccessful"]) {
-                        // send message
+                message = TranslationService.localizeValue("removeDonatorSuccess", "search-detail-page", "message");
+                MessageService.showSuccess(message, viewModel.feedback);
 
+                viewModel.isSigned = false;
+            }
+            else {
+                message = TranslationService.localizeValue("removeDonatorFail", "search-detail-page", "message");
+                MessageService.showError(message, viewModel.feedback);
             }
         }
     }, (reject) => {

@@ -8,6 +8,7 @@ import { APIConstants } from "../../constants/api-endpoints";
 import { TranslationService } from "../../utilities/translation-service";
 import { Color } from "tns-core-modules/color/color";
 import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
+import { MessageService } from "../../utilities/message-service"
 
 import { ForgotPasswordInitialViewModel } from "./forgot-password-initial-view-model";
 
@@ -47,30 +48,13 @@ export function onNextTap(args: EventData): void {
         if(!result) {
             message = TranslationService.localizeValue("nonExistingEmail", "forgot-password-page", "message");
 
-            viewModel.feedback.show({
-                message: message,
-                messageColor: new Color("#FFFFFF"),
-                messageSize: 16,
-                position: FeedbackPosition.Top,
-                type: FeedbackType.Error,
-                duration: 3000,
-                backgroundColor: new Color("#C91C1C"),
-                onTap: () => { this.feedback.hide() }
-            });
+            MessageService.showError(message, viewModel.feedback);
         }
         else {
             if(result.hasOwnProperty("resetCode")){
                 message = TranslationService.localizeValue("sendResetCode", "forgot-password-page", "message");
 
-                viewModel.feedback.show({
-                    message: message,
-                    messageColor: new Color("#FFFFFF"),
-                    messageSize: 16,
-                    position: FeedbackPosition.Top,
-                    type: FeedbackType.Success,
-                    duration: 3000,
-                    onTap: () => { this.feedback.hide() }
-                });
+                MessageService.showSuccess(message, viewModel.feedback);
 
                 const navigationEntry = {
                     moduleName: "forgot-password/secondary/forgot-password-secondary-page",

@@ -625,5 +625,23 @@ export class LabelsAndMessages {
                 "bg": "Моля изберете кръвна група"
             }
         },
+        "search-detail-page": {
+            "addDonatorSuccess": {
+                "en": "You were added in the list of donators.",
+                "bg": "Бяхте добавен в списъка с кръводарители."
+            },
+            "addDonatorFail": {
+                "en": "Error occured while adding you in the list of donators.",
+                "bg": "Възникна грешка при добавянето ви в списъка с кръводарители."
+            },
+            "removeDonatorSuccess": {
+                "en": "You were removed from the list of donators.",
+                "bg": "Бяхте добавен в списъка с кръводарители."
+            },
+            "removeDonatorFail": {
+                "en": "Error occured while removing you from the list of donators.",
+                "bg": "Възникна грешка при добавянето ви в списъка с кръводарители."
+            }
+        }
     }
 }

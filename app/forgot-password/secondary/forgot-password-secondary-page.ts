@@ -7,6 +7,7 @@ import { HttpClient } from "../../utilities/http-client";
 import { TranslationService } from "../../utilities/translation-service";
 import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
 import { Color } from "tns-core-modules/color/color";
+import { MessageService } from "../../utilities/message-service";
 
 import { ForgotPasswordSecondaryViewModel } from "./forgot-password-secondary-view-model";
 
@@ -60,15 +61,7 @@ export function onChangeTap(args: EventData): void {
             if(result["isSuccessful"]) {
                 message = TranslationService.localizeValue("passwordReset", "forgot-password-page", "message");
     
-                viewModel.feedback.show({
-                    message: message,
-                    messageColor: new Color("#FFFFFF"),
-                    messageSize: 16,
-                    position: FeedbackPosition.Top,
-                    type: FeedbackType.Success,
-                    duration: 3000,
-                    onTap: () => { this.feedback.hide() }
-                });
+                MessageService.showSuccess(message, viewModel.feedback);
     
                 const navigationEntry = {
                     moduleName: "login/login-page",
@@ -83,16 +76,7 @@ export function onChangeTap(args: EventData): void {
                     message = TranslationService.localizeValue("invalidResetCode", "forgot-password-page", "message");
                 }
 
-                viewModel.feedback.show({
-                    message: message,
-                    messageColor: new Color("#FFFFFF"),
-                    messageSize: 16,
-                    position: FeedbackPosition.Top,
-                    type: FeedbackType.Error,
-                    duration: 3000,
-                    backgroundColor: new Color("#C91C1C"),
-                    onTap: () => { this.feedback.hide() }
-                });
+                MessageService.showError(message, viewModel.feedback);
             }
         }
     }, (reject) => {

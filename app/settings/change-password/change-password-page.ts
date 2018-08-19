@@ -6,9 +6,8 @@ import { APIConstants } from "../../constants/api-endpoints";
 import { HttpClient } from "../../utilities/http-client";
 import { ChangePasswordViewModel } from "./change-password-view-model";
 import { TranslationService } from "../../utilities/translation-service";
-import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
-import { Color } from "tns-core-modules/color/color";
 import { SecureStorage } from "nativescript-secure-storage";
+import { MessageService } from "../../utilities/message-service"
 
 const secureStorage = new SecureStorage();
 
@@ -42,15 +41,7 @@ export function onChangeTap(args: EventData): void {
             if(result["isSuccessful"]) {
                 message = TranslationService.localizeValue("passwordChanged", "change-password-page", "message");
     
-                viewModel.feedback.show({
-                    message: message,
-                    messageColor: new Color("#FFFFFF"),
-                    messageSize: 16,
-                    position: FeedbackPosition.Top,
-                    type: FeedbackType.Success,
-                    duration: 3000,
-                    onTap: () => { this.feedback.hide() }
-                });
+                MessageService.showSuccess(message, viewModel.feedback);
     
                 const navigationEntry = {
                     moduleName: "settings/settings-page",
@@ -65,16 +56,7 @@ export function onChangeTap(args: EventData): void {
                     message = TranslationService.localizeValue("incorrectOldPassword", "change-password-page", "message");
                 }
 
-                viewModel.feedback.show({
-                    message: message,
-                    messageColor: new Color("#FFFFFF"),
-                    messageSize: 16,
-                    position: FeedbackPosition.Top,
-                    type: FeedbackType.Error,
-                    duration: 3000,
-                    backgroundColor: new Color("#C91C1C"),
-                    onTap: () => { this.feedback.hide() }
-                });
+                MessageService.showError(message, viewModel.feedback);
             }
         }
     }, (reject) => {

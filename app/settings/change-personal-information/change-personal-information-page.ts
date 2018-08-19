@@ -7,11 +7,10 @@ import { PhotoUploader } from "../../utilities/photo-uploader";
 import { APIConstants } from "../../constants/api-endpoints";
 import { HttpClient } from "../../utilities/http-client";
 import { TranslationService } from "../../utilities/translation-service";
-import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
-import { Color } from "tns-core-modules/color/color";
 import { SecureStorage } from "nativescript-secure-storage";
 import { fromBase64, fromResource } from "image-source";
 import { topmost } from "tns-core-modules/ui/frame/frame";
+import { MessageService } from "../../utilities/message-service"
 
 import { ChangePersonalInformationViewModel } from "./change-personal-information-view-model";
 
@@ -98,15 +97,7 @@ export function onChangeTap(args: EventData): void {
                 if(result["isSuccessful"]) {
                     message = TranslationService.localizeValue("personalInformationChanged", "change-personal-information-page", "message");
         
-                    viewModel.feedback.show({
-                        message: message,
-                        messageColor: new Color("#FFFFFF"),
-                        messageSize: 16,
-                        position: FeedbackPosition.Top,
-                        type: FeedbackType.Success,
-                        duration: 3000,
-                        onTap: () => { this.feedback.hide() }
-                    });
+                    MessageService.showSuccess(message, viewModel.feedback);
         
                     const navigationEntry = {
                         moduleName: "settings/settings-page",
@@ -121,16 +112,7 @@ export function onChangeTap(args: EventData): void {
                         message = TranslationService.localizeValue("personalInformationNotChanged", "change-personal-information-page", "message");
                     }
     
-                    viewModel.feedback.show({
-                        message: message,
-                        messageColor: new Color("#FFFFFF"),
-                        messageSize: 16,
-                        position: FeedbackPosition.Top,
-                        type: FeedbackType.Error,
-                        duration: 3000,
-                        backgroundColor: new Color("#C91C1C"),
-                        onTap: () => { this.feedback.hide() }
-                    });
+                    MessageService.showError(message, viewModel.feedback);
                 }
             }
 
