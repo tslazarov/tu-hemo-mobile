@@ -40,12 +40,9 @@ export class PhotoUploader {
                 
                                     bmp.dispose(function(b) {
                                         b.insert(mutableImage);
-                                        console.log('resize');
                                         let b2 = b.resizeMax(300);
                                         let resizedImage = b2.toImageSource();
-                
-                                        console.log( resizedImage.width + "x" + resizedImage.height );
-            
+                            
                                         resolve(resizedImage);
                                     });
                                 }).catch((e) => {

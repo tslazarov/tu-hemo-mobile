@@ -37,7 +37,6 @@ export function setRequest(page, id:string) {
     HttpClient.getRequest(url, secureStorage.getSync({key: "access_token" }))
     .then((response) => {
         const result = response.content.toJSON();
-        console.log(result["isSigned"]);
         if(result && result.hasOwnProperty("owner")) {
             viewModel.owner = result["owner"];
             viewModel.requestedBloodType = viewModel.bloodTypes[result["requestedBloodType"]];
@@ -50,7 +49,6 @@ export function setRequest(page, id:string) {
             
            if(result["owner"]["image"] != null) {
                 let image = <Image>page.getViewById("ProfileImage");
-            console.log(result["owner"]["image"]);
                 if(image != null) {
                     let image = <Image>page.getViewById("ProfileImage");
 
@@ -85,11 +83,9 @@ export function onBackTap(args: EventData): void {
 }
 
 export function onMapReady(args) {
-    console.log("map ready");
     let map = args.map;
     const viewModel = <SearchDetailViewModel>map.bindingContext;
-    console.log(viewModel.latitude);
-    console.log(viewModel.longitude);
+
     map.setCenter({
         lat: viewModel.latitude,
         lng: viewModel.longitude,
@@ -115,9 +111,36 @@ export function onSignUpTap(args: EventData): void {
     HttpClient.postRequest(url, content, secureStorage.getSync({key: "access_token" }), contentType)
     .then((response) => {
         const result = response.content.toJSON();
-        console.log(response);
-        console.log(result);
-        // send message
+        
+        if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")) {
+            if(result["isSuccessful"]) {
+                        // send message
+
+            }
+        }
+    }, (reject) => {
+
+    });
+}
+
+export function onCancelTap(args: EventData): void { 
+    const button = <Button>args.object;
+    const viewModel = <SearchDetailViewModel>button.bindingContext;
+
+    let url = `${APIConstants.Domain}/${APIConstants.RequestRemoveDonatorEndpoint}`;
+    let contentType = 'application/json';
+    let content = JSON.stringify({ "id": viewModel.id });
+
+    HttpClient.postRequest(url, content, secureStorage.getSync({key: "access_token" }), contentType)
+    .then((response) => {
+        const result = response.content.toJSON();
+
+        if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")) {
+            if(result["isSuccessful"]) {
+                        // send message
+
+            }
+        }
     }, (reject) => {
 
     });

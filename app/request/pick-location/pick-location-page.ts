@@ -61,7 +61,6 @@ export function onMapReady(args) {
         }]);
          
         googlePlacesAutocomplete.getGeolocationByPoint(point.lat, point.lng).then((result) => {
-            console.log(result);
             viewModel.address = result.address;
             viewModel.city = result.city;
             viewModel.country = result.country;

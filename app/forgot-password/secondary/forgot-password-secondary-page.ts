@@ -16,8 +16,6 @@ export function onNavigatingTo(args: EventData) {
 
     page.addCssFile("./forgot-password/initial/forgot-password-secondary-page.css");
 
-    console.log('here');
-
     page.bindingContext = new ForgotPasswordSecondaryViewModel();
 
     if(typeof context != 'undefined' && context) {
@@ -48,8 +46,6 @@ export function onChangeTap(args: EventData): void {
     if(!viewModel.validateEmptyResetCodeAndPassword() || !viewModel.validateFields()){
         return;
     }
-
-    console.log("changed");
 
     let message;
     

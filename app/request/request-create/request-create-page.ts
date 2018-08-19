@@ -50,8 +50,6 @@ export function onCreateTap(args: EventData): void {
         "requestedBloodType": viewModel.selectedBloodType 
     });
 
-    console.log(content);
-
     HttpClient.postRequest(url, content, secureStorage.getSync({key: "access_token" }), contentType)
     .then((response) => {
         const result = response.content.toJSON();

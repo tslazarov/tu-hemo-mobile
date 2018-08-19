@@ -33,7 +33,7 @@ export function setPersonalInformation(page: Page) {
     HttpClient.getRequest(userBasicProfileUrl, secureStorage.getSync({key: "access_token" }))
     .then((response) => {
         const result = response.content.toJSON();
-        console.log(result);
+
         if(result) {
             viewModel.firstName = result.hasOwnProperty("firstName") ? result["firstName"] : "";
             viewModel.lastName = result.hasOwnProperty("lastName") ? result["lastName"] : "";
@@ -93,8 +93,7 @@ export function onChangeTap(args: EventData): void {
     HttpClient.putRequest(url, content, secureStorage.getSync({key: "access_token" }), contentType)
         .then((response) => {
             const result = response.content.toJSON();
-            console.log(result);
-            console.log(response.statusCode);
+
             if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")) {
                 if(result["isSuccessful"]) {
                     message = TranslationService.localizeValue("personalInformationChanged", "change-personal-information-page", "message");
@@ -179,13 +178,8 @@ export function onSelectSingleTap(args: EventData): void {
             viewModel.imageAsBase64 = base64;
             let image = <Image>button.page.getViewById("ProfileImage");
 
-            console.log(base64);
-
             if(image != null) {
-                console.log('here');
                 image.imageSource = fromBase64(base64);
-                console.log(image.imageSource);
-                console.log(response);
             }
         }
     }, (reject) => {

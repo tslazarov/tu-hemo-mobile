@@ -86,7 +86,6 @@ export function getItems(skip: Number): Promise<any> {
             HttpClient.getRequest(url, secureStorage.getSync({key: "access_token" }))
             .then((response) => {
                 const result = response.content.toJSON();
-                console.log(result);
                 resolve(result);
             }, (reject) => {
                 reject(reject);

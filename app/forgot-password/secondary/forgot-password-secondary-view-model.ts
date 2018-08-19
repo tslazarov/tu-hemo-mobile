@@ -27,7 +27,6 @@ export class ForgotPasswordSecondaryViewModel extends Observable {
     }
 
     setLabelsAndMessages():void {
-        console.log('set');
         this.changePassword = TranslationService.localizeValue("changePassword", "forgot-password-page", "label");
         this.resetCodeHint = TranslationService.localizeValue("resetCodeHint", "forgot-password-page", "label");
         this.passwordHint = TranslationService.localizeValue("passwordHint", "forgot-password-page", "label");
