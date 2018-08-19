@@ -74,7 +74,7 @@
         </StackLayout>
         <StackLayout verticalAlign="center" row="5">
             <Button  visibility="{{ isSigned ? 'collapsed' : 'visible' }}" class="btn btn-primary" text="{{ signUpDonation }}" tap="onSignUpTap"></Button>
-            <Button  visibility="{{ isSigned ? 'visible' : 'collapsed' }}" class="btn btn-primary" text="{{ cancelDonation }}" tap="onCancelTap"></Button>
+            <Button  visibility="{{ isSigned ? 'visible' : 'collapsed' }}" class="btn btn-outline" text="{{ cancelDonation }}" tap="onCancelTap"></Button>
         </StackLayout>
     </GridLayout>
 </Page>

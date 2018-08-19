@@ -20,5 +20,6 @@ export class APIConstants {
     static readonly RequestsGetListEndpoint : string = "api/requests";
     static readonly RequestsGetListFullEndpoint : string = "api/requests/full";
     static readonly RequestGetRequestEndpoint : string = "api/requests";
+    static readonly RequestAddDonatorEndpoint : string = "api/requests/addDonator";
 
 }

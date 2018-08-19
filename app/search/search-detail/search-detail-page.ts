@@ -32,11 +32,12 @@ export function setRequest(page, id:string) {
 
     let viewModel: SearchDetailViewModel = page.bindingContext;
 
-    let userBasicProfileUrl = `${APIConstants.Domain}/${APIConstants.RequestGetRequestEndpoint}/${id}`;
+    let url = `${APIConstants.Domain}/${APIConstants.RequestGetRequestEndpoint}/${id}`;
     
-    HttpClient.getRequest(userBasicProfileUrl, secureStorage.getSync({key: "access_token" }))
+    HttpClient.getRequest(url, secureStorage.getSync({key: "access_token" }))
     .then((response) => {
         const result = response.content.toJSON();
+        console.log(result["isSigned"]);
         if(result && result.hasOwnProperty("owner")) {
             viewModel.owner = result["owner"];
             viewModel.requestedBloodType = viewModel.bloodTypes[result["requestedBloodType"]];
@@ -45,7 +46,7 @@ export function setRequest(page, id:string) {
             viewModel.address = result["address"];
             viewModel.latitude = result["latitude"];
             viewModel.longitude = result["longitude"];
-            viewModel.isSigned = result["IsSigned"];
+            viewModel.isSigned = result["isSigned"];
             
            if(result["owner"]["image"] != null) {
                 let image = <Image>page.getViewById("ProfileImage");
@@ -101,4 +102,23 @@ export function onMapReady(args) {
             lat: viewModel.latitude,
             lng: viewModel.longitude
     }]);
+}
+
+export function onSignUpTap(args: EventData): void { 
+    const button = <Button>args.object;
+    const viewModel = <SearchDetailViewModel>button.bindingContext;
+
+    let url = `${APIConstants.Domain}/${APIConstants.RequestAddDonatorEndpoint}`;
+    let contentType = 'application/json';
+    let content = JSON.stringify({ "id": viewModel.id });
+
+    HttpClient.postRequest(url, content, secureStorage.getSync({key: "access_token" }), contentType)
+    .then((response) => {
+        const result = response.content.toJSON();
+        console.log(response);
+        console.log(result);
+        // send message
+    }, (reject) => {
+
+    });
 }
