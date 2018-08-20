@@ -1,6 +1,7 @@
 import { Observable } from "tns-core-modules/data/observable/observable";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { TranslationService } from "../utilities/translation-service"
+import { Feedback } from "nativescript-feedback";
 
 export class RequestViewModel extends Observable {
     // labels
@@ -10,10 +11,14 @@ export class RequestViewModel extends Observable {
     requestedBloodQuantityLabel: string;
 
     items: ObservableArray<any>;
-    bloodTypes = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" ]
+    bloodTypes = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
+
+    feedback: Feedback;
+
     constructor() {
         super();
 
+        this.feedback = new Feedback();
         this.items = new ObservableArray<any>();
         this.setLabelsAndMessages();
     }

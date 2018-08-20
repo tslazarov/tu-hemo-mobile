@@ -615,6 +615,12 @@ export class LabelsAndMessages {
                 "bg": "Възникна проблем при записването на промените"
             }
         },
+        "request-page": {
+            "deleteRequestSuccess": {
+                "en": "The request has been deleted successfully.",
+                "bg": "Заявката беше изтрита успешно."
+            },
+        },
         "request-create-edit-page": {
             "emptyAddress": {
                 "en": "Please enter address",

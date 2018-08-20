@@ -49,11 +49,11 @@ export class RequestCreateEditViewModel extends Observable {
         
         if(!(typeof this.address != 'undefined' && this.address)) {
             
-            message = TranslationService.localizeValue("emptyAddress", "request-create-page", "message");
+            message = TranslationService.localizeValue("emptyAddress", "request-create-edit-page", "message");
             isValid = false;
         } else if(!(typeof this.bloodQuantity != 'undefined' && this.bloodQuantity)) {
             
-            message = TranslationService.localizeValue("emptyBloodQuantity", "request-create-page", "message");
+            message = TranslationService.localizeValue("emptyBloodQuantity", "request-create-edit-page", "message");
             isValid = false;
         }
 
@@ -70,11 +70,15 @@ export class RequestCreateEditViewModel extends Observable {
 
         if(+this.bloodQuantity < 0 || +this.bloodQuantity > 50000) {
             isValid = false;
-            message = TranslationService.localizeValue("allowedBloodQuantity", "request-create-page", "message"); 
-        } else if(typeof this.selectedBloodType == 'undefined' || !this.selectedBloodType  || this.selectedBloodType < 0 || this.selectedBloodType > 7) {
+            message = TranslationService.localizeValue("allowedBloodQuantity", "request-create-edit-page", "message"); 
+        } else if(typeof this.selectedBloodType == 'undefined'  || this.selectedBloodType < 0 || this.selectedBloodType > 7) {
             isValid = false;
-            message = TranslationService.localizeValue("invalidBloodType", "request-create-page", "message"); 
+            message = TranslationService.localizeValue("invalidBloodType", "request-create-edit-page", "message"); 
         }
+
+        console.log(typeof this.selectedBloodType == 'undefined');
+        console.log(!this.selectedBloodType);
+        console.log(this.selectedBloodType);
 
         if(!isValid) {
             MessageService.showError(message, this.feedback);

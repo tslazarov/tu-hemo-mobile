@@ -37,11 +37,16 @@
                                                 <Span text="{{ date }}" class="bold h4"></Span>
                                             </FormattedString>
                                         </Label>
-                                        <StackLayout horizontalAlignment="right" row="2" col="1">
+                                        <StackLayout orientation="horizontal" horizontalAlignment="right" row="2" col="1">
                                         <Label class="m-l-5 m-b-5" tap="onEditTap">
                                                 <FormattedString>
                                                     <Span text="EDIT" class="bold h4"></Span>
                                                 </FormattedString>
+                                            </Label>
+                                            <Label class="m-l-5 m-b-5" tap="onDeleteTap">
+                                                    <FormattedString>
+                                                        <Span text="DELETE" class="bold h4"></Span>
+                                                    </FormattedString>
                                             </Label>
                                         </StackLayout>
                                     </GridLayout>

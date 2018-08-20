@@ -1,9 +1,8 @@
 import { Observable } from "tns-core-modules/data/observable/observable";
 import { ObservableProperty } from "../shared/observable-property-decorator";
 import { TranslationService } from "../utilities/translation-service"
-import { Feedback, FeedbackType, FeedbackPosition } from "nativescript-feedback";
-import { Color } from "tns-core-modules/color/color";
-import { MessageService } from "../../utilities/message-service"
+import { Feedback } from "nativescript-feedback";
+import { MessageService } from "../utilities/message-service"
 
 export class LoginViewModel extends Observable {
     // labels

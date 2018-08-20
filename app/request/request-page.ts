@@ -1,5 +1,6 @@
 import { EventData } from "tns-core-modules/data/observable/observable";
 import { Page } from "tns-core-modules/ui/page/page";
+import { Label } from "ui/label";
 import { Button } from "tns-core-modules/ui/button/button";
 import { ListViewEventData, RadListView, ListViewLoadOnDemandMode } from "nativescript-ui-listview";
 import { topmost } from "tns-core-modules/ui/frame/frame";
@@ -7,13 +8,16 @@ import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { DateFormatter } from "../utilities/date-formatter";
 import { SecureStorage } from "nativescript-secure-storage";
-
+import { MessageService } from "../utilities/message-service";
+import { TranslationService } from "../utilities/translation-service"
 import { RequestViewModel } from "./request-view-model";
 
 const secureStorage = new SecureStorage();
 
 export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
+
+    console.log('navigated');
 
     page.addCssFile("./request/request-page.css");
 
@@ -114,7 +118,6 @@ export function onFabCreateTap(args: EventData) {
 export function onEditTap(args: EventData) {
     const button = <Button>args.object;
     const card = button.parent.parent.parent;
-    console.log(card);
     const id = card.id;
 
     const navigationEntry = {
@@ -129,4 +132,48 @@ export function onEditTap(args: EventData) {
     };
 
     topmost().navigate(navigationEntry);
+}
+
+export function onDeleteTap(args: EventData) {
+    const label = <Label>args.object;
+    const viewModel = <RequestViewModel>label.bindingContext;
+
+    console.log(viewModel);
+
+    const card = button.parent.parent.parent;
+    const id = card.id;
+
+    let message;
+    let url = `${APIConstants.Domain}/${APIConstants.RequestsDeleteRequestEndpoint}`;
+    let contentType = 'application/json';
+    let content = JSON.stringify({ 
+        "id": id
+    });
+
+    HttpClient.putRequest(url, content, secureStorage.getSync({key: "access_token" }), contentType)
+    .then((response) => {
+        const result = response.content.toJSON();
+        console.log(result);
+        console.log(response.statusCode);
+        if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")) {
+
+            if(result["isSuccessful"]) {
+
+                message = TranslationService.localizeValue("deleteRequestSuccess", "request-page", "message");
+                console.log(message);
+                console.log(viewModel.feedback);
+                MessageService.showSuccess(message, viewModel.feedback);
+
+                const navigationEntry = {
+                    moduleName: "request/request-page",
+                    clearHistory: true,
+                    animated: false
+                };
+            
+                topmost().navigate(navigationEntry);
+            }
+        }
+    }, (reject) => {
+
+    });
 }

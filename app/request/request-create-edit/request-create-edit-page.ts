@@ -22,8 +22,6 @@ export function onNavigatingTo(args: EventData) {
 
     page.bindingContext = new RequestCreateEditViewModel();
 
-    console.log(context.container);
-
     if(typeof context != 'undefined' && context && context.container && context.container.address) {
         page.bindingContext.address = context.container.address;
         page.bindingContext.city = context.container.city;
