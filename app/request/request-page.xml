@@ -18,26 +18,33 @@
                     <StackLayout orientation="vertical">
                         <StackLayout orientation="horizontal" horizontalAlignment="center" class="m-l-10 m-r-10 m-t-10">
                                 <card:CardView id="{{ id }}" class="cardStyle m-5" width="96%" ripple="true" elevation="10" radius="0"  tap="onItemTap">
-                                    <StackLayout orientation="vertical" class="p-10 item-wrapper">
-                                        <Label class="m-l-5 m-t-5">
+                                    <GridLayout rows="auto,auto,auto" columns="auto,*" orientation="vertical" class="p-10 item-wrapper">
+                                        <Label class="m-l-5 m-t-5" row="0" col="0">
                                             <FormattedString>
                                                 <Span text="{{ bloodTypeLabel }}" class="normal-label h4"></Span>
                                                 <Span text="{{ bloodType }}" class="bold h4"></Span>
                                             </FormattedString>
                                         </Label>
-                                        <Label class="m-l-5 m-b-5 m-t-5">
+                                        <Label class="m-l-5 m-b-5 m-t-5" row="1" col="0">
                                             <FormattedString>
                                                 <Span text="{{ requestedBloodQuantityLabel }}" class="normal-label h4"></Span>
                                                 <Span text="{{ requestedBloodQuantity }}" class="bold h4"></Span>
                                             </FormattedString>
                                         </Label>
-                                        <Label class="m-l-5 m-b-5">
+                                        <Label class="m-l-5 m-b-5" row="2" col="0">
                                             <FormattedString>
                                                 <Span text="{{ dateLabel }}" class="normal-label h4"></Span>
                                                 <Span text="{{ date }}" class="bold h4"></Span>
                                             </FormattedString>
                                         </Label>
-                                    </StackLayout>
+                                        <StackLayout horizontalAlignment="right" row="2" col="1">
+                                        <Label class="m-l-5 m-b-5" tap="onEditTap">
+                                                <FormattedString>
+                                                    <Span text="EDIT" class="bold h4"></Span>
+                                                </FormattedString>
+                                            </Label>
+                                        </StackLayout>
+                                    </GridLayout>
                                 </card:CardView>
                         </StackLayout>
                     </StackLayout>

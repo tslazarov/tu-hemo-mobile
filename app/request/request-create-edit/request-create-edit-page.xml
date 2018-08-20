@@ -4,7 +4,8 @@
     <GridLayout rows="auto,*, auto">
         <GridLayout row="0" columns="auto,*" width="100%" class="custom-action-bar">
             <Image col="0" id="back" src="res://ic_back_arrow" class="m-l-20" verticalAlignment="center" stretch="aspectFit" tap="onBackTap"></Image>
-            <Label col="1" text="{{ requestCreate }}" class="h3 action-bar-title"></Label>
+            <Label col="1" visibility="{{ isEditMode ? 'collapsed' : 'visible' }}" text="{{ requestCreate }}" class="h3 action-bar-title"></Label>
+            <Label col="1" visibility="{{ isEditMode ? 'visible' : 'collapsed' }}" text="{{ requestEdit }}" class="h3 action-bar-title"></Label>
         </GridLayout>
         <StackLayout orientation="vertical" verticalAlignment="center" row="1" class="p-t-15">
             <TextField class="m-15" hint="{{ addressHint }}" textWrap = "true" editable= "false"
@@ -14,7 +15,7 @@
                 text="{{ bloodQuantity }}">
             </TextField>
             <Label text="{{ bloodType }}" class="m-l-20 m-t-15 m-b-15 h4"/>
-            <WrapLayout orientation="horizontal" class="m-l-15 m-r-15" loaded="onWrapLayoutLoaded">
+            <WrapLayout id="bloodTypeWrap" orientation="horizontal" class="m-l-15 m-r-15" loaded="onWrapLayoutLoaded">
                 <Label id="option-0" text="A+" class="blood-type-button" tap="onBloodTypeTap"/>
                 <Label id="option-1" text="A-" class="blood-type-button" tap="onBloodTypeTap"/>
                 <Label id="option-2" text="B+" class="blood-type-button" tap="onBloodTypeTap"/>
@@ -26,7 +27,8 @@
             </WrapLayout>
         </StackLayout>
         <StackLayout verticalAlign="center" row="2">
-            <Button class="btn btn-primary" text="{{ create }}" tap="onCreateTap"></Button>
+            <Button class="btn btn-primary" visibility="{{ isEditMode ? 'collapsed' : 'visible' }}" text="{{ create }}" tap="onCreateTap"></Button>
+            <Button class="btn btn-primary" visibility="{{ isEditMode ? 'visible' : 'collapsed' }}" text="{{ edit }}" tap="onEditTap"></Button>
         </StackLayout>
     </GridLayout>
 </Page>

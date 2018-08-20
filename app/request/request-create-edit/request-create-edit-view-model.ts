@@ -4,13 +4,15 @@ import { TranslationService } from "../../utilities/translation-service"
 import { Feedback } from "nativescript-feedback";
 import { MessageService } from "../../utilities/message-service"
 
-export class RequestCreateViewModel extends Observable {
+export class RequestCreateEditViewModel extends Observable {
     // labels
     requestCreate: string;
+    requestEdit: string;
     addressHint: string;
     bloodQuantityHint: string;
     bloodType: string;
     create: string;
+    edit: string;
 
     @ObservableProperty() address: string;
     @ObservableProperty() city: string;
@@ -19,6 +21,9 @@ export class RequestCreateViewModel extends Observable {
     @ObservableProperty() longitude: string;
     @ObservableProperty() selectedBloodType: number;
     @ObservableProperty() bloodQuantity: number;
+    @ObservableProperty() isEditMode: boolean;
+    @ObservableProperty() id: string;
+
     feedback: Feedback;
 
     constructor() {
@@ -29,11 +34,13 @@ export class RequestCreateViewModel extends Observable {
     }
 
     setLabelsAndMessages():void {
-        this.requestCreate = TranslationService.localizeValue("requestCreate", "request-create-page", "label")        
-        this.addressHint = TranslationService.localizeValue("addressHint", "request-create-page", "label")        
-        this.bloodQuantityHint = TranslationService.localizeValue("bloodQuantityHint", "request-create-page", "label");
-        this.bloodType = TranslationService.localizeValue("bloodType", "request-create-page", "label");
-        this.create = TranslationService.localizeValue("create", "request-create-page", "label");
+        this.requestCreate = TranslationService.localizeValue("requestCreate", "request-create-edit-page", "label");        
+        this.requestEdit = TranslationService.localizeValue("requestEdit", "request-create-edit-page", "label");        
+        this.addressHint = TranslationService.localizeValue("addressHint", "request-create-edit-page", "label");        
+        this.bloodQuantityHint = TranslationService.localizeValue("bloodQuantityHint", "request-create-edit-page", "label");
+        this.bloodType = TranslationService.localizeValue("bloodType", "request-create-edit-page", "label");
+        this.create = TranslationService.localizeValue("create", "request-create-edit-page", "label");
+        this.edit = TranslationService.localizeValue("edit", "request-create-edit-page", "label");
     }
 
     validateEmptyData():boolean {

@@ -322,9 +322,13 @@ export class LabelsAndMessages {
                 "bg": "ПРОМЕНИ"  
             }
         },
-        "request-create-page": {
+        "request-create-edit-page": {
             "requestCreate": {
                 "en": "Create request",
+                "bg": "Създай заявка" 
+            },
+            "requestEdit": {
+                "en": "Edit request",
                 "bg": "Създай заявка" 
             },
             "addressHint": {
@@ -342,6 +346,10 @@ export class LabelsAndMessages {
             "create": {
                 "en": "CREATE",
                 "bg": "СЪЗДАЙ"
+            },
+            "edit": {
+                "en": "EDIT",
+                "bg": "ПРОМЕНИ"
             }
         },
         "request-page": {
@@ -607,7 +615,7 @@ export class LabelsAndMessages {
                 "bg": "Възникна проблем при записването на промените"
             }
         },
-        "request-create-page": {
+        "request-create-edit-page": {
             "emptyAddress": {
                 "en": "Please enter address",
                 "bg": "Моля въведете адрес"
@@ -623,7 +631,15 @@ export class LabelsAndMessages {
             "invalidBloodType": {
                 "en": "Please select a blood type",
                 "bg": "Моля изберете кръвна група"
-            }
+            },
+            "createRequestSuccess": {
+                "en": "The request has been created successfully.",
+                "bg": "Заявката беше създадена успешно."
+            },
+            "editRequestSuccess": {
+                "en": "The request has been edited successfully.",
+                "bg": "Заявката беше променена успешно."
+            },
         },
         "search-detail-page": {
             "addDonatorSuccess": {

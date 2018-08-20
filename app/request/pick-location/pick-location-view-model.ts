@@ -16,6 +16,8 @@ export class PickLocationPageViewModel extends Observable {
     @ObservableProperty() longitude: string;
     @ObservableProperty() selectedBloodType: number;
     @ObservableProperty() bloodQuantity: number;
+    @ObservableProperty() isEditMode: boolean;
+    @ObservableProperty() id: string;
 
     constructor() {
         super();

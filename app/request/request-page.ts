@@ -104,7 +104,27 @@ export function onFabCreateTap(args: EventData) {
     const viewModel = <RequestViewModel>button.bindingContext;
 
     const navigationEntry = {
-        moduleName: "request/request-create/request-create-page",
+        moduleName: "request/request-create-edit/request-create-edit-page",
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
+}
+
+export function onEditTap(args: EventData) {
+    const button = <Button>args.object;
+    const card = button.parent.parent.parent;
+    console.log(card);
+    const id = card.id;
+
+    const navigationEntry = {
+        moduleName: "request/request-create-edit/request-create-edit-page",
+        context: {
+            "container": {
+                "isEditMode": true,
+                "id": id
+            }
+        },
         clearHistory: true
     };
 

@@ -27,6 +27,8 @@ export function onNavigatingTo(args: EventData) {
         page.bindingContext.longitude = context.container.longitude;
         page.bindingContext.bloodQuantity = context.container.bloodQuantity;
         page.bindingContext.selectedBloodType = context.container.selectedBloodType;
+        page.bindingContext.isEditMode = context.container.isEditMode;
+        page.bindingContext.id = context.container.id;
     }
 }
 
@@ -75,7 +77,7 @@ export function onfabSaveTap(args) {
     const viewModel = <PickLocationPageViewModel>page.bindingContext;
 
     const navigationEntry = {
-        moduleName: "request/request-create/request-create-page",
+        moduleName: "request/request-create-edit/request-create-edit-page",
         context: {
             "container": {
                 "address": viewModel.address,
@@ -84,11 +86,15 @@ export function onfabSaveTap(args) {
                 "latitude": viewModel.latitude,
                 "longitude": viewModel.longitude,
                 "bloodQuantity": viewModel.bloodQuantity,
-                "selectedBloodType": viewModel.selectedBloodType
+                "selectedBloodType": viewModel.selectedBloodType,
+                "isEditMode": viewModel.isEditMode,
+                "id": viewModel.id
             }
         },
         clearHistory: true
     };
+
+    console.log(navigationEntry.context);
 
     topmost().navigate(navigationEntry);
 }
