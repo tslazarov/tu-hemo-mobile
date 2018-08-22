@@ -1,0 +1,94 @@
+<Page navigatingTo="onNavigatingTo"    
+ actionBarHidden="true"
+ class="page" xmlns="http://schemas.nativescript.org/tns.xsd"
+ xmlns:map="nativescript-mapbox"
+ xmlns:lv="nativescript-ui-listview"
+ xmlns:card="nativescript-cardview">
+    <GridLayout rows="auto,auto,auto, auto">
+        <GridLayout row="0" columns="auto,*" width="100%" class="custom-action-bar">
+            <Image col="0" id="back" src="res://ic_back_arrow" class="m-l-20" verticalAlignment="center" stretch="aspectFit" tap="onBackTap"></Image>
+        </GridLayout>
+        <StackLayout orientation="vertical" row="1" verticalAlignment="top" class="p-t-15 m-t-20 m-l-20 m-r-20">   
+            <GridLayout rows="auto" columns="auto, *" class="m-b-10">
+                <Label row="0" col="0" class="m-r-20 section-header-label" text="{{ requestInformation }}"></Label>
+                <StackLayout row="0" col="1" class="hr-regular"></StackLayout>
+            </GridLayout>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ bloodTypeLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ requestedBloodType }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ bloodQuantityLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ requestedBloodQuantity }}" class="normal-label"></Span>
+                    <Span text="{{ quantityMlMeasurment }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ dateLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ date }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+        </StackLayout>
+        <StackLayout orientation="vertical" row="2" verticalAlignment="top" class="p-t-15 m-l-20 m-b-20 m-r-20">
+            <GridLayout rows="auto" columns="auto, *" class="m-b-10">
+                <Label row="0" col="0" class="m-r-20 section-header-label" text="{{ contactInformation }}"></Label>
+                <StackLayout row="0" col="1" class="hr-regular"></StackLayout>
+            </GridLayout>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ emailLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ owner.email }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+            <Label class="m-b-5 m-l-10">
+                <FormattedString>
+                    <Span text="{{ phoneNumberLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ owner.phoneNumber }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+            <Label class="m-b-5 m-l-10" textWrap="true">
+                <FormattedString>
+                    <Span text="{{ addressLabel }}" class="normal-label bold"></Span>
+                    <Span text="{{ address }}" class="normal-label"></Span>
+                </FormattedString>
+            </Label>
+        </StackLayout>
+        <StackLayout row="3" >
+            <lv:RadListView items="{{ items }}" enableCollapsibleGroups="true" groupingFunction="{{ groupingFunc }}">
+                <lv:RadListView.itemTemplate>
+                    <card:CardView id="{{ id }}" class="cardStyle m-5" width="96%" ripple="true" elevation="5" radius="0"  tap="onItemTap">
+                        <GridLayout rows="auto,auto" columns="auto,*" orientation="vertical" class="p-10 item-wrapper">
+                            <Label class="m-l-5 m-b-5" row="0" col="0">
+                                <FormattedString>
+                                    <Span text="{{ name }}" class="h3"></Span>
+                                </FormattedString>
+                            </Label>
+                            <Label class="m-l-5 m-t-5" row="1" col="0">
+                                <FormattedString>
+                                    <Span text="{{ bloodTypeLabel }}" class="normal-label h4"></Span>
+                                    <Span text="{{ bloodType }}" class="bold h4"></Span>
+                                </FormattedString>
+                            </Label>
+                            <StackLayout orientation="horizontal" horizontalAlignment="right" row="1" col="1">
+                                <Label visibility="{{ isApproved ? 'collapsed' : 'visible' }}" class="m-l-5 m-b-5" tap="onConfirmTap">
+                                    <FormattedString>
+                                        <Span text="APPROVE" class="bold h4"></Span>
+                                    </FormattedString>
+                                </Label>
+                                <Label visibility="{{ isApproved ? 'visible' : 'collapsed' }}" class="m-l-5 m-b-5" tap="onPendingTap">
+                                    <FormattedString>
+                                        <Span text="NOT APPROVE" class="bold h4"></Span>
+                                    </FormattedString>
+                                </Label>
+                            </StackLayout>
+                        </GridLayout>
+                    </card:CardView>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+        </StackLayout>
+    </GridLayout>
+</Page>

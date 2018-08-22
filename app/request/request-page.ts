@@ -98,11 +98,6 @@ export function getItems(skip: Number): Promise<any> {
     );
 }
 
-export function onItemTap(args) {
-    console.log(args.object.id);
-}
-
-
 export function onFabCreateTap(args: EventData) {
     const button = <Button>args.object;
     const viewModel = <RequestViewModel>button.bindingContext;
@@ -174,4 +169,22 @@ export function onDeleteTap(args: EventData) {
     }, (reject) => {
 
     });
+}
+
+export function onItemTap(args) {
+    const viewModel = <RequestViewModel>args.object.page.bindingContext;
+    callDetailPage(args.object.id, viewModel);
+}
+
+export function callDetailPage(id:string, viewModel: RequestViewModel)
+{
+    const navigationEntry = {
+        moduleName: "request/request-detail/request-detail-page",
+        context: {
+            "id": id
+        },
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
 }

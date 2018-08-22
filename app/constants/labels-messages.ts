@@ -433,7 +433,53 @@ export class LabelsAndMessages {
                 "en": "Requests",
                 "bg": "Заявки"  
             },
-        }
+        },
+        "request-detail-page": {
+            "phoneNumberLabel": {
+                "en": "Phone number: ",
+                "bg": "Телефонен номер: "
+            },
+            "emailLabel": {
+                "en": "Email: ",
+                "bg": "Имейл: "
+            },
+            "quantityMlMeasurment": {
+                "en": " ml.",
+                "bg": " мл."
+            },
+            "bloodQuantityLabel": {
+                "en": "Blood quantity: ",
+                "bg": "Количество кръв: "
+            },
+            "bloodTypeLabel": {
+                "en": "Blood type: ",
+                "bg": "Кръвна група: " 
+            },
+            "dateLabel": {
+                "en": "Date: ",
+                "bg": "Дата: "  
+            },
+            "addressLabel": {
+                "en": "Address: ",
+                "bg": "Адрес: "  
+            },
+            "contactInformation": {
+                "en": "CONTACT INFORMATION",
+                "bg": "ИНФОРМАЦИЯ ЗА ВРЪЗКА"
+            },
+            "requestInformation": {
+                "en": "REQUEST INFORMATION",
+                "bg": "ИНФОРМАЦИЯ ЗА ЗАЯВКА"
+            },
+            "confirmedLabel": {
+                "en": "CONFIRMED",
+                "bg": "ПОТВЪРДЕНИ"
+            },
+            "pendingLabel": {
+                "en": "PENDING",
+                "bg": "ЧАКАЩИ ПОТВЪРЖДАВАНЕ"
+            }
+        },
     };
 
     static readonly messages = {

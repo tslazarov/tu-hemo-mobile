@@ -64,7 +64,7 @@
                         <lv:RadListView.itemTemplate>
                             <StackLayout orientation="vertical">
                                 <StackLayout orientation="horizontal" horizontalAlignment="center" class="m-l-10 m-r-10 m-t-10">
-                                        <card:CardView id="{{ id }}" class="cardStyle m-5" width="96%" ripple="true" elevation="10" radius="0"  tap="onItemTap">
+                                        <card:CardView id="{{ id }}" class="cardStyle m-5" width="96%" ripple="true" elevation="10" radius="0" tap="onItemTap">
                                             <GridLayout columns="auto, *" class="p-10">
                                                 <Image col="0" id="back" src="{{ image }}" width="80" height="80" class="m-5 card-image" stretch="aspectFit"></Image>
                                                 <StackLayout col="1" orientation="vertical" >
