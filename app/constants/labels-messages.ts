@@ -131,6 +131,10 @@ export class LabelsAndMessages {
                 "en": "Search",
                 "bg": "Търси"
             },
+            "search": {
+                "en": "SEARCH",
+                "bg": "ТЪРСИ"
+            },
             "listOption": {
                 "en": "LIST",
                 "bg": "СПИСЪК"
@@ -184,6 +188,14 @@ export class LabelsAndMessages {
             "cancelDonation": {
                 "en": "CANCEL DONATION",
                 "bg": "ОТКАЖИ СЕ ОТ ДАРЯВАНЕ"  
+            },
+            "contactInformation": {
+                "en": "CONTACT INFORMATION",
+                "bg": "ИНФОРМАЦИЯ ЗА ВРЪЗКА"
+            },
+            "requestInformation": {
+                "en": "REQUEST INFORMATION",
+                "bg": "ИНФОРМАЦИЯ ЗА ЗАЯВКА"
             }
         },
         "med-centers-page": {
@@ -194,6 +206,10 @@ export class LabelsAndMessages {
             "searchHeader": {
                 "en": "Search",
                 "bg": "Търси"
+            },
+            "search": {
+                "en": "SEARCH",
+                "bg": "ТЪРСИ"
             },
             "listOption": {
                 "en": "LIST",
@@ -210,6 +226,28 @@ export class LabelsAndMessages {
             "phoneNumberLabel": {
                 "en": "Phone number: ",
                 "bg": "Телефонен номер: "
+            }
+        },
+        "med-centers-detail-page": {
+            "emailLabel": {
+                "en": "Email: ",
+                "bg": "Имейл: "
+            },
+            "addressLabel": {
+                "en": "Address: ",
+                "bg": "Адрес: "
+            },
+            "phoneNumberLabel": {
+                "en": "Phone number: ",
+                "bg": "Телефонен номер: "
+            },
+            "dialUp": {
+                "en": "DIAL UP",
+                "bg": "ЗВЪННИ"
+            },
+            "contactInformation": {
+                "en": "CONTACT INFORMATION",
+                "bg": "ИНФОРМАЦИЯ ЗА ВРЪЗКА"
             }
         },
         "settings-page": {

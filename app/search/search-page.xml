@@ -40,7 +40,7 @@
                     </WrapLayout>
                 </StackLayout>
                 <StackLayout verticalAlign="center" row="2">
-                    <Button class="btn btn-primary" text="SEARCH" tap="onSearchTap"></Button>
+                    <Button class="btn btn-primary" text="{{ search }}" tap="onSearchTap"></Button>
                 </StackLayout>
             </GridLayout>
         </nsDrawer:RadSideDrawer.drawerContent>

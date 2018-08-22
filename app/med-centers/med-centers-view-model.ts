@@ -16,6 +16,7 @@ export class MedCentersViewModel extends Observable {
     // labels
     searchHint: string;
     searchHeader: string;
+    search: string;
     listOption: string;
     mapOption: string;
     addressLabel: string;
@@ -64,6 +65,7 @@ export class MedCentersViewModel extends Observable {
 
     setLabelsAndMessages():void {
         this.searchHint = TranslationService.localizeValue("searchHint", "med-centers-page", "label");
+        this.search = TranslationService.localizeValue("search", "med-centers-page", "label");
         this.mapOption = TranslationService.localizeValue("mapOption", "med-centers-page", "label");
         this.listOption = TranslationService.localizeValue("listOption", "med-centers-page", "label");       
         this.searchHeader = TranslationService.localizeValue("searchHeader", "med-centers-page", "label");      

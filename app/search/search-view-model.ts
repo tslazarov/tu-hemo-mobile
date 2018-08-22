@@ -16,6 +16,7 @@ export class SearchViewModel extends Observable {
     // labels
     searchHint: string;
     searchHeader: string;
+    search: string;
     listOption: string;
     mapOption: string;
     bloodTypeLabel: string;
@@ -68,6 +69,7 @@ export class SearchViewModel extends Observable {
     setLabelsAndMessages():void {
         this.searchHint = TranslationService.localizeValue("searchHint", "search-page", "label");
         this.searchHeader = TranslationService.localizeValue("searchHeader", "search-page", "label");
+        this.search = TranslationService.localizeValue("search", "search-page", "label");
         this.listOption = TranslationService.localizeValue("listOption", "search-page", "label");       
         this.mapOption = TranslationService.localizeValue("mapOption", "search-page", "label");
         this.bloodTypeLabel = TranslationService.localizeValue("bloodTypeLabel", "search-page", "label");        

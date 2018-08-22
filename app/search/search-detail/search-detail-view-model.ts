@@ -17,6 +17,8 @@ export class SearchDetailViewModel extends Observable {
     addressLabel: string;
     signUpDonation: string;
     cancelDonation: string;
+    contactInformation: string;
+    requestInformation: string;
     feedback: Feedback;
 
     @ObservableProperty() wrappedMaster: any;
@@ -48,5 +50,7 @@ export class SearchDetailViewModel extends Observable {
         this.addressLabel = TranslationService.localizeValue("addressLabel", "search-detail-page", "label");        
         this.signUpDonation = TranslationService.localizeValue("signUpDonation", "search-detail-page", "label");        
         this.cancelDonation = TranslationService.localizeValue("cancelDonation", "search-detail-page", "label");        
+        this.contactInformation = TranslationService.localizeValue("contactInformation", "search-detail-page", "label");        
+        this.requestInformation = TranslationService.localizeValue("requestInformation", "search-detail-page", "label");        
     }
 }

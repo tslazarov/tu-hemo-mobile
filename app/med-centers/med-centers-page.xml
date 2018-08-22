@@ -13,7 +13,7 @@
         </nsDrawer:RadSideDrawer.drawerTransition>
 
         <nsDrawer:RadSideDrawer.drawerContent>
-            <GridLayout rows="auto,auto" class="sidedrawer sidedrawer-left">
+            <GridLayout rows="auto,auto" height="165" class="sidedrawer sidedrawer-left">
                 <StackLayout row="0" class="m-t-20">
                   <au:RadAutoCompleteTextView hint="{{ searchHint }}" text="{{ searchTerm }}" id="autocomplete" items="{{ suggestedItems }}" class="m-15" suggestMode="Suggest" displayMode="Plain">
                       <au:RadAutoCompleteTextView.suggestionView>
@@ -28,7 +28,7 @@
                   </au:RadAutoCompleteTextView>
                 </StackLayout>
                 <StackLayout verticalAlign="center" row="1">
-                    <Button class="btn btn-primary" text="SEARCH" tap="onSearchTap"></Button>
+                    <Button class="btn btn-primary" text="{{ search }}" tap="onSearchTap"></Button>
                 </StackLayout>
             </GridLayout>
         </nsDrawer:RadSideDrawer.drawerContent>

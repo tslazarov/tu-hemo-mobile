@@ -12,7 +12,7 @@
         </StackLayout>
         <StackLayout orientation="vertical" row="2" verticalAlignment="top" class="p-t-15 m-t-20 m-l-20 m-r-20">   
             <GridLayout rows="auto" columns="auto, *" class="m-b-10">
-                <Label row="0" col="0" class="m-r-20 section-header-label" text="REQUEST INFORMATION"></Label>
+                <Label row="0" col="0" class="m-r-20 section-header-label" text="{{ requestInformation }}"></Label>
                 <StackLayout row="0" col="1" class="hr-regular"></StackLayout>
             </GridLayout>
             <Label class="m-b-5 m-l-10">
@@ -37,7 +37,7 @@
         </StackLayout>
         <StackLayout orientation="vertical" row="3" verticalAlignment="top" class="p-t-15 m-l-20 m-b-20 m-r-20">
             <GridLayout rows="auto" columns="auto, *" class="m-b-10">
-                <Label row="0" col="0" class="m-r-20 section-header-label" text="CONTACT INFORMATION"></Label>
+                <Label row="0" col="0" class="m-r-20 section-header-label" text="{{ contactInformation }}"></Label>
                 <StackLayout row="0" col="1" class="hr-regular"></StackLayout>
             </GridLayout>
             <Label class="m-b-5 m-l-10">

@@ -138,9 +138,7 @@ export function onDeleteTap(args: EventData) {
     const label = <Label>args.object;
     const viewModel = <RequestViewModel>label.bindingContext;
 
-    console.log(viewModel);
-
-    const card = button.parent.parent.parent;
+    const card = label.parent.parent.parent;
     const id = card.id;
 
     let message;
