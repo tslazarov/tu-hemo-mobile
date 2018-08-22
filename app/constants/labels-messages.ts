@@ -186,6 +186,32 @@ export class LabelsAndMessages {
                 "bg": "ОТКАЖИ СЕ ОТ ДАРЯВАНЕ"  
             }
         },
+        "med-centers-page": {
+            "searchHint": {
+                "en": "Search",
+                "bg": "Търси"
+            },
+            "searchHeader": {
+                "en": "Search",
+                "bg": "Търси"
+            },
+            "listOption": {
+                "en": "LIST",
+                "bg": "СПИСЪК"
+            },
+            "mapOption": {
+                "en": "MAP",
+                "bg": "КАРТА"
+            },
+            "addressLabel": {
+                "en": "Address: ",
+                "bg": "Адрес: "
+            },
+            "phoneNumberLabel": {
+                "en": "Phone number: ",
+                "bg": "Телефонен номер: "
+            }
+        },
         "settings-page": {
             "changePersonalInformation": {
                 "en": "Change personal information",

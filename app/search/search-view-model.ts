@@ -37,7 +37,7 @@ export class SearchViewModel extends Observable {
     selectedBarIndex: number;
     bloodTypes = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" ]
     
-    constructor(args, isPreserveHistory) {
+    constructor(args) {
         super();
         const page = args.object;
 

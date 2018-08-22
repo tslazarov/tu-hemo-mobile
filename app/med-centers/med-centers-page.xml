@@ -1,8 +1,99 @@
-<Page navigatingTo="onNavigatingTo" class="page" xmlns="http://schemas.nativescript.org/tns.xsd">
-    <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Med cent"></Label>
-    </ActionBar>
+<Page navigatingTo="onNavigatingTo" 
+  actionBarHidden="true"
+  class="page"
+  xmlns="http://schemas.nativescript.org/tns.xsd" 
+  xmlns:nsDrawer="nativescript-ui-sidedrawer"
+  xmlns:au="nativescript-ui-autocomplete" 
+  xmlns:map="nativescript-mapbox"
+  xmlns:lv="nativescript-ui-listview"
+  xmlns:card="nativescript-cardview">
+    <nsDrawer:RadSideDrawer id="sideDrawer" drawerLocation="top" xmlns:nsDrawer="nativescript-ui-sidedrawer" loaded="onLoaded">
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
 
-    <StackLayout>
-    </StackLayout>
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <GridLayout rows="auto,auto" class="sidedrawer sidedrawer-left">
+                <StackLayout row="0" class="m-t-20">
+                  <au:RadAutoCompleteTextView hint="{{ searchHint }}" text="{{ searchTerm }}" id="autocomplete" items="{{ suggestedItems }}" class="m-15" suggestMode="Suggest" displayMode="Plain">
+                      <au:RadAutoCompleteTextView.suggestionView>
+                          <au:SuggestionView suggestionViewHeight="300">
+                              <au:SuggestionView.suggestionItemTemplate>
+                                  <StackLayout orientation="vertical" padding="10">
+                                      <Label text="{{ text }}"></Label>
+                                  </StackLayout>
+                              </au:SuggestionView.suggestionItemTemplate>
+                          </au:SuggestionView>
+                      </au:RadAutoCompleteTextView.suggestionView>
+                  </au:RadAutoCompleteTextView>
+                </StackLayout>
+                <StackLayout verticalAlign="center" row="1">
+                    <Button class="btn btn-primary" text="SEARCH" tap="onSearchTap"></Button>
+                </StackLayout>
+            </GridLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+        <nsDrawer:RadSideDrawer.mainContent>
+        <GridLayout rows="auto,auto,*">
+            <GridLayout row="0"  tap="onOpenDrawerTap" columns="*" width="100%" class="custom-action-bar p-10">
+                <Label col="1" text="{{ searchHeader }}" class="h3 action-bar-title"></Label>
+            </GridLayout>
+            <SegmentedBar row="1" loaded="onSbLoaded" class="m-l-5 m-b-5 m-r-5" selectedIndex="{{ selectedBarIndex }}">
+                <SegmentedBar.items>
+                    <SegmentedBarItem title="{{ listOption }}" />
+                    <SegmentedBarItem title="{{ mapOption }}" />
+                </SegmentedBar.items>
+            </SegmentedBar> 
+                <GridLayout row="2" rows="*" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}">
+                    <lv:RadListView id="listItems" items="{{ items }}"  row="0"  loadOnDemandMode="Auto" loadMoreDataRequested="onLoadMoreItemsRequested">
+                        <lv:RadListView.listViewLayout>
+                            <lv:ListViewLinearLayout scrollDirection="Vertical" itemHeight="100"/>
+                        </lv:RadListView.listViewLayout>
+                        <lv:RadListView.itemTemplate>
+                            <StackLayout orientation="vertical">
+                                <StackLayout orientation="horizontal" horizontalAlignment="center" class="m-l-10 m-r-10 m-t-10">
+                                        <card:CardView id="{{ id }}" class="cardStyle m-5" width="96%" ripple="true" elevation="10" radius="0"  tap="onItemTap">
+                                            <GridLayout columns="auto, *" class="p-10">
+                                                <Image col="0" id="back" src="{{ image }}" width="80" height="80" class="m-5 card-image" stretch="aspectFit"></Image>
+                                                <StackLayout col="1" orientation="vertical" >
+                                                    <Label class="m-l-20 m-t-5" textWrap="true">
+                                                        <FormattedString>
+                                                            <Span text="{{ name }}" class="h3"></Span>
+                                                        </FormattedString>
+                                                    </Label>
+                                                    <Label class="m-l-20" textWrap="true">
+                                                        <FormattedString>
+                                                            <Span text="{{ addressLabel }}" class="normal-label bold"></Span>
+                                                            <Span text="{{ address }}" class="normal-label"></Span>
+                                                        </FormattedString>
+                                                    </Label>
+                                                    <Label class="m-b-5 m-l-20" textWrap="true">
+                                                        <FormattedString>
+                                                            <Span text="{{ phoneNumberLabel }}" class="normal-label bold"></Span>
+                                                            <Span text="{{ phoneNumber }}" class="normal-label"></Span>
+                                                        </FormattedString>
+                                                    </Label>
+                                                </StackLayout>
+                                            </GridLayout>
+                                        </card:CardView>
+                                </StackLayout>
+                            </StackLayout>
+                        </lv:RadListView.itemTemplate>
+                    </lv:RadListView>
+                </GridLayout>           
+                <GridLayout row="2" rows="*" visibility="{{ visibility2 ? 'visible' : 'collapsed' }}" backgroundColor="white">
+                    <map:MapboxView
+                        id="mapView"
+                        accessToken="{{ mapBoxAPIKey }}"
+                        mapStyle="streets"
+                        zoomLevel="16"
+                        showUserLocation="true"
+                        disableRotation="true"
+                        disableTilt="true"
+                        hideCompass="true"
+                        mapReady="onMapReady">
+                    </map:MapboxView>              
+                </GridLayout>
+        </GridLayout>            
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer> 
 </Page>

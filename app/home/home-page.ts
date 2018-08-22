@@ -47,6 +47,7 @@ export function tabSelected(args: OnTabSelectedEventData) {
         moduleName: "med-centers/med-centers-page",
         clearHistory: true
       };
+      break;
     }
     case 2: {
       navigationEntry = {

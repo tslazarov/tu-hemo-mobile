@@ -5,10 +5,9 @@ import { Button } from "ui/button";
 import { View } from "ui/core/view";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { topmost  } from "tns-core-modules/ui/frame/frame";
-import { SegmentedBar, SegmentedBarItem, itemsProperty } from "tns-core-modules/ui/segmented-bar/segmented-bar";
+import { SegmentedBar } from "tns-core-modules/ui/segmented-bar/segmented-bar";
 import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
-import { ThirdPartyCredentials } from "../constants/third-party-credentials";
 import * as geolocation from "nativescript-geolocation";
 import { Accuracy } from "tns-core-modules/ui/enums/enums";
 import { DateFormatter } from "../utilities/date-formatter";
@@ -17,7 +16,6 @@ import { ListViewEventData, RadListView, ListViewLoadOnDemandMode } from "native
 import { fromBase64 } from "image-source";
 
 import { SearchViewModel } from "./search-view-model";
-import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
 
 const secureStorage = new SecureStorage();
 
@@ -27,7 +25,7 @@ export function onNavigatingTo(args: EventData) {
 
     page.addCssFile("./search/search-page.css");
 
-    page.bindingContext = new SearchViewModel(args, false);
+    page.bindingContext = new SearchViewModel(args);
     
     page.bindingContext.visibility1 = true;
     page.bindingContext.visibility2 = false;
