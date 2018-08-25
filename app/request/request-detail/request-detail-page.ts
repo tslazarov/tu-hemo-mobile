@@ -93,19 +93,33 @@ export function onConfirmTap(args: EventData): void {
         }
     });
 
-    // send request
+    let message;
+    
+    let url = `${APIConstants.Domain}/${APIConstants.RequestConfirmDonatorEndpoint}`;
+    let contentType = 'application/json';
+    let content = JSON.stringify({ "userId": id, "requestId": viewModel.id });
 
-    const navigationEntry = {
-        moduleName: "request/request-detail/request-detail-page",
-        context: {
-            "id": viewModel.id,
-            "wrappedMaster": viewModel,
-        },
-        animated: false,
-        clearHistory: true
-    };
+    HttpClient.putRequest(url, content,  secureStorage.getSync({key: "access_token" }), contentType)
+    .then((response) => {
+        const result = response.content.toJSON();
 
-    topmost().navigate(navigationEntry);
+        if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")){
+            if(result["isSuccessful"]) {
+                const navigationEntry = {
+                    moduleName: "request/request-detail/request-detail-page",
+                    context: {
+                        "id": viewModel.id,
+                        "wrappedMaster": viewModel,
+                    },
+                    animated: false,
+                    clearHistory: true
+                };
+            
+                topmost().navigate(navigationEntry);
+            }
+        }
+    }, (reject) => {
+    });
 }
 
 export function onPendingTap(args: EventData): void { 
@@ -122,18 +136,31 @@ export function onPendingTap(args: EventData): void {
         }
     });
 
+    let message;
+    
+    let url = `${APIConstants.Domain}/${APIConstants.RequestDisconfirmDonatorEndpoint}`;
+    let contentType = 'application/json';
+    let content = JSON.stringify({ "userId": id, "requestId": viewModel.id });
 
-    // send request
+    HttpClient.putRequest(url, content,  secureStorage.getSync({key: "access_token" }), contentType)
+    .then((response) => {
+        const result = response.content.toJSON();
 
-    const navigationEntry = {
-        moduleName: "request/request-detail/request-detail-page",
-        context: {
-            "id": viewModel.id,
-            "wrappedMaster": viewModel,
-        },
-        animated: false,
-        clearHistory: true
-    };
-
-    topmost().navigate(navigationEntry);
+        if(response.statusCode == 200 && result.hasOwnProperty("isSuccessful")){
+            if(result["isSuccessful"]) {
+                const navigationEntry = {
+                    moduleName: "request/request-detail/request-detail-page",
+                    context: {
+                        "id": viewModel.id,
+                        "wrappedMaster": viewModel,
+                    },
+                    animated: false,
+                    clearHistory: true
+                };
+            
+                topmost().navigate(navigationEntry);
+            }
+        }
+    }, (reject) => {
+    });
 }

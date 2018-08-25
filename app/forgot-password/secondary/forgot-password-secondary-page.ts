@@ -5,8 +5,6 @@ import { topmost } from "tns-core-modules/ui/frame/frame";
 import { APIConstants } from "../../constants/api-endpoints";
 import { HttpClient } from "../../utilities/http-client";
 import { TranslationService } from "../../utilities/translation-service";
-import { FeedbackType, FeedbackPosition } from "nativescript-feedback";
-import { Color } from "tns-core-modules/color/color";
 import { MessageService } from "../../utilities/message-service";
 
 import { ForgotPasswordSecondaryViewModel } from "./forgot-password-secondary-view-model";
