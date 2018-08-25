@@ -4,7 +4,7 @@
     xmlns="http://schemas.nativescript.org/tns.xsd">
     <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto">
         <StackLayout orientation="vertical" row="0" verticalAlignment="top" class="p-t-15 m-t-30 m-b-20">
-            <Image id="ProfileImage" src="res://profile_image" width="100" height="100" stretch="aspectFill" class="m-t-30 m-b-20 profile-image"></Image>
+            <Image id="ProfileImage" width="100" height="100" stretch="aspectFill" class="m-t-30 m-b-20 profile-image"></Image>
             <Label class="profile-name-label" text="{{ name }}"></Label>
             <Label class="profile-email-label m-b-30" text="{{ email }}"></Label>
         </StackLayout>

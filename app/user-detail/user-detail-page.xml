@@ -1,0 +1,21 @@
+<Page navigatingTo="onNavigatingTo"
+    actionBarHidden="true"
+    class="page"
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+    <GridLayout rows="auto,auto,*,auto,*,auto">
+        <GridLayout row="0" columns="auto,*" width="100%" class="custom-action-bar">
+            <Image col="0" id="back" src="res://ic_back_arrow" class="m-l-20" verticalAlignment="center" stretch="aspectFit" tap="onBackTap"></Image>
+        </GridLayout>
+        <StackLayout orientation="vertical" row="1" verticalAlignment="top" class="p-t-15 m-t-30">
+            <Image id="ProfileImage" width="100" height="100" stretch="aspectFill" class="m-t-30 m-b-20 profile-image"></Image>
+            <Label class="profile-name-label" text="{{ name }}"></Label>
+            <Label class="profile-email-label m-b-30" text="{{ email }}"></Label>
+        </StackLayout>
+        <StackLayout row="3" horizontalAlign="center">
+        	<Label  text="{{ bloodType }}" class="h2 blood-type"></Label>
+        </StackLayout>
+        <StackLayout verticalAlign="center" row="5">
+            <Button class="btn btn-primary" text="{{ dialUp }}" tap="onDialUpTap"></Button>
+        </StackLayout>
+    </GridLayout>
+</Page>

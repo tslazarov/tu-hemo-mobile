@@ -164,3 +164,20 @@ export function onPendingTap(args: EventData): void {
     }, (reject) => {
     });
 }
+
+export function onItemTap(args): void { 
+    const viewModel = <RequestDetailViewModel>args.object.page.bindingContext;
+
+    console.log(args.object.id);
+
+    const navigationEntry = {
+        moduleName: "user-detail/user-detail-page",
+        context: {
+            "id": args.object.id,
+            "requestId": viewModel.id
+        },
+        clearHistory: true
+    };
+
+    topmost().navigate(navigationEntry);
+}

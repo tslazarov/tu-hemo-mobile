@@ -250,6 +250,12 @@ export class LabelsAndMessages {
                 "bg": "ИНФОРМАЦИЯ ЗА ВРЪЗКА"
             }
         },
+        "user-detail-page": {
+            "dialUp": {
+                "en": "DIAL UP",
+                "bg": "ЗВЪННИ"
+            }
+        },
         "settings-page": {
             "changePersonalInformation": {
                 "en": "Change personal information",

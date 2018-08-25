@@ -51,7 +51,7 @@ export function setPersonalInformation(page: Page) {
                 let image = <Image>page.getViewById("ProfileImage");
 
                 if(image != null) {
-                    image.imageSource = fromResource("res://profile_image");
+                    image.imageSource = fromResource("profile_image");
                 }
             }
 

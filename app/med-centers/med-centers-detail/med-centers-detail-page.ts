@@ -59,7 +59,7 @@ export function setMedCenter(page, id:string) {
                     let image = <Image>page.getViewById("MedCenterImage");
 
                     if(image != null) {
-                        image.imageSource = fromResource("res://profile_image");
+                        image.imageSource = fromResource("profile_image");
                     }                
                 }
            }

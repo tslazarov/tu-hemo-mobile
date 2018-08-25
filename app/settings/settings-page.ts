@@ -5,7 +5,7 @@ import { Label } from "tns-core-modules/ui/label/label";
 import { APIConstants } from "../constants/api-endpoints";
 import { HttpClient } from "../utilities/http-client";
 import { SecureStorage } from "nativescript-secure-storage";
-import { fromBase64 } from "tns-core-modules/image-source/image-source";
+import { fromBase64, fromResource } from "tns-core-modules/image-source/image-source";
 import { topmost } from "tns-core-modules/ui/frame/frame";
 import {exit} from 'nativescript-exit';
 
@@ -50,6 +50,13 @@ export function setProfile(page: Page) {
                     image.imageSource = fromBase64(result["profileImage"]);
                 }
            }
+           else {
+                let image = <Image>page.getViewById("ProfileImage");
+
+                if(image != null) {
+                    image.imageSource = fromResource("profile_image");
+                }
+            }
         }
     }, (reject) => {
 
