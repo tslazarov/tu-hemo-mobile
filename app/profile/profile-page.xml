@@ -1,8 +1,129 @@
-<Page navigatingTo="onNavigatingTo" class="page" xmlns="http://schemas.nativescript.org/tns.xsd">
-    <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Profile"></Label>
-    </ActionBar>
+<Page navigatingTo="onNavigatingTo" 
+  actionBarHidden="true"
+  class="page"
+  xmlns="http://schemas.nativescript.org/tns.xsd"
+  xmlns:lv="nativescript-ui-listview"
+  xmlns:chart="nativescript-ui-chart"
+  xmlns:card="nativescript-cardview">
 
-    <StackLayout>
-    </StackLayout>
+    <GridLayout rows="auto,auto,*">
+        <GridLayout row="0" columns="*" width="100%" class="custom-action-bar p-10">
+            <Label col="1" text="{{ profile }}" class="h3 action-bar-title"></Label>
+        </GridLayout>
+        <SegmentedBar row="1" loaded="onSbLoaded" selectedIndex="{{ selectedBarIndex }}">
+            <SegmentedBar.items>
+                <SegmentedBarItem title="{{ statsOption }}" />
+                <SegmentedBarItem title="{{ historyOption }}" />
+            </SegmentedBar.items>
+        </SegmentedBar>        
+            <GridLayout row="2" rows="auto,auto,auto" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}">
+                <StackLayout row="0" orientation="vertical" verticalAlignment="top" class="p-t-25 m-l-20 m-b-20 m-r-20">
+                    <GridLayout rows="auto" columns="auto, *" class="m-b-10">
+                        <Label row="0" col="0" class="m-r-20 section-header-label" text="{{ latestDonation }}"></Label>
+                        <StackLayout row="0" col="1" class="hr-regular"></StackLayout>
+                    </GridLayout>
+                    <card:CardView id="{{ lastDonationId }}" class="cardStyle m-5" width="96%" ripple="true" elevation="10" radius="0"  tap="onItemTap">
+                        <GridLayout rows="auto,auto,auto" orientation="vertical" class="p-10 item-wrapper">
+                            <Label class="m-l-5 m-t-5" row="0">
+                                <FormattedString>
+                                    <Span text="{{ bloodTypeLabel }}" class="normal-label h4"></Span>
+                                    <Span text="{{ latestDonationBloodType }}" class="bold h4"></Span>
+                                </FormattedString>
+                            </Label>
+                            <Label class="m-l-5 m-b-5 m-t-5" row="1">
+                                <FormattedString>
+                                    <Span text="{{ requestedBloodQuantityLabel }}" class="normal-label h4"></Span>
+                                    <Span text="{{ latestDonationRequestedBloodQuantity }}" class="bold h4"></Span>
+                                </FormattedString>
+                            </Label>
+                            <Label class="m-l-5 m-b-5" row="2">
+                                <FormattedString>
+                                    <Span text="{{ dateLabel }}" class="normal-label h4"></Span>
+                                    <Span text="{{ latestDonationDate }}" class="bold h4"></Span>
+                                </FormattedString>
+                            </Label>
+                        </GridLayout>
+                    </card:CardView>
+                </StackLayout>
+                <StackLayout row="1" orientation="vertical" verticalAlignment="top" class="p-t-15 m-l-20 m-b-10 m-r-20">
+                    <GridLayout rows="auto" columns="auto, *" class="m-b-10">
+                        <Label row="0" col="0" class="m-r-20 section-header-label" text="{{ locationChart }}"></Label>
+                        <StackLayout row="0" col="1" class="hr-regular"></StackLayout>
+                    </GridLayout>
+                    <GridLayout orientation="vertical">
+                        <chart:RadPieChart id="donutChart" height="200">
+                            <chart:RadPieChart.series>
+                                <chart:DonutSeries selectionMode="DataPoint" outerRadiusFactor="0.9" expandRadius="0.4" outerRadiusFactor="0.7" innerRadiusFactor="0.5" items="{{ locationsPieSource }}" valueProperty="Amount" legendLabel="City">
+                                </chart:DonutSeries>
+                            </chart:RadPieChart.series>
+                            <chart:RadPieChart.legend>
+                                <chart:RadLegendView position="Right" title="{{ cityLabel }}" offsetOrigin="BottomRight" width="250"/>
+                            </chart:RadPieChart.legend>
+                        </chart:RadPieChart>
+                    </GridLayout>
+                </StackLayout>
+                <StackLayout row="2" orientation="vertical" verticalAlignment="top" class="p-t-5 m-l-20 m-b-10 m-r-20">
+                    <GridLayout rows="auto" columns="auto, *" class="m-b-10">
+                        <Label row="0" col="0" class="m-r-20 section-header-label" text="{{ periodChart }}"></Label>
+                        <StackLayout row="0" col="1" class="hr-regular"></StackLayout>
+                    </GridLayout>
+                    <GridLayout>
+                        <chart:RadCartesianChart id="cartesianChart" height="200">
+                            <chart:RadCartesianChart.series>
+                                <chart:BarSeries seriesName="AnnualDonations" items="{{ annualDonationsCartesianSource }}" categoryProperty="Year" valueProperty="Amount">
+                                    <chart:BarSeries.horizontalAxis>
+                                        <chart:CategoricalAxis/>
+                                    </chart:BarSeries.horizontalAxis>
+                                    <chart:BarSeries.verticalAxis>
+                                        <chart:LinearAxis/>
+                                    </chart:BarSeries.verticalAxis>
+                                </chart:BarSeries>
+                            </chart:RadCartesianChart.series>
+                            <chart:RadCartesianChart.palettes>
+                                <chart:Palette seriesName="AnnualDonations">
+                                    <chart:Palette.entries>
+                                        <chart:PaletteEntry fillColor="#c91c1c" strokeColor="#c91c1c"/>
+                                    </chart:Palette.entries>
+                                </chart:Palette>
+                        </chart:RadCartesianChart.palettes>
+                        </chart:RadCartesianChart>
+                    </GridLayout>
+                </StackLayout>
+            </GridLayout>
+            <GridLayout row="2" rows="*" visibility="{{ visibility2 ? 'visible' : 'collapsed' }}">
+                <lv:RadListView id="listItems" items="{{ items }}"  row="0"  loadOnDemandMode="Auto" loadMoreDataRequested="onLoadMoreItemsRequested">
+                    <lv:RadListView.listViewLayout>
+                        <lv:ListViewLinearLayout scrollDirection="Vertical" itemHeight="100"/>
+                    </lv:RadListView.listViewLayout>
+                    <lv:RadListView.itemTemplate>
+                        <StackLayout orientation="vertical">
+                            <StackLayout orientation="horizontal" horizontalAlignment="center" class="m-l-10 m-r-10 m-t-10">
+                                    <card:CardView id="{{ id }}" class="cardStyle m-5" width="96%" ripple="true" elevation="10" radius="0"  tap="onItemTap">
+                                        <GridLayout rows="auto,auto,auto" orientation="vertical" class="p-10 item-wrapper">
+                                            <Label class="m-l-5 m-t-5" row="0">
+                                                <FormattedString>
+                                                    <Span text="{{ bloodTypeLabel }}" class="normal-label h4"></Span>
+                                                    <Span text="{{ bloodType }}" class="bold h4"></Span>
+                                                </FormattedString>
+                                            </Label>
+                                            <Label class="m-l-5 m-b-5 m-t-5" row="1">
+                                                <FormattedString>
+                                                    <Span text="{{ requestedBloodQuantityLabel }}" class="normal-label h4"></Span>
+                                                    <Span text="{{ requestedBloodQuantity }}" class="bold h4"></Span>
+                                                </FormattedString>
+                                            </Label>
+                                            <Label class="m-l-5 m-b-5" row="2">
+                                                <FormattedString>
+                                                    <Span text="{{ dateLabel }}" class="normal-label h4"></Span>
+                                                    <Span text="{{ date }}" class="bold h4"></Span>
+                                                </FormattedString>
+                                            </Label>
+                                        </GridLayout>
+                                    </card:CardView>
+                            </StackLayout>
+                        </StackLayout>
+                    </lv:RadListView.itemTemplate>
+                </lv:RadListView>
+            </GridLayout>    
+    </GridLayout>            
 </Page>

@@ -95,7 +95,7 @@ export class ChangePersonalInformationViewModel extends Observable {
         else if(+this.age < 18 || +this.age > 65) {
             isValid = false;
             message = TranslationService.localizeValue("allowedAge", "change-personal-information-page", "message"); 
-        } else if(typeof this.selectedBloodType == 'undefined' || !this.selectedBloodType  || this.selectedBloodType < 0 || this.selectedBloodType > 7) {
+        } else if(typeof this.selectedBloodType == 'undefined'  || this.selectedBloodType < 0 || this.selectedBloodType > 7) {
             isValid = false;
             message = TranslationService.localizeValue("invalidBloodType", "change-personal-information-page", "message"); 
         }

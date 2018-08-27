@@ -11,6 +11,7 @@ export class SettingsViewModel extends Observable {
     changeLanguage: string;
     deleteAccount: string;
     logOut: string;
+    settings: string;
 
     @ObservableProperty() name: string;
     @ObservableProperty() email: string;
@@ -30,5 +31,6 @@ export class SettingsViewModel extends Observable {
         this.changeLanguage = TranslationService.localizeValue("changeLanguage", "settings-page", "label");
         this.deleteAccount = TranslationService.localizeValue("deleteAccount", "settings-page", "label");
         this.logOut = TranslationService.localizeValue("logOut", "settings-page", "label");
+        this.settings = TranslationService.localizeValue("settings", "settings-page", "label");
     }
 }

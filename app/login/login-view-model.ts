@@ -21,6 +21,7 @@ export class LoginViewModel extends Observable {
     feedback: Feedback;
     selectedLanguage: number;    
     languages: string[] = ["English", "Български"];
+    
     constructor(language:string) {
         super();
 

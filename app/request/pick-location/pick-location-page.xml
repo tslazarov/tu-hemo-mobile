@@ -19,6 +19,9 @@
             mapStyle="streets"
             zoomLevel="16"
             showUserLocation="true"
+            disableRotation="true"
+            disableTilt="true"
+            hideCompass="true"
             mapReady="onMapReady">
         </map:MapboxView>
     </StackLayout>

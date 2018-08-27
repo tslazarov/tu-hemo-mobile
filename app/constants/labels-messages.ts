@@ -257,6 +257,10 @@ export class LabelsAndMessages {
             }
         },
         "settings-page": {
+            "settings": {
+                "en": "Settings",
+                "bg": "Настройки"
+            },
             "changePersonalInformation": {
                 "en": "Change personal information",
                 "bg": "Промени лична информация"  
@@ -484,6 +488,48 @@ export class LabelsAndMessages {
             "pendingLabel": {
                 "en": "PENDING",
                 "bg": "ЧАКАЩИ ПОТВЪРЖДАВАНЕ"
+            }
+        },
+        "profile-page": {
+            "bloodTypeLabel": {
+                "en": "Blood type: ",
+                "bg": "Кръвна група: " 
+            },
+            "dateLabel": {
+                "en": "Date: ",
+                "bg": "Дата: "  
+            }, 
+            "requestedBloodQuantityLabel": {
+                "en": "Blood quantity: ",
+                "bg": "Количество кръв: "  
+            },
+            "profile": {
+                "en": "Profile",
+                "bg": "Профил"  
+            },
+            "statsOption": {
+                "en": "STATISTICS",
+                "bg": "СТАТИСТИКА"
+            },
+            "historyOption": {
+                "en": "HISTORY",
+                "bg": "ИСТОРИЯ"
+            },
+            "latestDonation": {
+                "en": "LATEST DONATION",
+                "bg": "НАЙ-СКОРОШНО ДАРЕНИЕ"
+            },
+            "locationChart": {
+                "en": "LOCATION",
+                "bg": "ЛОКАЦИЯ"
+            },
+            "periodChart": {
+                "en": "DONATION FREQUNECY",
+                "bg": "ЧЕСТОТА НА ДАРЕНИЯ"
+            },
+            "cityLabel": {
+                "en": "Cities",
+                "bg": "Градове"
             }
         },
     };

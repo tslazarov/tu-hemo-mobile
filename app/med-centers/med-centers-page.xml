@@ -37,7 +37,7 @@
             <GridLayout row="0"  tap="onOpenDrawerTap" columns="*" width="100%" class="custom-action-bar p-10">
                 <Label col="1" text="{{ searchHeader }}" class="h3 action-bar-title"></Label>
             </GridLayout>
-            <SegmentedBar row="1" loaded="onSbLoaded" class="m-l-5 m-b-5 m-r-5" selectedIndex="{{ selectedBarIndex }}">
+            <SegmentedBar row="1" loaded="onSbLoaded" selectedIndex="{{ selectedBarIndex }}">
                 <SegmentedBar.items>
                     <SegmentedBarItem title="{{ listOption }}" />
                     <SegmentedBarItem title="{{ mapOption }}" />

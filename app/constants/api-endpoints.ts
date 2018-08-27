@@ -28,7 +28,10 @@ export class APIConstants {
     static readonly RequestConfirmDonatorEndpoint : string = "api/requests/confirmDonator";
     static readonly RequestDisconfirmDonatorEndpoint : string = "api/requests/disconfirmDonator";
 
-    static readonly MedCentersGetListFullEndpoint : string = "api/centers/full";
+    static readonly MedCentersGetListFullEndpoint : string = "api/centers";
     static readonly MedCentersGetCenterEndpoint : string = "api/centers";
+
+    static readonly TrackingsGetStatisticsEndpoint : string = "api/trackings";
+    static readonly TrackingsGetHistoryEndpoint : string = "api/trackings/history";
 
 }
